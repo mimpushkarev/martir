@@ -78,8 +78,8 @@ export default {
         'success-light':'#66FF9A',
         'success-normal':'#35FF7A',
         // Danger - цвет обозначающий о том что действие опасно и нужно отнестись с вниманием
-        'dander-light':'#EF1060',
-        'dander-normal':'#BF0D4D',
+        'danger-light':'#EF1060',
+        'danger-normal':'#BF0D4D',
         // Warning - цвет обозначает предупреждение что нужно ознакомиться с происходящим
         'warning-light':'#F6E96F',
         'warning-normal':'#F3E13F',
