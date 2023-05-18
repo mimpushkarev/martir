@@ -12,19 +12,19 @@ const accordeonText = {
 
 const Accordeon: AccordeonType = () => {
     return (
-        <div className="mx-auto w-full max-w-md rounded-2xl bg-white p-2">
+        <div className="mx-auto w-full max-w-md rounded-2x p-2">
             <Disclosure>
                 {({ open }) => (
                     <>
-                        <Disclosure.Button className="flex w-full justify-between border-y-2 border-y-black px-4 py-2 text-left focus-visible:ring-opacity-75">
+                        <Disclosure.Button className="flex w-full justify-between items-center text-paragraph border-y-2 border-y-white text-white py-4 text-left focus-visible:ring-opacity-75">
                             <div>{accordeonText.accordionTitle}</div>
                             <ChevronUpIcon
                                 className={`${
                                     open ? "rotate-180 transform" : ""
-                                } h-5 w-5 text-black`}
+                                } h-7 w-7 p-0 m-0 text-white`}
                             />
                         </Disclosure.Button>
-                        <Disclosure.Panel className="px-4 pt-4 pb-2 text-sm text-gray-500">
+                        <Disclosure.Panel className="px-4 pt-4 pb-2 text-paragraph text-common-light-gray">
                             {accordeonText.accordionSubTitle}
                         </Disclosure.Panel>
                     </>
