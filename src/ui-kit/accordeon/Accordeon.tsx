@@ -21,7 +21,7 @@ const Accordeon: AccordeonType = () => {
                             <ChevronUpIcon
                                 className={`${
                                     open ? "rotate-180 transform" : ""
-                                } h-7 w-7 p-0 m-0 text-white`}
+                                } h-8 w-8 text-white`}
                             />
                         </Disclosure.Button>
                         <Disclosure.Panel className="px-4 pt-4 pb-2 text-paragraph text-common-light-gray">
