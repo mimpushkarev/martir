@@ -2,6 +2,8 @@ import { memo } from "react";
 import { Disclosure } from "@headlessui/react";
 import { ChevronUpIcon } from "@heroicons/react/20/solid";
 
+import { cn } from "@utils/cn";
+
 import { AccordeonType } from "./types";
 
 const accordeonText = {
@@ -19,9 +21,9 @@ const Accordeon: AccordeonType = () => {
                         <Disclosure.Button className="flex w-full justify-between items-center text-paragraph border-y-2 border-y-white text-white py-4 text-left focus-visible:ring-opacity-75">
                             <div>{accordeonText.accordionTitle}</div>
                             <ChevronUpIcon
-                                className={`${
-                                    open ? "rotate-180 transform" : ""
-                                } h-8 w-8 text-white`}
+                                className={cn("h-8 w-8 text-white", {
+                                    ["rotate-180 transform"]: open,
+                                })}
                             />
                         </Disclosure.Button>
                         <Disclosure.Panel className="px-4 pt-4 pb-2 text-paragraph text-common-light-gray">
