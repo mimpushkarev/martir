@@ -11,5 +11,5 @@ export const cn: CnType = (def, obj) => {
     },
     [def]
   );
-  return convertedObj.join(" ");
+  return convertedObj.join(' ');
 };
