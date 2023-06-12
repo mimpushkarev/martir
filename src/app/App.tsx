@@ -1,6 +1,7 @@
-import { Provider } from "react-redux";
-import store from "@utils/reducer/app";
-import { Routing } from "@pages";
+import {Provider} from 'react-redux';
+
+import {Routing} from '@pages';
+import store from '@utils/reducer/app';
 
 function App() {
   return (
@@ -10,4 +11,4 @@ function App() {
   );
 }
 
-export { App };
+export {App};

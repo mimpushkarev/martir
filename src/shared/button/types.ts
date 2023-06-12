@@ -1,9 +1,9 @@
-import { MergeElementProps } from "@types";
+import {MergeElementProps} from '@types';
 
 export type ButtonPropsType = MergeElementProps<
-  "button",
+  'button',
   {
-    type?: "primary" | "success" | "danger" | "warning";
-    state?: "normal" | "hover" | "disabled";
+    type?: 'primary' | 'success' | 'danger' | 'warning';
+    state?: 'normal' | 'hover' | 'disabled';
   }
 >;
