@@ -1,10 +1,9 @@
-import {memo} from 'react';
 import {Outlet, ScrollRestoration} from 'react-router-dom';
 
 import {Footer} from '@widgets/footer';
 import {Header} from '@widgets/header';
 
-const ClientRoot = memo(function ClientRoot() {
+const ClientRoot = function ClientRoot() {
   return (
     <>
       <div className="min-h-screen">
@@ -15,6 +14,6 @@ const ClientRoot = memo(function ClientRoot() {
       <ScrollRestoration />
     </>
   );
-});
+};
 
 export default ClientRoot;
