@@ -1,6 +1,6 @@
 import {Link, Outlet, ScrollRestoration} from 'react-router-dom';
 
-import {User} from '@entities/User';
+import {UserCard} from '@entities/user-card';
 import {FullWidthContainer} from '@shared/container';
 import {Logo} from '@shared/logo';
 import {VerticalNav} from '@shared/vertical-nav';
@@ -11,14 +11,14 @@ import {LABELS, LINKS} from './consts';
 const AdminRoot = function AdminRoot() {
   return (
     <>
-      <div className="h-screen flex">
-        <FullWidthContainer px={6} py={3} className="w-[350px] bg-common-darkest-gray border-r border-common-dark-gray">
-          <div className="flex flex-col gap-8 h-full">
+      <div className="flex h-screen">
+        <FullWidthContainer px={6} py={3} className="w-[350px] border-r border-common-dark-gray bg-common-darkest-gray">
+          <div className="flex h-full flex-col gap-8">
             <Link to="/">
               <Logo />
             </Link>
             <VerticalNav label={LABELS.NAV_LABEL} links={LINKS} className="flex-1" />
-            <User />
+            <UserCard />
           </div>
         </FullWidthContainer>
         <div className="flex-1">

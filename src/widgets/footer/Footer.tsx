@@ -7,7 +7,7 @@ import {GROUPS_OF_LINKS} from './consts';
 
 const Footer = memo(function Footer() {
   return (
-    <FullWidthContainer py={5} px={6} className="bg-common-darkest-gray flex justify-center gap-4">
+    <FullWidthContainer py={5} px={6} className="flex justify-center gap-4 bg-common-darkest-gray">
       {GROUPS_OF_LINKS.map((data, i) => (
         <ListOfLinks {...data} key={i} />
       ))}
