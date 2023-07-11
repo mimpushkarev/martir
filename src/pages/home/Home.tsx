@@ -1,37 +1,14 @@
-import {Button} from '@shared/button';
+import {MainItemCard} from '@features/main-item-card';
 import {FullWidthContainer} from '@shared/container';
 
 function Home() {
   return (
-    <FullWidthContainer px={6} className="py-24">
-      <h1 className=" text-hero">Hello Martir</h1>
-      <h2 className=" text-subtitle">this is main page</h2>
-      <Button type="primary" state="disabled">
-        Здарова, Бандиты!
-      </Button>
-      <Button type="success" state="disabled">
-        Здарова, Бандиты!
-      </Button>
-      <Button type="danger" state="disabled">
-        Здарова, Бандиты!
-      </Button>
-      <Button type="warning" state="disabled">
-        Здарова, Бандиты!
-      </Button>
-
-      <Button type="primary" state="normal">
-        Здарова, Бандиты!
-      </Button>
-      <Button type="success" state="normal">
-        Здарова, Бандиты!
-      </Button>
-      <Button type="danger" state="normal">
-        Здарова, Бандиты!
-      </Button>
-      <Button type="warning" state="normal">
-        Здарова, Бандиты!
-      </Button>
-      <Button>Здарова, Бандиты!</Button>
+    <FullWidthContainer px={6} className="flex gap-4 overflow-auto py-24">
+      <MainItemCard productId="1" />
+      <MainItemCard productId="2" />
+      <MainItemCard productId="3" />
+      <MainItemCard productId="4" />
+      <MainItemCard productId="5" />
     </FullWidthContainer>
   );
 }

@@ -35,12 +35,12 @@ export const GROUPS_OF_LINKS = [
     links: [
       {
         label: 'Telegram',
-        url: '/',
+        url: '/telegram',
         isBlank: true
       },
       {
         label: 'Instagram',
-        url: '/',
+        url: '/instagram',
         isBlank: true
       }
     ]

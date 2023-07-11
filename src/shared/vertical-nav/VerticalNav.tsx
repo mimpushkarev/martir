@@ -18,9 +18,9 @@ const VerticalNav = memo<VerticalNavPropsType>(function VerticalNav({label, link
           <Link
             to={link.to}
             key={link.to}
-            className="min-h-[32px] text-paragraph text-common-gray hover:text-common-white flex gap-4 ease-in-out duration-200"
+            className="flex min-h-[32px] gap-4 text-paragraph text-common-gray duration-200 ease-in-out hover:text-common-white"
           >
-            <div className="w-8 h-8">{link.icon}</div>
+            <div className="h-8 w-8">{link.icon}</div>
             <div className="flex items-center">{link.label}</div>
           </Link>
         ))}

@@ -3,7 +3,8 @@ export const LABELS = {
   NAV_PRODUCTS: 'Товары',
   NAV_ORDERS: 'Заказы',
   NAV_USERS: 'Пользователи',
-  NAV_PERMISSIONS: 'Доступы'
+  NAV_PERMISSIONS: 'Доступы',
+  NAV_CI: 'Релизы'
 };
 
 export const LINKS = [
@@ -22,5 +23,9 @@ export const LINKS = [
   {
     to: '/admin/permissions',
     label: LABELS.NAV_PERMISSIONS
+  },
+  {
+    to: '/admin/ci',
+    label: LABELS.NAV_CI
   }
 ];

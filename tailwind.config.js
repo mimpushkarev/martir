@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['**/*.{ts,tsx,html}'],
+  content: [
+    './index.html',
+    '**/*.{ts,tsx,html}'
+  ],
   theme: {
     fontSize: {
       header: [
@@ -24,7 +27,7 @@ export default {
           fontWeight: '400'
         }
       ],
-      paragraph2: [
+      "paragraph-2": [
         '20px',
         {
           lineHeight: '26px',
@@ -45,7 +48,7 @@ export default {
           fontWeight: '700'
         }
       ],
-      bold2: [
+      "bold-2": [
         '20px',
         {
           lineHeight: '26px',
