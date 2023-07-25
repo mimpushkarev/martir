@@ -13,6 +13,13 @@ export default {
           fontWeight: '700'
         }
       ],
+      "page-title": [
+        '36px',
+        {
+          lineHeight: '56px',
+          fontWeight: '500',
+        }
+      ],
       subtitle: [
         '24px',
         {

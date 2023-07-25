@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 import {UserAvatar} from '@entities/user-avatar';
 import {CartItemsAction} from '@features/cart-items-action';
 import {LikedItemsAction} from '@features/liked-items-action';
-import {FullWidthContainer} from '@shared/container';
+import {Container} from '@shared/container';
 import {Logo} from '@shared/logo';
 
 type HeaderPropsType = {
@@ -13,7 +13,7 @@ type HeaderPropsType = {
 
 const Header = memo<HeaderPropsType>(function Header({isAdmin}) {
   return (
-    <FullWidthContainer px={6} py={3} className="flex min-h-[68px] items-center gap-4">
+    <Container px={6} py={3} className="flex min-h-[68px] items-center gap-4">
       {!isAdmin && (
         <div className="mr-6 inline-block">
           <Link to="/">
@@ -22,6 +22,8 @@ const Header = memo<HeaderPropsType>(function Header({isAdmin}) {
         </div>
       )}
       <Link to="/contacts">Контакты</Link>
+      <Link to="/about">О Нас</Link>
+      <Link to="/faq">FAQ</Link>
       <div className="ml-auto flex items-center gap-8">
         <LikedItemsAction />
         <CartItemsAction />
@@ -29,7 +31,7 @@ const Header = memo<HeaderPropsType>(function Header({isAdmin}) {
           <UserAvatar />
         </Link>
       </div>
-    </FullWidthContainer>
+    </Container>
   );
 });
 
