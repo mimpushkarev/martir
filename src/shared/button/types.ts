@@ -1,4 +1,4 @@
-import {MergeElementProps} from '@types';
+import {MergeElementProps} from '@shared/types';
 
 export type ButtonPropsType = MergeElementProps<
   'button',

@@ -8,11 +8,11 @@ export const GROUPS_OF_LINKS = [
         url: '/about'
       },
       {
-        label: 'Правовая информация',
+        label: 'Политика конфиденциальности',
         url: '/policy-information'
       },
       {
-        label: 'Политика конфиденциальности',
+        label: 'Правовая информация',
         url: '/legal-information'
       }
     ]

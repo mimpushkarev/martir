@@ -18,23 +18,38 @@ const router = createBrowserRouter([
       },
       {
         path: 'about',
-        element: null
+        async lazy() {
+          const About = lazy(() => import('./about'));
+          return {Component: About};
+        }
       },
       {
         path: 'policy-information',
-        element: null
+        async lazy() {
+          const PolicyInformation = lazy(() => import('./policy-information'));
+          return {Component: PolicyInformation};
+        }
       },
       {
         path: 'legal-information',
-        element: null
+        async lazy() {
+          const LegalInformation = lazy(() => import('./legal-information'));
+          return {Component: LegalInformation};
+        }
       },
       {
         path: 'faq',
-        element: null
+        async lazy() {
+          const FAQ = lazy(() => import('./faq'));
+          return {Component: FAQ};
+        }
       },
       {
         path: 'contacts',
-        element: null
+        async lazy() {
+          const Contacts = lazy(() => import('./contacts'));
+          return {Component: Contacts};
+        }
       },
       {
         path: 'cart',
