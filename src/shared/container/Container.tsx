@@ -28,7 +28,6 @@ const Container = memo<ContainerProps>(function Container({children, px = 0, py 
         'py-1': py === 1,
         'max-w-[680px]': width === 'small',
         'max-w-[980px]': width === 'large',
-        'w-full': width === 'full-width',
         [className as string]: !!className
       })}
     >
