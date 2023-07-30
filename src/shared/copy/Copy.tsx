@@ -1,7 +1,7 @@
+import {DocumentDuplicateIcon} from '@heroicons/react/solid';
 import {PropsWithChildren, memo, useCallback, useEffect, useState} from 'react';
 
-import {DocumentDuplicateIcon} from '@heroicons/react/solid';
-import {Tooltip} from '@shared/tooltip';
+import {Tooltip} from '_shared/tooltip';
 
 const DEFAULT_LABEL = 'Скопировать';
 

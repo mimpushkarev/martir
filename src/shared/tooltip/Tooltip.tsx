@@ -1,6 +1,6 @@
 import {PropsWithChildren, memo} from 'react';
 
-import {cn} from '@utils/cn';
+import {cn} from '_utils/cn';
 
 type TooltipProps = PropsWithChildren<{
   label: string;

@@ -1,10 +1,10 @@
+import {ShoppingCartIcon as ShoppingCartIconOutline} from '@heroicons/react/outline';
+import {ShoppingCartIcon as ShoppingCartIconSolid} from '@heroicons/react/solid';
 import {xor} from 'lodash';
 import {memo, useCallback, useMemo} from 'react';
 
-import {ShoppingCartIcon as ShoppingCartIconOutline} from '@heroicons/react/outline';
-import {ShoppingCartIcon as ShoppingCartIconSolid} from '@heroicons/react/solid';
-import {cn} from '@utils/cn';
-import {useCartList} from '@utils/hooks';
+import {cn} from '_utils/cn';
+import {useCartList} from '_utils/hooks';
 
 type ToCartButtonPropsType = {
   entity: string;

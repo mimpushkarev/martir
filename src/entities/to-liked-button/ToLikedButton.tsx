@@ -1,10 +1,10 @@
+import {HeartIcon as HeartIconOutline} from '@heroicons/react/outline';
+import {HeartIcon as HeartIconSolid} from '@heroicons/react/solid';
 import {xor} from 'lodash';
 import {memo, useCallback, useMemo} from 'react';
 
-import {HeartIcon as HeartIconOutline} from '@heroicons/react/outline';
-import {HeartIcon as HeartIconSolid} from '@heroicons/react/solid';
-import {cn} from '@utils/cn';
-import {useLikedList} from '@utils/hooks/useLikedList';
+import {cn} from '_utils/cn';
+import {useLikedList} from '_utils/hooks/useLikedList';
 
 type ToLikedButtonPropsType = {
   entity: string;

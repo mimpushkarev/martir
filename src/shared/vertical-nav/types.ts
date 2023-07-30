@@ -4,8 +4,12 @@ type Link = {
   icon?: string;
 };
 
-export type VerticalNavPropsType = {
-  label: string;
+type Group = {
+  name: string;
   links: Array<Link>;
+};
+
+export type VerticalNavPropsType = {
+  groups: Array<Group>;
   className?: string;
 };

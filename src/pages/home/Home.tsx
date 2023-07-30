@@ -1,5 +1,5 @@
-import {MainItemCard} from '@features/main-item-card';
-import {Container} from '@shared/container';
+import {MainItemCard} from '_features/main-item-card';
+import {Container} from '_shared/container';
 
 function Home() {
   return (

@@ -1,7 +1,7 @@
 import {memo} from 'react';
 import {Link} from 'react-router-dom';
 
-import {cn} from '@utils/cn';
+import {cn} from '_utils/cn';
 
 type ListOfLinksPropsType = {
   title: string;
@@ -12,7 +12,7 @@ type ListOfLinksPropsType = {
 const ListOfLinks = memo<ListOfLinksPropsType>(function ListOfLinks({title, links, className}) {
   return (
     <div
-      className={cn('', {
+      className={cn('whitespace-nowrap', {
         'w-[260px]': !className,
         [className as string]: !!className
       })}

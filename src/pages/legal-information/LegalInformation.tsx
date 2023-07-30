@@ -1,5 +1,5 @@
-import {Accordeon} from '@shared/accordeon';
-import {Container} from '@shared/container';
+import {Accordeon} from '_shared/accordeon';
+import {Container} from '_shared/container';
 
 function LegalInformation() {
   return (

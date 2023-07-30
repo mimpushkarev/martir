@@ -1,8 +1,8 @@
-import {memo} from 'react';
-
 import {Disclosure} from '@headlessui/react';
 import {ChevronUpIcon} from '@heroicons/react/solid';
-import {cn} from '@utils/cn';
+import {memo} from 'react';
+
+import {cn} from '_utils/cn';
 
 import {AccordeonPropsType} from './types';
 

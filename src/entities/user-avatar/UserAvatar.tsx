@@ -1,7 +1,7 @@
 import {memo} from 'react';
 
-import {Avatar} from '@shared/avatar';
-import {USER} from '@utils/mock';
+import {Avatar} from '_shared/avatar';
+import {USER} from '_utils/mock';
 
 const makeFullName = (firstName: string, secondName: string) => `${secondName} ${firstName}`;
 
