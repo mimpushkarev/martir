@@ -1,6 +1,5 @@
-import {memo} from 'react';
-
 import {HeartIcon} from '@heroicons/react/solid';
+import {memo} from 'react';
 
 const LikedItemsAction = memo(function LikedItemsAction() {
   return (

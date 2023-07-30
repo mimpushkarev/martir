@@ -1,6 +1,6 @@
 import {memo} from 'react';
 
-import {cn} from '@utils/cn';
+import {cn} from '_utils/cn';
 
 type AvatarPropsType = {
   src: string;

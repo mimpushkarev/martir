@@ -1,8 +1,8 @@
 import {memo} from 'react';
 
-import {ToCartButton} from '@entities/to-cart-button';
-import {ToLikedButton} from '@entities/to-liked-button';
-import {currency} from '@utils/intl/numbers';
+import {ToCartButton} from '_entities/to-cart-button';
+import {ToLikedButton} from '_entities/to-liked-button';
+import {currency} from '_utils/intl/numbers';
 
 type MainItemCardPropsType = {
   productId: string;

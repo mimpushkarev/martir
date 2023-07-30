@@ -1,7 +1,7 @@
+import {ShoppingCartIcon} from '@heroicons/react/solid';
 import {memo} from 'react';
 
-import {ShoppingCartIcon} from '@heroicons/react/solid';
-import {useCartList} from '@utils/hooks';
+import {useCartList} from '_utils/hooks';
 
 const CartItemsAction = memo(function CartItemsAction() {
   const [cart] = useCartList();

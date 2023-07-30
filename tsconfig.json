@@ -12,7 +12,7 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
     "paths": {
-      "@*": ["src/*"]
+      "_*": ["src/*"]
     },
     "noUnusedLocals": true,
     "noUnusedParameters": true,

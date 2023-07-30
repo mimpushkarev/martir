@@ -1,8 +1,8 @@
-import {Fragment, memo, useState} from 'react';
-
 import {Combobox, Transition} from '@headlessui/react';
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid';
-import {cn} from '@utils/cn';
+import {Fragment, memo, useState} from 'react';
+
+import {cn} from '_utils/cn';
 
 import {OptionType, SelectType} from './types';
 

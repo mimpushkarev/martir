@@ -7,25 +7,39 @@ export const LABELS = {
   NAV_CI: 'Релизы'
 };
 
-export const LINKS = [
+export const GROUPS = [
   {
-    to: '/admin/products',
-    label: LABELS.NAV_PRODUCTS
+    name: 'Бизнесс',
+    links: [
+      {
+        to: '/admin/products',
+        label: LABELS.NAV_PRODUCTS
+      },
+      {
+        to: '/admin/orders',
+        label: LABELS.NAV_ORDERS
+      }
+    ]
   },
   {
-    to: '/admin/orders',
-    label: LABELS.NAV_ORDERS
+    name: 'Планирование',
+    links: []
   },
   {
-    to: '/admin/users',
-    label: LABELS.NAV_USERS
-  },
-  {
-    to: '/admin/permissions',
-    label: LABELS.NAV_PERMISSIONS
-  },
-  {
-    to: '/admin/ci',
-    label: LABELS.NAV_CI
+    name: 'Инфраструктура',
+    links: [
+      {
+        to: '/admin/users',
+        label: LABELS.NAV_USERS
+      },
+      {
+        to: '/admin/permissions',
+        label: LABELS.NAV_PERMISSIONS
+      },
+      {
+        to: '/admin/ci',
+        label: LABELS.NAV_CI
+      }
+    ]
   }
 ];

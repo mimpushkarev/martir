@@ -1,10 +1,7 @@
+import {CheckIcon} from '@heroicons/react/solid';
 import {memo} from 'react';
 
-import {CheckIcon} from '@heroicons/react/20/solid';
-
-import {CheckBoxType} from './types';
-
-const CheckBox: CheckBoxType = () => {
+const CheckBox = memo(function CheckBox() {
   return (
     <div className="flex items-center justify-center">
       <label htmlFor="checkbox-component" className="relative cursor-pointer">
@@ -19,6 +16,6 @@ const CheckBox: CheckBoxType = () => {
       </label>
     </div>
   );
-};
+});
 
-export default memo(CheckBox);
+export {CheckBox};

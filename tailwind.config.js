@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './index.html',
-    '**/*.{ts,tsx,html}'
-  ],
+  content: ['./index.html', '**/*.{ts,tsx,html}'],
   theme: {
     fontSize: {
       header: [
@@ -13,11 +10,11 @@ export default {
           fontWeight: '700'
         }
       ],
-      "page-title": [
+      'page-title': [
         '36px',
         {
           lineHeight: '56px',
-          fontWeight: '500',
+          fontWeight: '500'
         }
       ],
       subtitle: [
@@ -34,7 +31,7 @@ export default {
           fontWeight: '400'
         }
       ],
-      "paragraph-2": [
+      'paragraph-2': [
         '20px',
         {
           lineHeight: '26px',
@@ -55,7 +52,7 @@ export default {
           fontWeight: '700'
         }
       ],
-      "bold-2": [
+      'bold-2': [
         '20px',
         {
           lineHeight: '26px',

@@ -1,6 +1,6 @@
 import {memo, useState} from 'react';
 
-import {cn} from '@utils/cn';
+import {cn} from '_utils/cn';
 
 import {TextFieldType} from './types';
 

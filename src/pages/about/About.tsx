@@ -1,4 +1,4 @@
-import {Container} from '@shared/container';
+import {Container} from '_shared/container';
 
 function About() {
   return (
