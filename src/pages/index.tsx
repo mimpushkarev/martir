@@ -104,6 +104,13 @@ const router = createBrowserRouter([
         }
       },
       {
+        path: 'ci',
+        async lazy() {
+          const Releases = lazy(() => import('./releases'));
+          return {Component: Releases};
+        }
+      },
+      {
         path: '*',
         async lazy() {
           const NotFound = lazy(() => import('./not-found'));
