@@ -1,8 +1,18 @@
 import {memo} from 'react';
 
+import {cn} from '@utils/cn';
+
 import {TableItemPropsType} from './types';
 
-const Body = memo<TableItemPropsType>(function Body({children}) {
-  return <tbody>{children}</tbody>;
+const Body = memo<TableItemPropsType>(function Body({children, className}) {
+  return (
+    <tbody
+      className={cn(' ', {
+        [className as string]: !!className
+      })}
+    >
+      {children}
+    </tbody>
+  );
 });
 export default Body;

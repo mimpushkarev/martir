@@ -4,15 +4,15 @@ import {cn} from '@utils/cn';
 
 import {TableItemPropsType} from './types';
 
-const Cell = memo<TableItemPropsType>(function Cell({children, className}) {
+const HeaderCell = memo<TableItemPropsType>(function Head({children, className}) {
   return (
-    <td
+    <th
       className={cn('px-6 py-5 text-left', {
         [className as string]: !!className
       })}
     >
       {children}
-    </td>
+    </th>
   );
 });
-export default Cell;
+export default HeaderCell;

@@ -28,21 +28,50 @@ type TimeRange = {
   to?: string; // Формат "YYYY-MM-DDTHH:mm:ssZ",
 };
 
-export const getList = async (request: Request): Promise<Response> => {
-  const result = new Promise(resolve => {
-    resolve([1, 2, 3]);
+export const getList = async (request: ListReleaseRequestBody): Promise<ListReleaseResponse> => {
+  const result = new Promise<ListReleaseResponse>(resolve => {
+    resolve([
+      {
+        storage_url: 'https://default.url',
+        id: 1,
+        tag_name: 'какой-то тег',
+        name: 'v1.1',
+        body: 'я смотрел',
+        created_at: '2020-03-0506:16',
+        deployed_at: '2020-04-0506:16',
+        published_at: '2020-04-0506:16'
+      },
+      {
+        storage_url: 'https://default.url',
+        id: 2,
+        tag_name: 'какой-то тег2',
+        name: 'v1.2',
+        body: 'я кушал',
+        created_at: '2020-03-0506:16',
+        deployed_at: '2020-04-0506:16',
+        published_at: '2020-04-0506:16'
+      },
+      {
+        storage_url: 'https://default.url',
+        id: 3,
+        tag_name: 'какой-то тег3',
+        name: 'v1.3',
+        body: 'я смеялся',
+        created_at: '2020-03-0506:16',
+        deployed_at: '2020-04-0506:16',
+        published_at: '2020-04-0506:16'
+      },
+      {
+        storage_url: 'https://default.url',
+        id: 4,
+        tag_name: 'какой-то тег4',
+        name: 'v1.4',
+        body: 'я плакал',
+        created_at: '2020-03-0506:16',
+        deployed_at: '2020-04-0506:16',
+        published_at: '2020-04-0506:16'
+      }
+    ]);
   });
-  //   const result = [
-  //     {
-  //       storage_url: 'https://default.url',
-  //       id: 1,
-  //       tag_name: 'какой-то тег',
-  //       name: 'v1.1',
-  //       body: 'Z gk',
-  //       created_at: '2020-03-0506:16',
-  //       deployed_at: '2020-04-0506:16',
-  //       published_at: '2020-04-0506:16'
-  //     }
-  //   ];
   return result;
 };
