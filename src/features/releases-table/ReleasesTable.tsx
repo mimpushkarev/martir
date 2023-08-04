@@ -1,9 +1,10 @@
+import moment from 'moment';
 import {memo} from 'react';
 import useSWR from 'swr';
 
-import {getList} from '@shared/api/releases';
-import {Body, Cell, Head, HeaderCell, Row} from '@shared/table';
-import Table from '@shared/table/Table';
+import {getList} from '_shared/api/releases-list';
+import {Body, Cell, Head, HeaderCell, Row} from '_shared/table';
+import Table from '_shared/table/Table';
 
 const ReleasesTable = memo(function ReleasesTable() {
   const {data} = useSWR('GET_RELEASES_lIST', getList);
@@ -21,8 +22,16 @@ const ReleasesTable = memo(function ReleasesTable() {
         {(data || []).map(release => (
           <Row key={release.id}>
             <Cell>{release.name}</Cell>
-            <Cell className="text-primary-light">{release.storage_url}</Cell>
-            <Cell>{release.published_at}</Cell>
+            <Cell>
+              <a
+                href={release.storage_url}
+                target="_blank"
+                className="flex max-w-xl cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-link text-primary-light visited:text-primary-dark hover:text-primary-normal active:text-primary-light"
+              >
+                {release.storage_url}
+              </a>
+            </Cell>
+            <Cell>{moment(release.published_at).format('YYYY.MM.DD HH:mm')}</Cell>
           </Row>
         ))}
       </Body>

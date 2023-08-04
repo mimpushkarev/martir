@@ -32,44 +32,44 @@ export const getList = async (request: ListReleaseRequestBody): Promise<ListRele
   const result = new Promise<ListReleaseResponse>(resolve => {
     resolve([
       {
-        storage_url: 'https://default.url',
+        storage_url: 'https://example.com/swygduedhbe/icudgfe_hbuefuehdbefheecvgbhnjmkdf_gvfrbfiejfok3roekfjnbvbjn',
         id: 1,
         tag_name: 'какой-то тег',
         name: 'v1.1',
         body: 'я смотрел',
-        created_at: '2020-03-0506:16',
-        deployed_at: '2020-04-0506:16',
-        published_at: '2020-04-0506:16'
+        created_at: '2020-03-05T06:16',
+        deployed_at: '2020-04-05T06:16',
+        published_at: '2020-04-05T06:16'
       },
       {
-        storage_url: 'https://default.url',
+        storage_url: 'https://example.com/',
         id: 2,
         tag_name: 'какой-то тег2',
         name: 'v1.2',
         body: 'я кушал',
-        created_at: '2020-03-0506:16',
-        deployed_at: '2020-04-0506:16',
-        published_at: '2020-04-0506:16'
+        created_at: '2020-03-05T06:16',
+        deployed_at: '2020-04-05T06:16',
+        published_at: '2020-04-05T06:16'
       },
       {
-        storage_url: 'https://default.url',
+        storage_url: 'https://example.com/',
         id: 3,
         tag_name: 'какой-то тег3',
         name: 'v1.3',
         body: 'я смеялся',
-        created_at: '2020-03-0506:16',
-        deployed_at: '2020-04-0506:16',
-        published_at: '2020-04-0506:16'
+        created_at: '2020-03-05T06:16',
+        deployed_at: '2020-04-05T06:16',
+        published_at: '2020-04-05T06:16'
       },
       {
-        storage_url: 'https://default.url',
+        storage_url: 'https://example.com/',
         id: 4,
         tag_name: 'какой-то тег4',
         name: 'v1.4',
         body: 'я плакал',
-        created_at: '2020-03-0506:16',
-        deployed_at: '2020-04-0506:16',
-        published_at: '2020-04-0506:16'
+        created_at: '2020-03-05T06:16',
+        deployed_at: '2020-04-05T06:16',
+        published_at: '2020-04-05T06:16'
       }
     ]);
   });
