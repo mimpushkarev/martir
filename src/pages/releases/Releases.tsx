@@ -1,6 +1,6 @@
 import {memo} from 'react';
 
-import ReleaseCards from '_features/release-cards/ReleaseCards';
+import {ReleaseCards} from '_features/release-cards/ReleaseCards';
 import {ReleasesTable} from '_features/releases-table';
 import {Container} from '_shared/container';
 

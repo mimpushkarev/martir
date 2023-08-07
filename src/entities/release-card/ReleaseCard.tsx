@@ -17,7 +17,7 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
 }) {
   return (
     <Card className=" min-w-[480px]">
-      <div className="flex flex-col gap-5">
+      <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <div className="flex flex-row">
             <img src={image} alt={heading} />
@@ -52,12 +52,12 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
             </Button>
           )}
           {onClickDeploy && (
-            <Button type="secondary-blue" onClick={onClickDeploy}>
+            <Button type="outlined-primary" onClick={onClickDeploy}>
               Раскатить
             </Button>
           )}
           {onClickUnDeploy && (
-            <Button type="secondary-danger" onClick={onClickUnDeploy}>
+            <Button type="outlined-danger" onClick={onClickUnDeploy}>
               Откатить
             </Button>
           )}

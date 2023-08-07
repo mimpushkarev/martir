@@ -8,11 +8,11 @@ export type ButtonPropsType = MergeElementProps<
       | 'success'
       | 'danger'
       | 'warning'
-      | 'secondary'
-      | 'secondary-blue'
-      | 'secondary-danger'
-      | 'secondary-warning'
-      | 'secondary-success';
+      | 'outlined'
+      | 'outlined-primary'
+      | 'outlined-danger'
+      | 'outlined-warning'
+      | 'outlined-success';
     state?: 'normal' | 'hover' | 'disabled';
   }
 >;

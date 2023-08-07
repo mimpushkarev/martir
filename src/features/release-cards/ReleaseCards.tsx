@@ -66,4 +66,4 @@ const ReleaseCards = memo(function ReleaseCards({}) {
     </div>
   );
 });
-export default ReleaseCards;
+export {ReleaseCards};

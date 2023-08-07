@@ -23,13 +23,11 @@ const ReleasesTable = memo(function ReleasesTable() {
           <Row key={release.id}>
             <Cell>{release.name}</Cell>
             <Cell>
-              <a
-                href={release.storage_url}
-                target="_blank"
-                className="flex max-w-xl cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-link text-primary-light visited:text-primary-dark hover:text-primary-normal active:text-primary-light"
-              >
-                {release.storage_url}
-              </a>
+              <div className="max-w-xl cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-link text-primary-light visited:text-primary-dark hover:text-primary-normal active:text-primary-light">
+                <a href={release.storage_url} target="_blank">
+                  {release.storage_url}
+                </a>
+              </div>
             </Cell>
             <Cell>{moment(release.published_at).format('YYYY.MM.DD HH:mm')}</Cell>
           </Row>
