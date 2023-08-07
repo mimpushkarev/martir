@@ -1,13 +1,19 @@
 import {memo} from 'react';
 
-import {Container} from '@shared/container';
-import { ReleasesTable } from '@features/releases-table';
+import {ReleaseCards} from '_features/release-cards/ReleaseCards';
+import {ReleasesTable} from '_features/releases-table';
+import {Container} from '_shared/container';
 
 import {ReleasesPagePropsType} from './types';
 
 const ReleasesPage = memo<ReleasesPagePropsType>(function ReleasesPage() {
-  return <Container className="">
-    <ReleasesTable/>
-  </Container>;
+  return (
+    <div>
+      <Container className="-mt-4 flex flex-col gap-12">
+        <ReleaseCards />
+        <ReleasesTable />
+      </Container>
+    </div>
+  );
 });
 export default ReleasesPage;
