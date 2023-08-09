@@ -30,6 +30,7 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
                 href="https://example.com"
                 className="max-w-[220px] cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-link text-primary-light visited:text-primary-dark hover:text-primary-normal active:text-primary-light"
                 target="_blank"
+                rel="noreferrer"
               >
                 {paragraph.link}
               </a>

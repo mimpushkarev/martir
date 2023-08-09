@@ -24,7 +24,7 @@ const ReleasesTable = memo(function ReleasesTable() {
             <Cell>{release.name}</Cell>
             <Cell>
               <div className="max-w-xl cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-link text-primary-light visited:text-primary-dark hover:text-primary-normal active:text-primary-light">
-                <a href={release.storage_url} target="_blank">
+                <a href={release.storage_url} target="_blank" rel="noreferrer">
                   {release.storage_url}
                 </a>
               </div>
