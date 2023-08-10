@@ -1,11 +1,9 @@
-import {memo} from 'react';
+import {FC, memo} from 'react';
 
 import {Container} from '_shared/container';
 import Slider from '_shared/slider/Slider';
 
-import {ProductRootPropsType} from './types';
-
-const ProductRoot = memo<ProductRootPropsType>(function ReleasesPage() {
+const ProductRoot = memo<FC>(function ReleasesPage() {
   return (
     <Container px={6} py={6}>
       <Slider
@@ -22,6 +20,7 @@ const ProductRoot = memo<ProductRootPropsType>(function ReleasesPage() {
           'https://images.unsplash.com/photo-1682685797229-b2930538da47?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80'
         ]}
         duration={3000}
+        className=" h-[800px]"
       />
     </Container>
   );

@@ -1,9 +1,11 @@
 import {useEffect, useMemo, useRef, useState} from 'react';
 
+import {cn} from '_utils/cn';
+
 import image from './arrow.svg';
 import {SliderType} from './types';
 
-const Slider: SliderType = ({images, duration}) => {
+const Slider: SliderType = ({images, duration, className}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -32,7 +34,9 @@ const Slider: SliderType = ({images, duration}) => {
   return (
     <div className="flex w-full flex-col gap-4 overflow-hidden">
       <div
-        className="flex h-[500px] gap-0 transition-transform duration-500 ease-in-out"
+        className={cn('flex h-[500px] gap-0 transition-transform duration-500 ease-in-out', {
+          [className as string]: !!className
+        })}
         ref={sliderRef}
         style={{transform: `translateX(-${left || 0}px)`}}
       >

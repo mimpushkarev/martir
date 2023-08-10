@@ -62,7 +62,7 @@ const router = createBrowserRouter([
       {
         path: 'product/:product_id',
         async lazy() {
-          const Product = lazy(() => import('./product-root'));
+          const Product = lazy(() => import('./product'));
           return {Component: Product};
         }
       },
