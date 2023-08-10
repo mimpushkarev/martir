@@ -61,7 +61,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'product/:product_id',
-        element: null
+        async lazy() {
+          const Product = lazy(() => import('./product'));
+          return {Component: Product};
+        }
       },
       {
         path: '*',

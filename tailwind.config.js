@@ -72,7 +72,7 @@ export default {
           lineHeight: '24px',
           fontWeight: '700'
         }
-      ],
+      ]
     },
     extend: {
       colors: {
@@ -84,7 +84,7 @@ export default {
         'common-white': '#FFFFFF',
         'common-gray': '#838383',
         'common-dark-gray': '#424242',
-        'common-mate-glass': "F2F3F4",
+        'common-mate-glass': 'F2F3F4',
         // Primary - цвет обозначающий действие, если элемент является интерактивным, то нужно добавить обозначение данным цветом
         'primary-light': '#68ADFD',
         'primary-normal': '#3691FC',
