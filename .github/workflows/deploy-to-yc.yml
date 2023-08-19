@@ -4,7 +4,7 @@ on:
   release
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,9 +18,9 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build
-  deploy:
-    uses: yc-actions/yc-obj-storage-upload@v1.0.0
-    with:
-      yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-      bucket: ${{ secrets.BUCKET }}
-      root: ./dist
+    - name: YC Object Storage Upload
+      uses: yc-actions/yc-obj-storage-upload@v1.0.0        
+      with:
+        yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        bucket: ${{ secrets.BUCKET }}
+        root: ./dist
