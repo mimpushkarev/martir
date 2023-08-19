@@ -1,7 +1,8 @@
 name: Deploy to YC
 
 on:
-  release
+  release:
+    types: released
 
 jobs:
   deploy:
