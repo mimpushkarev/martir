@@ -19,7 +19,7 @@ jobs:
     - run: npm ci
     - run: npm run build
   deploy:
-    uses: yc-actions/yc-obj-storage-upload@v1
+    uses: yc-actions/yc-obj-storage-upload@v1.0.0
     with:
       yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
       bucket: ${{ secrets.BUCKET }}
