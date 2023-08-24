@@ -114,6 +114,13 @@ const router = createBrowserRouter([
         }
       },
       {
+        path: 'ticket-board',
+        async lazy() {
+          const TicketBoard = lazy(() => import('./ticket-board'));
+          return {Component: TicketBoard};
+        }
+      },
+      {
         path: '*',
         async lazy() {
           const NotFound = lazy(() => import('./not-found'));

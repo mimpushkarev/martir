@@ -4,7 +4,9 @@ export const LABELS = {
   NAV_ORDERS: 'Заказы',
   NAV_USERS: 'Пользователи',
   NAV_PERMISSIONS: 'Доступы',
-  NAV_CI: 'Релизы'
+  NAV_CI: 'Релизы',
+  NAV_TICKETBOARD: 'Доска задач',
+  NAV_CREATETICKET: 'Создать задачу'
 };
 
 export const GROUPS = [
@@ -23,7 +25,12 @@ export const GROUPS = [
   },
   {
     name: 'Планирование',
-    links: []
+    links: [
+      {
+        to: '/admin/ticket-board',
+        label: LABELS.NAV_TICKETBOARD
+      }
+    ]
   },
   {
     name: 'Инфраструктура',

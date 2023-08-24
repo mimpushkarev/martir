@@ -18,7 +18,7 @@ const PriceTag = memo<PriceTagType>(function PriceTag({product, className}) {
         <div className="text-paragraph-2">{product.name}</div>
         <div className="text-subtitle">
           {Intl.NumberFormat('rub', {minimumFractionDigits: 0, style: 'currency', currency: 'RUB'}).format(
-            Math.round(Number(product.price))
+            Number(product.price)
           )}
         </div>
       </div>
