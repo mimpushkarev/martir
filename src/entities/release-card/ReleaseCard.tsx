@@ -4,7 +4,7 @@ import {memo} from 'react';
 import {Button} from '_shared/button';
 import Card from '_shared/card/Card';
 
-import image from './conversion_path_FILL0_wght400_GRAD0_opsz48 (1).svg';
+import image from './imageVersion.svg';
 import {ReleasesCardPropsType} from './types';
 
 const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
@@ -16,7 +16,7 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
   onClickUnDeploy
 }) {
   return (
-    <Card className=" min-w-[480px]">
+    <Card className="min-w-[480px]s">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
           <div className="flex flex-row">
