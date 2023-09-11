@@ -12,7 +12,7 @@ export type Ticket = {
   context: string;
   author: string;
   performer: string;
-  watcher: string;
+  watcher: string; // поменять на массив строк
   sp_rated: number;
   sp: number;
 };

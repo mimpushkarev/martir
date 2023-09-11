@@ -2,6 +2,7 @@ import {Combobox, Transition} from '@headlessui/react';
 import {CheckIcon, ChevronDownIcon} from '@heroicons/react/solid';
 import {Fragment, memo, useState} from 'react';
 
+import {Avatar} from '_shared/avatar';
 import {cn} from '_utils/cn';
 
 import {OptionType, SelectType} from './types';
@@ -48,7 +49,7 @@ const Select: SelectType = ({options}) => {
             leaveTo="opacity-0"
             afterLeave={() => setQuery('')}
           >
-            <Combobox.Options className="text-base absolute mt-1 max-h-60 w-full snap-none overflow-auto rounded-md border border-common-light-gray bg-common-bg py-1 text-white">
+            <Combobox.Options className="text-base absolute z-50 mt-1 max-h-60 w-full snap-none overflow-auto rounded-md border border-common-light-gray bg-common-bg py-1 text-white">
               {filteredOptions.length === 0 && query !== '' ? (
                 <div className="relative cursor-default select-none px-4 py-2 text-white">Nothing found.</div>
               ) : (
@@ -65,7 +66,12 @@ const Select: SelectType = ({options}) => {
                     {({selected, active}) => (
                       <>
                         <span className={`block truncate text-paragraph ${selected ? 'font-medium' : 'font-normal'}`}>
-                          {person.optionTitle}
+                          <div className="flex gap-2">
+                            <div>
+                              {person.photo && <Avatar src={person.photo} alt={person.optionTitle} size="xsm" />}
+                            </div>
+                            <div>{person.optionTitle}</div>
+                          </div>
                         </span>
                         {selected ? (
                           <span
