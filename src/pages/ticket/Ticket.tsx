@@ -90,7 +90,9 @@ const Ticket = memo<TicketPageType>(function Ticket() {
                 />
               </div>
               <div className="flex flex-col gap-4">
-                <div className={PAGE_HEADINGS.style}>{PAGE_HEADINGS.comments + ' ' + COMMENTS.length}</div>
+                <div className={PAGE_HEADINGS.style}>
+                  {PAGE_HEADINGS.comments} {COMMENTS.length}
+                </div>
                 {COMMENTS.map((comment, index) => (
                   <Comment key={index} commentator={comment.commentator} message={comment.message} />
                 ))}

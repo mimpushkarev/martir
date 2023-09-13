@@ -1,7 +1,6 @@
 import {memo} from 'react';
 
 import TextField from '_shared/text-field/TextField';
-import {capitalizeStr} from '_utils/capitalizeStr';
 
 import {HoverIcons} from '.';
 import CopyIcon from './ticket-components-svg/Copy.svg';
@@ -23,7 +22,7 @@ const TicketContent = memo<TicketContentType>(function TicketContent({type, name
         <div className="flex flex-col gap-2">
           <div>{PAGE_HEADINGS.type}</div>
           <div className="flex items-center gap-3">
-            <TextField value={capitalizeStr(type)} />
+            <TextField value={type} />
             <HoverIcons icon={EditIcon} iconName={`edit ${type}`} />
             <HoverIcons icon={CopyIcon} iconName={`copy ${type}`} />
           </div>
@@ -31,7 +30,7 @@ const TicketContent = memo<TicketContentType>(function TicketContent({type, name
         <div className="flex flex-col gap-2">
           <div>{PAGE_HEADINGS.name}</div>
           <div className="flex items-center gap-3">
-            <TextField value={capitalizeStr(name)} />
+            <TextField value={name} />
             <HoverIcons icon={EditIcon} iconName={`edit ${name}`} />
             <HoverIcons icon={CopyIcon} iconName={`copy ${name}`} />
           </div>

@@ -13,7 +13,6 @@ import preview from './svg-for-card/Preview.svg';
 import rotate from './svg-for-card/RotateRight.svg';
 import work from './svg-for-card/Work.svg';
 import {TiketCardPropsType} from './types';
-import { capitalizeStr } from '_utils/capitalizeStr';
 
 const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
   const clockImage = moment(ticket.status_change, 'YYYY-MM-DDTHH:mm:ssZ').isBefore(moment().subtract(3, 'months'))
@@ -30,7 +29,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
         <div className="flex w-full flex-col gap-2">
           <div className="flex items-center justify-between">
             <div className="flex gap-1">
-              <div className="text-paragraph">{`[${capitalizeStr(ticket.type)}]`}</div>
+              <div className="text-paragraph capitalize">{ticket.type}</div>
               <div className="text-bold">{`#${ticket.id}`}</div>
             </div>
             <div className="flex gap-1">

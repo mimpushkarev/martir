@@ -37,7 +37,7 @@ const TicketParams = memo<TicketParamsType>(function TicketParams({ticket}) {
   return (
     <div className="grid grid-cols-2 gap-x-9 gap-y-5 border-l pl-9">
       <div className={PARAMS_TEXT.style}>{PARAMS_TEXT.state}</div>
-      <TicketButton status={ticket.status} status_change={ticket.status_change} />
+      <TicketButton status={ticket.status} status_change={ticket.status_change} isStatusChangeTimeShown={true} />
       <div className={PARAMS_TEXT.style}>{PARAMS_TEXT.author}</div>
       <div className="flex gap-2">
         <Avatar
@@ -62,7 +62,6 @@ const TicketParams = memo<TicketParamsType>(function TicketParams({ticket}) {
           <div>{PERFORMERS_AND_DATA[ticket.watcher].name}</div>
         </div>
         <div>
-          --
           <Select options={transformPerformersToOptions} />
         </div>
       </div>

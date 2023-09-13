@@ -9,14 +9,19 @@ import rotate from './svg-for-card/RotateRight.svg';
 import work from './svg-for-card/Work.svg';
 import {TicketButtonPropsType} from './types';
 
-const TicketButton = memo<TicketButtonPropsType>(function TicketButton({status, status_change}) {
+const TicketButton = memo<TicketButtonPropsType>(function TicketButton({
+  status,
+  status_change,
+  isStatusChangeTimeShown
+}) {
+  const changeStatusFromNow = !isStatusChangeTimeShown ? moment(status_change).fromNow() : '';
   return (
     <div>
       {status === 'открыт' && (
         <Button type="warning">
           <div className="flex items-center gap-2">
             <img src={rotate} alt={status} className="aspect-square h-4" />
-            <div className="text-small">{`Открыт ${moment(status_change, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
+            <div className="text-small">Открыт {changeStatusFromNow}</div>
           </div>
         </Button>
       )}
@@ -24,7 +29,7 @@ const TicketButton = memo<TicketButtonPropsType>(function TicketButton({status, 
         <Button type="primary">
           <div className="flex items-center gap-2">
             <img src={work} alt={status} className="aspect-square h-4" />
-            <div className="text-small">{`В работе ${moment(status_change, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
+            <div className="text-small">В работе {changeStatusFromNow}</div>
           </div>
         </Button>
       )}
@@ -32,7 +37,7 @@ const TicketButton = memo<TicketButtonPropsType>(function TicketButton({status, 
         <Button type="warning">
           <div className="flex items-center gap-2">
             <img src={preview} alt={status} className="aspect-square h-4" />
-            <div className="text-small">{`На проверке ${moment(status_change, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
+            <div className="text-small">На проверке {changeStatusFromNow}</div>
           </div>
         </Button>
       )}
@@ -40,7 +45,7 @@ const TicketButton = memo<TicketButtonPropsType>(function TicketButton({status, 
         <Button type="success">
           <div className="flex items-center gap-2">
             <img src={ok} alt={status} className="aspect-square h-4" />
-            <div className="text-small">{`Закрыт ${moment(status_change, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
+            <div className="text-small">Закрыт {changeStatusFromNow}</div>
           </div>
         </Button>
       )}

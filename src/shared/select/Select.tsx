@@ -53,24 +53,26 @@ const Select: SelectType = ({options}) => {
               {filteredOptions.length === 0 && query !== '' ? (
                 <div className="relative cursor-default select-none px-4 py-2 text-white">Nothing found.</div>
               ) : (
-                filteredOptions.map(person => (
+                filteredOptions.map(option => (
                   <Combobox.Option
-                    key={person.id}
+                    key={option.id}
                     className={({active}) =>
                       `relative cursor-default select-none py-2 pl-10 pr-4 text-white ${
                         active ? ' bg-primary-dark' : ''
                       }`
                     }
-                    value={person}
+                    value={option}
                   >
                     {({selected, active}) => (
                       <>
                         <span className={`block truncate text-paragraph ${selected ? 'font-medium' : 'font-normal'}`}>
                           <div className="flex gap-2">
-                            <div>
-                              {person.photo && <Avatar src={person.photo} alt={person.optionTitle} size="xsm" />}
-                            </div>
-                            <div>{person.optionTitle}</div>
+                            {option.photo && (
+                              <div>
+                                <Avatar src={option.photo} alt={option.optionTitle} size="xsm" />
+                              </div>
+                            )}
+                            <div>{option.optionTitle}</div>
                           </div>
                         </span>
                         {selected ? (

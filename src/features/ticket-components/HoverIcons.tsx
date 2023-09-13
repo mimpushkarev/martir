@@ -16,7 +16,7 @@ const HoverIcons = memo<HoverIconsType>(function HoverIcons({icon, iconName, cla
         onClick
           ? onClick
           : () => {
-              console.log(`${iconName} missed a onclick prop`);
+              console.error('OnClick is empty!!!!');
             }
       }
     />

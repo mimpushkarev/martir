@@ -7,7 +7,9 @@ import {TicketHeaderType} from './types';
 const TicketHeader = memo<TicketHeaderType>(function TicketHeader({type, id}) {
   return (
     <div className="flex items-center gap-6">
-      <div className="text-page-title">{`[${type.toLocaleUpperCase()}] #${id}`}</div>
+      <div className="text-page-title">
+        [{type.toLocaleUpperCase()}] #{id}
+      </div>
       <HoverIcons icon={LinkImg} iconName={type} />
     </div>
   );
