@@ -1,8 +1,10 @@
 import moment from 'moment';
 import {memo} from 'react';
 
+import {Avatar} from '_shared/avatar';
 import {Button} from '_shared/button';
 import {OutlinedCard} from '_shared/card-outlined';
+import {PERFORMERS_AND_DATA} from '_utils/mock';
 
 import redclock from './svg-for-card/Clock2.svg';
 import clock from './svg-for-card/Clock.svg';
@@ -10,18 +12,7 @@ import ok from './svg-for-card/Ok.svg';
 import preview from './svg-for-card/Preview.svg';
 import rotate from './svg-for-card/RotateRight.svg';
 import work from './svg-for-card/Work.svg';
-import person from './svg-for-card/person.svg';
 import {TiketCardPropsType} from './types';
-
-const PERFORMERS_AND_PHOTOS: {[key: string]: string} = {
-  'hornyte@mail.ru':
-    'https://images.unsplash.com/photo-1627157766791-4eeb96934b5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1965&q=80',
-  'vsemkiskampiece@gmail.com':
-    'https://images.unsplash.com/photo-1617813480595-e025be6491f2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1188&q=80',
-  'annaershova02@gmail.com': '',
-  'mimpushkarev@yandex.ru':
-    'https://images.unsplash.com/photo-1620196244888-d31ff5bbf163?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80'
-};
 
 const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
   const clockImage = moment(ticket.status_change, 'YYYY-MM-DDTHH:mm:ssZ').isBefore(moment().subtract(3, 'months'))
@@ -30,15 +21,15 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
   return (
     <OutlinedCard>
       <div className="flex w-full gap-2">
-        <img
-          src={`${PERFORMERS_AND_PHOTOS[ticket.performer]}` || person}
-          alt={ticket.performer}
-          className="aspect-square h-6 rounded-full"
+        <Avatar
+          src={PERFORMERS_AND_DATA[ticket.performer].image}
+          alt={PERFORMERS_AND_DATA[ticket.performer].name}
+          size="xsm"
         />
         <div className="flex w-full flex-col gap-2">
           <div className="flex items-center justify-between">
             <div className="flex gap-1">
-              <div className="text-paragraph">{`[${ticket.type.charAt(0).toUpperCase() + ticket.type.slice(1)}]`}</div>
+              <div className="text-paragraph capitalize">{ticket.type}</div>
               <div className="text-bold">{`#${ticket.id}`}</div>
             </div>
             <div className="flex gap-1">
