@@ -1,38 +1,50 @@
-import {memo, useEffect, useState} from 'react';
+import {memo, useMemo, useState} from 'react';
 import useSWR from 'swr';
 
 import {TicketColumn} from '_entities/ticket-column';
 import {getTicketList} from '_shared/api/ticket-list';
-// import {SearchInput} from '_shared/search-input';
+import {Button} from '_shared/button';
 import TextField from '_shared/text-field/TextField';
+import searchImage from './Search.svg';
 
 const TicketTable = memo(function TicketTable() {
   const {data} = useSWR('GET_RELEASES_lIST', getTicketList);
-  const [query, setQuery] = useState('');
 
-  let openTickets = (data || []).filter(ticket => {
-    ticket.status === 'открыт' && ticket.name.toLowerCase().includes(query.toLowerCase());
-  });
-  let inProgressTickets = (data || []).filter(ticket => ticket.status === 'в работе');
-  let waitForConfirmTickets = (data || []).filter(ticket => ticket.status === 'ожидает подтверждения');
-  let closedTickets = (data || []).filter(ticket => ticket.status === 'решен');
+  const [search, setSearch] = useState('');
 
-  const handleSearch = query => {
-    openTickets = openTickets.filter(ticket => ticket.name.toLowerCase().includes(query));
-    inProgressTickets = inProgressTickets.filter(ticket => ticket.name.toLocaleLowerCase().includes(query));
-    waitForConfirmTickets = waitForConfirmTickets.filter(ticket => ticket.name.toLocaleLowerCase().includes(query));
-    closedTickets = closedTickets.filter(ticket => ticket.name.toLocaleLowerCase().includes(query));
-  };
+  const handleSearch = (value: string) => setSearch(value);
+
+  const dataByStatuses = useMemo(
+    () =>
+      (data || []).reduce((acc, item) => {
+        if (item.name.toLowerCase().includes(search.toLowerCase())) {
+          acc[item.status] = [...(acc[item.status] ?? []), item];
+        }
+        return acc;
+      }, {}),
+    [data, search]
+  );
 
   return (
-    <div>
-      {/* <SearchInput onSearch={query => handleSearch(query)} /> */}
-      <TextField value={'эээ'} onChange={e => setQuery(e.target.value)} />
+    <div className="flex w-full flex-col gap-6">
+      <div className="flex w-full justify-between">
+        <div className="w-1/3">
+          <TextField value={search} onChange={handleSearch} placeholder="Введите название задачи" svg={searchImage}/>
+        </div>
+        <Button
+          type="primary"
+          onClick={() => {
+            confirm('Пока нельзя задачи создавать :(');
+          }}
+        >
+          Создать задачу
+        </Button>
+      </div>
       <div className="grid grid-cols-4 gap-9">
-        <TicketColumn columnHeading={'Открыты'} tickets={openTickets} />
-        <TicketColumn columnHeading={'В работе'} tickets={inProgressTickets} />
-        <TicketColumn columnHeading={'На проверке'} tickets={waitForConfirmTickets} />
-        <TicketColumn columnHeading={'Закрыты'} tickets={closedTickets} />
+        <TicketColumn columnHeading={'Открыты'} tickets={dataByStatuses['открыт']} />
+        <TicketColumn columnHeading={'В работе'} tickets={dataByStatuses['в работе']} />
+        <TicketColumn columnHeading={'На проверке'} tickets={dataByStatuses['ожидает подтверждения']} />
+        <TicketColumn columnHeading={'Закрыты'} tickets={dataByStatuses['решен']} />
       </div>
     </div>
   );

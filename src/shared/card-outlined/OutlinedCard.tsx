@@ -1,6 +1,6 @@
 import {PropsWithChildren, memo} from 'react';
 
-type OutlinedCardPropsType = PropsWithChildren<{}>;
+type OutlinedCardPropsType = PropsWithChildren;
 
 const OutlinedCard = memo<OutlinedCardPropsType>(function OutlinedCard({children}) {
   return (

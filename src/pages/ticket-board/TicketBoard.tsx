@@ -3,7 +3,7 @@ import {FC, memo} from 'react';
 import {TicketTable} from '_features/ticket-table';
 import {Container} from '_shared/container';
 
-type TicketBoardType = FC<{}>;
+type TicketBoardType = FC<Record<string, never>>;
 
 const TicketBoard = memo<TicketBoardType>(function TicketBoard() {
   return (
