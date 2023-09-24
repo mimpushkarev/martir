@@ -12,7 +12,7 @@ jobs:
         node-version: [16.x]
     steps:
     - uses: actions/checkout@v3
-    
+
     - name: Install dependencies
       uses: actions/setup-node@v3
       with:
@@ -24,8 +24,11 @@ jobs:
       run: npm run build
 
     - name: Upload to YC storage
-      uses: yc-actions/yc-obj-storage-upload@v1.0.0        
+      uses: yc-actions/yc-obj-storage-upload@v1
       with:
         yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
         bucket: ${{ secrets.BUCKET }}
-        root: ./
+        root: ./dist
+        include: | 
+            assets
+            index.html
