@@ -1,9 +1,13 @@
+import {useState} from 'react';
+
 import {Accordeon} from '_shared/accordeon';
+import {Button} from '_shared/button';
 import {Container} from '_shared/container';
 import {Copy} from '_shared/copy';
 import {Link} from '_shared/link';
 
 function FAQ() {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <Container px={6} className="py-24" width="large">
       <h1 className="text-page-title uppercase">Контакты</h1>
@@ -68,6 +72,18 @@ function FAQ() {
             </p>
           </div>
         </Accordeon>
+      </div>
+      <h2 className="mb-4 mt-10 text-page-title uppercase">Остались вопросы?</h2>
+      <div className="flex items-start justify-between">
+        <p>Заполните форму обратной связи и мы свяжемся с Вами.</p>
+        <Button
+          type="primary"
+          onClick={() => {
+            setIsOpen;
+          }}
+        >
+          Заполнить!
+        </Button>
       </div>
     </Container>
   );
