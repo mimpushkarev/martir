@@ -30,7 +30,7 @@ jobs:
       with:
         yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
         bucket: ${{ secrets.BUCKET }}
-        prefix: ${{ MY_DATE }}/
+        prefix: ${{ env.MY_DATE }}/
         root: ./dist
         include: | 
             assets
