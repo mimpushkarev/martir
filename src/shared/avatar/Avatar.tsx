@@ -1,12 +1,13 @@
 import {memo} from 'react';
 
 import {cn} from '_utils/cn';
+
 import person from './person.svg';
 
 type AvatarPropsType = {
   src: string;
   alt: string;
-  size?: 'xsm'|'sm' | 'md' | 'lg';
+  size?: 'xsm' | 'sm' | 'md' | 'lg';
 };
 
 const Avatar = memo<AvatarPropsType>(function Avatar({src, alt, size = 'md'}) {

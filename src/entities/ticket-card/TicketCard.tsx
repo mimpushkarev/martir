@@ -18,7 +18,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
   const clockImage = moment(ticket.status_change, 'YYYY-MM-DDTHH:mm:ssZ').isBefore(moment().subtract(3, 'months'))
     ? redclock
     : clock;
-  
+
   return (
     <OutlinedCard>
       <div className="flex w-full gap-2">

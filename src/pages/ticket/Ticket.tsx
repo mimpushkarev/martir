@@ -1,3 +1,4 @@
+import {Formik} from 'formik';
 import {FC, memo} from 'react';
 import useSWR from 'swr';
 
@@ -74,34 +75,34 @@ const Ticket = memo<TicketPageType>(function Ticket() {
   const ticket_id = getLastPathURL();
   const current_ticket = data && data.find(ticket => ticket.id === ticket_id);
 
+  console.log(current_ticket);
   return (
     <div>
       <Container className="">
         {current_ticket ? (
-          <div className="flex flex-row justify-between">
-            <div className="flex flex-col gap-10">
-              <div className="flex flex-col gap-4">
-                <TicketHeader type={current_ticket.type} id={current_ticket.id} />
-                <TicketContent
-                  type={current_ticket.type}
-                  name={current_ticket.name}
-                  context={current_ticket.context}
-                  task={current_ticket.context}
-                />
-              </div>
-              <div className="flex flex-col gap-4">
-                <div className={PAGE_HEADINGS.style}>
-                  {PAGE_HEADINGS.comments} {COMMENTS.length}
+          <Formik initialValues={current_ticket} onSubmit={() => {}}>
+            <div className="flex flex-row justify-between gap-8">
+              <div className="flex flex-1 flex-col gap-10">
+                <div className="flex flex-col gap-4">
+                  <TicketHeader type={current_ticket.type} id={current_ticket.id} />
+                  <TicketContent context={current_ticket.context} task={current_ticket.context} />
                 </div>
-                {COMMENTS.map((comment, index) => (
-                  <Comment key={index} commentator={comment.commentator} message={comment.message} />
-                ))}
+                <div className="flex flex-col gap-4">
+                  <div className={PAGE_HEADINGS.style}>
+                    {PAGE_HEADINGS.comments} {COMMENTS.length}
+                  </div>
+                  {COMMENTS.map((comment, index) => (
+                    <Comment key={index} commentator={comment.commentator} message={comment.message} />
+                  ))}
+                </div>
+              </div>
+              <div className="w-5/12 self-start">
+                <div className="border-l pl-8">
+                  <TicketParams ticket={current_ticket} />
+                </div>
               </div>
             </div>
-            <div className="w-1/3">
-              <TicketParams ticket={current_ticket} />
-            </div>
-          </div>
+          </Formik>
         ) : (
           <div>Задача не найдена</div>
         )}

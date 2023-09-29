@@ -13,3 +13,7 @@ body {
 #checkbox-component:checked ~ .check-1 {
   @apply text-opacity-100;
 }
+
+::-webkit-scrollbar {
+  width: 0;
+}

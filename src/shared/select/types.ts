@@ -1,13 +1,11 @@
-import {FC} from 'react';
+import {Props} from 'react-select';
 
 export type OptionType = {
-  id: string;
-  optionTitle: string;
-  photo?: string;
+  label: string;
+  value: string;
 };
 
-type SelectPropsType = {
-  options: Array<OptionType>;
+export type SelectPropsType = Omit<Props, 'options'> & {
+  name: string;
+  options: OptionType[];
 };
-
-export type SelectType = FC<SelectPropsType>;
