@@ -1,1 +1,1 @@
-export {default} from './Select';
+export {SelectComponent as Select} from './Select';

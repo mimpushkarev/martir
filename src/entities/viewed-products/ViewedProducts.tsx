@@ -18,7 +18,7 @@ const ViewedProducts = memo<VievedProductType>(function ViewedProducts({products
       >
         {products.map((product, index) => (
           <div key={index} className="h-full flex-shrink-0">
-            <a href={product.link} target="_blank">
+            <a href={product.link} target="_blank" rel="noreferrer">
               <img src={product.image} alt={product.name} className="aspect-square h-full" />
             </a>
           </div>

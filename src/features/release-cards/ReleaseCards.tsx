@@ -10,7 +10,7 @@ const TEXT_FOR_CARDS = {
   stable: 'Стабильная версия'
 };
 
-const ReleaseCards = memo(function ReleaseCards({}) {
+const ReleaseCards = memo(function ReleaseCards() {
   const {data} = useSWR('GET_CURRENT_RELEASES', getCurrent);
   return (
     <div className="-mx-10 flex flex-row justify-between gap-4 bg-common-darkest-gray px-10 pb-8 pt-4">

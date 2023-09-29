@@ -25,9 +25,9 @@ const AdminRoot = function AdminRoot() {
             <UserCard />
           </div>
         </Container>
-        <div className="flex-1">
+        <div className="flex flex-1 flex-col">
           <Header isAdmin />
-          <Container px={6} py={3} className="border-t border-common-dark-gray">
+          <Container px={6} py={3} className="w-full flex-1 overflow-auto border-t border-common-dark-gray">
             <Outlet />
           </Container>
         </div>

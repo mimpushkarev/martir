@@ -82,7 +82,9 @@ const Product = memo<FC>(function Product() {
             {CONTENT_FOR_PRODUCT_PAGE.product_features.info}
           </Accordeon>
           {CONTENT_FOR_PRODUCT_PAGE.service.map(item => (
-            <Accordeon title={item.name}>{item.info}</Accordeon>
+            <Accordeon title={item.name} key={item.name}>
+              {item.info}
+            </Accordeon>
           ))}
         </div>
       </div>

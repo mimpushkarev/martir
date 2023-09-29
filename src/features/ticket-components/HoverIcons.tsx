@@ -9,7 +9,7 @@ const HoverIcons = memo<HoverIconsType>(function HoverIcons({icon, iconName, cla
     <img
       src={icon}
       alt={iconName}
-      className={cn('block rounded-lg p-2 hover:bg-common-dark-gray ', {
+      className={cn('block cursor-pointer rounded-lg p-2 duration-200 ease-in-out hover:bg-common-dark-gray', {
         [className as string]: !!className
       })}
       onClick={

@@ -1,6 +1,6 @@
 import {memo} from 'react';
 
-import {HoverIcons} from '.';
+import {HoverIcons} from './HoverIcons';
 import LinkImg from './ticket-components-svg/ExternalLink.svg';
 import {TicketHeaderType} from './types';
 

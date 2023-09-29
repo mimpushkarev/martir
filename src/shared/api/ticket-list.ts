@@ -12,7 +12,7 @@ export type Ticket = {
   context: string;
   author: string;
   performer: string;
-  watcher: string; // поменять на массив строк
+  watcher: string[]; // поменять на массив строк
   sp_rated: number;
   sp: number;
 };
@@ -30,7 +30,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'не хочу выдумывать',
         author: 'hornyte@mail.ru',
         performer: 'annaershova02@gmail.com',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 5,
         sp: 5
       },
@@ -44,7 +44,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо разработать главную страницу сайта с учетом всех требований заказчика',
         author: 'hornyte@mail.ru',
         performer: 'mimpushkarev@yandex.ru',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 8,
         sp: null
       },
@@ -58,7 +58,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо разработать логотип для нового бренда',
         author: 'hornyte@mail.ru',
         performer: 'vsemkiskampiece@gmail.com',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 5,
         sp: 3
       },
@@ -72,7 +72,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо провести анализ рынка конкурентов и подготовить отчет',
         author: 'hornyte@mail.ru',
         performer: 'hornyte@mail.ru',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 12,
         sp: null
       },
@@ -86,7 +86,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо исправить выявленные баги на сайте',
         author: 'hornyte@mail.ru',
         performer: 'mimpushkarev@yandex.ru',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 6,
         sp: 8
       },
@@ -100,7 +100,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо разработать дизайн для нового мобильного приложения',
         author: 'hornyte@mail.ru',
         performer: 'vsemkiskampiece@gmail.com',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 20,
         sp: null
       },
@@ -114,7 +114,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо подготовить бизнес-план для нового проекта',
         author: 'hornyte@mail.ru',
         performer: 'hornyte@mail.ru',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 40,
         sp: 25
       },
@@ -128,7 +128,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо разработать интерфейс администратора для сайта',
         author: 'hornyte@mail.ru',
         performer: 'annaershova02@gmail.com',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 10,
         sp: null
       },
@@ -142,7 +142,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо разработать макеты для рекламных баннеров для новой рекламной кампании',
         author: 'hornyte@mail.ru',
         performer: 'vsemkiskampiece@gmail.com',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 15,
         sp: 12
       },
@@ -156,7 +156,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо провести исследования рынка и подготовить отчет',
         author: 'hornyte@mail.ru',
         performer: 'hornyte@mail.ru',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 30,
         sp: null
       },
@@ -170,7 +170,7 @@ export const getTicketList = async (request: ListTicketRequestBody): Promise<Lis
         context: 'Необходимо разработать интерфейс для мобильного приложения с учетом всех требований заказчика',
         author: 'annaershova02@gmail.com',
         performer: 'annaershova02@gmail.com',
-        watcher: 'mimpushkarev@yandex.ru',
+        watcher: ['mimpushkarev@yandex.ru'],
         sp_rated: 25,
         sp: null
       }
