@@ -1,11 +1,11 @@
 name: Deploy to YC
 
 on:
-  release:
-    types: released
+  workflow_dispatch
 
 jobs:
   deploy:
+    environment: production
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -20,15 +20,11 @@ jobs:
       - name: Build project
         run: npm run build
 
-      - name: Put date to env
-        run: echo "MY_DATE=$(date +%Y-%m-%dT%H:%M)" >> $GITHUB_ENV
-
       - name: Upload to YC storage
         uses: yc-actions/yc-obj-storage-upload@v1
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-          bucket: ${{ secrets.BUCKET }}
-          prefix: ${{ env.MY_DATE }}/
+          bucket: ${{ env.PRODUCTION_BUCKET }}
           root: ./dist
           include: |
             assets
