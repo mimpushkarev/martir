@@ -1,3 +1,4 @@
+import Ruler from '@heroicons/react/outline/CalculatorIcon';
 import {memo} from 'react';
 
 import {Button} from '_shared/button';
@@ -5,7 +6,6 @@ import {Link} from '_shared/link';
 import {cn} from '_utils/cn';
 
 import {PriceTagType} from './types';
-import img from './vector.svg';
 
 const PriceTag = memo<PriceTagType>(function PriceTag({product, className}) {
   return (
@@ -24,9 +24,9 @@ const PriceTag = memo<PriceTagType>(function PriceTag({product, className}) {
       </div>
       <div className="flex flex-col gap-2">
         <Link to={product.size_guide_link} target="_blank" className="text-common-light-gray underline">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 text-small">
             Руководство по выбору размера
-            <img src={img} alt={product.size_guide_link} className=" -rotate-45" />
+            <Ruler className="h-4 w-4" />
           </div>
         </Link>
         <Button type="primary">Добавить в корзину</Button>

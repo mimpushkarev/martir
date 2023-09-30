@@ -4,13 +4,11 @@ import {ReleaseCards} from '_features/release-cards/ReleaseCards';
 import {ReleasesTable} from '_features/releases-table';
 import {Container} from '_shared/container';
 
-import {ReleasesPagePropsType} from './types';
-
-const ReleasesPage = memo<ReleasesPagePropsType>(function ReleasesPage() {
+const ReleasesPage = memo(function ReleasesPage() {
   return (
-    <div>
-      <Container className="-mt-4 flex flex-col gap-12">
-        <ReleaseCards />
+    <div className="flex flex-col gap-12">
+      <ReleaseCards />
+      <Container px={6} py={3} className="w-full overflow-auto">
         <ReleasesTable />
       </Container>
     </div>

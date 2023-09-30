@@ -12,9 +12,7 @@ type ToLikedButtonPropsType = {
 
 const ToLikedButton = memo<ToLikedButtonPropsType>(function ToLikedButton({entity}) {
   const [liked, setLiked] = useLikedList();
-  const addEntityToLiked = useCallback(() => {
-    setLiked(prev => xor(prev, [entity]));
-  }, [entity, setLiked]);
+  const addEntityToLiked = useCallback(() => setLiked(prev => xor(prev, [entity])), [entity, setLiked]);
 
   const cartSet = useMemo(() => new Set(liked), [liked]);
 

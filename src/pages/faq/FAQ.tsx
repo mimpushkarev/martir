@@ -6,7 +6,7 @@ function FAQ() {
     <Container px={6} className="py-24" width="large">
       <h1 className="text-page-title uppercase">FAQ</h1>
       <div className="mt-10 text-paragraph [&>*]:mb-6">
-        <Accordeon title="Как вернуть покупку" opened>
+        <Accordeon title="Как вернуть покупку">
           <div className="[&>*]:mb-2">
             <p>
               Товары, приобретенные в интернет магазине Martir или у авторизованного дистрибьютора Martir, принимаются к
@@ -25,7 +25,7 @@ function FAQ() {
             </p>
           </div>
         </Accordeon>
-        <Accordeon title="К кому обратиться за помощью по поводу моего изделия" opened>
+        <Accordeon title="К кому обратиться за помощью по поводу моего изделия">
           <div className="[&>*]:mb-2">
             <p>
               Если у вас возникли какие-либо вопросы или проблемы с вашим изделием, не стесняйтесь обращаться в нашу

@@ -66,4 +66,4 @@ const TicketParams = memo<TicketParamsType>(function TicketParams({ticket}) {
   );
 });
 
-export default TicketParams;
+export {TicketParams};

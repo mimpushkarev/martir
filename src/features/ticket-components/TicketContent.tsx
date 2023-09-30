@@ -1,9 +1,9 @@
 import {memo} from 'react';
 
 import {Input} from '_shared/input';
+import {TextArea} from '_shared/text-area';
 
 import {WithCommonActions} from './WithCommonActions';
-import {TicketContentType} from './types';
 
 const PAGE_HEADINGS = {
   type: 'Тип задачи',
@@ -12,7 +12,7 @@ const PAGE_HEADINGS = {
   task: 'Задача'
 };
 
-const TicketContent = memo<TicketContentType>(function TicketContent({context, task}) {
+const TicketContent = memo(function TicketContent() {
   return (
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
@@ -30,16 +30,20 @@ const TicketContent = memo<TicketContentType>(function TicketContent({context, t
         </div>
       </div>
       <div className="flex flex-col gap-6">
-        <WithCommonActions className="justify-between">
-          <div className="text-bold-2">{PAGE_HEADINGS.context}</div>
-        </WithCommonActions>
-        <div>{context}</div>
+        <div className="text-bold-2">{PAGE_HEADINGS.context}</div>
+        <div>
+          <WithCommonActions className="justify-between">
+            <TextArea name="context" className="flex-1" />
+          </WithCommonActions>
+        </div>
       </div>
       <div className="flex flex-col gap-6">
-        <WithCommonActions className="justify-between">
-          <div className="text-bold-2">{PAGE_HEADINGS.task}</div>
-        </WithCommonActions>
-        <div>{task}</div>
+        <div className="text-bold-2">{PAGE_HEADINGS.task}</div>
+        <div>
+          <WithCommonActions className="justify-between">
+            <TextArea name="task" className="flex-1" />
+          </WithCommonActions>
+        </div>
       </div>
     </div>
   );

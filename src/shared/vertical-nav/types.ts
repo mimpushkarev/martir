@@ -1,15 +1,19 @@
+import {Icons} from '_shared/consts';
+
 type Link = {
   to: string;
   label: string;
-  icon?: string;
+  icon?: keyof typeof Icons;
 };
 
-type Group = {
+export type GroupType = {
   name: string;
   links: Array<Link>;
 };
 
+export type GroupsType = Array<GroupType>;
+
 export type VerticalNavPropsType = {
-  groups: Array<Group>;
+  groups: GroupsType;
   className?: string;
 };

@@ -4,7 +4,6 @@ import {memo} from 'react';
 import {Button} from '_shared/button';
 import Card from '_shared/card/Card';
 
-import image from './imageVersion.svg';
 import {ReleasesCardPropsType} from './types';
 
 const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
@@ -19,13 +18,12 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
     <Card className="min-w-[480px]s">
       <div className="flex flex-col gap-8">
         <div className="flex flex-col gap-4">
-          <div className="flex flex-row">
-            <img src={image} alt={heading} />
+          <div className="flex flex-row gap-4">
             <div className="text-subtitle">{heading}</div>
           </div>
           <div className="flex flex-col gap-2 text-paragraph">
             <div className="flex flex-row gap-2">
-              <div>Ссылка на сборку:</div>
+              <div className="whitespace-nowrap">Ссылка на сборку:</div>
               <a
                 href="https://example.com"
                 className="max-w-[220px] cursor-pointer overflow-hidden overflow-ellipsis whitespace-nowrap text-link text-primary-light visited:text-primary-dark hover:text-primary-normal active:text-primary-light"
@@ -36,7 +34,7 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
               </a>
             </div>
             <div className="flex flex-row gap-2">
-              <div>Время сборки версии:</div>
+              <div className="whitespace-nowrap">Время сборки версии:</div>
               <div>{moment(paragraph.date).format('YYYY.MM.DD HH:mm')}</div>
             </div>
           </div>

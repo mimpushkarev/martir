@@ -1,5 +1,5 @@
-type ListReleaseRequestQuery = undefined;
-type ListReleaseRequestBody = undefined;
+export type ListReleaseRequestQuery = undefined;
+export type ListReleaseRequestBody = undefined;
 
 type ListReleaseResponse = {
   last_builded: Release;
@@ -18,7 +18,7 @@ type Release = {
   published_at?: string; // Время первой публикации релиза в stable в формате "YYYY-MM-DDTHH:mm:ssZ"
 };
 
-export const getCurrent = async (request: ListReleaseRequestBody): Promise<ListReleaseResponse> => {
+export const getCurrent = async (_request: ListReleaseRequestBody): Promise<ListReleaseResponse> => {
   const result = new Promise<ListReleaseResponse>(resolve => {
     resolve({
       last_builded: {

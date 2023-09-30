@@ -1,4 +1,4 @@
-type ListReleaseRequestQuery = {
+export type ListReleaseRequestQuery = {
   limit: number;
   offset: number;
   id?: number; // Фильтрация по id
@@ -28,7 +28,7 @@ type TimeRange = {
   to?: string; // Формат "YYYY-MM-DDTHH:mm:ssZ",
 };
 
-export const getList = async (request: ListReleaseRequestBody): Promise<ListReleaseResponse> => {
+export const getList = async (_request: ListReleaseRequestBody): Promise<ListReleaseResponse> => {
   const result = new Promise<ListReleaseResponse>(resolve => {
     resolve([
       {

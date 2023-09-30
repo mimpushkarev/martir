@@ -13,9 +13,9 @@ const ReleasesTable = memo(function ReleasesTable() {
     <Table className="w-full">
       <Head>
         <Row className="hover:bg-transparent">
-          <HeaderCell className="w-1/3">Версия</HeaderCell>
-          <HeaderCell className="w-1/3">Ссылка на сборку</HeaderCell>
-          <HeaderCell className="w-1/3">Дата стабилизации версии</HeaderCell>
+          <HeaderCell className="whitespace-nowrap">Версия</HeaderCell>
+          <HeaderCell className="whitespace-nowrap">Ссылка на сборку</HeaderCell>
+          <HeaderCell className="whitespace-nowrap">Дата стабилизации версии</HeaderCell>
         </Row>
       </Head>
       <Body>
