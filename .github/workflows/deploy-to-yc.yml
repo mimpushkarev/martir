@@ -4,8 +4,7 @@ on:
   workflow_dispatch
 
 jobs:
-  deploy:
-    environment: production
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -19,13 +18,34 @@ jobs:
 
       - name: Build project
         run: npm run build
-
+  deploydev:
+    needs: build
+    environment:
+     name: testing
+    runs-on: ubuntu-latest
+    steps:
       - name: Upload to YC storage
         uses: yc-actions/yc-obj-storage-upload@v1
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-          bucket: ${{ env.PRODUCTION_BUCKET }}
+          bucket: ${{ env.BUCKET }}
           root: ./dist
           include: |
             assets
             index.html
+  deployprod:
+    needs: deploydev
+    environment:
+     name: production
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload to YC storage
+        uses: yc-actions/yc-obj-storage-upload@v1
+        with:
+          yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+          bucket: ${{ env.BUCKET }}
+          root: ./dist
+          include: |
+            assets
+            index.html
+
