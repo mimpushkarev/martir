@@ -25,11 +25,11 @@ const AdminRoot = function AdminRoot() {
             <UserCard />
           </div>
         </Container>
-        <div className="flex flex-1 flex-col">
+        <div className="flex w-0 flex-auto flex-col">
           <Header isAdmin />
-          <Container px={6} py={3} className="w-full flex-1 overflow-auto border-t border-common-dark-gray">
+          <div className="w-full flex-1 overflow-auto border-t border-common-dark-gray">
             <Outlet />
-          </Container>
+          </div>
         </div>
       </div>
       <ScrollRestoration />

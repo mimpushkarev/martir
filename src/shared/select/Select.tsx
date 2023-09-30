@@ -30,7 +30,6 @@ const SelectComponent = memo<SelectPropsType>(function SelectComponent({name, op
       name={field.name}
       onChange={onChange}
       onBlur={onBlur}
-      className="min-h-10  "
       styles={SELECT_STYLES}
       classNames={SELECT_CLASSES}
     />

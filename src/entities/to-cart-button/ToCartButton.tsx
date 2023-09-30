@@ -12,9 +12,7 @@ type ToCartButtonPropsType = {
 
 const ToCartButton = memo<ToCartButtonPropsType>(function ToCartButton({entity}) {
   const [cart, setCart] = useCartList();
-  const addEntityToCart = useCallback(() => {
-    setCart(prev => xor(prev, [entity]));
-  }, [entity, setCart]);
+  const addEntityToCart = useCallback(() => setCart(prev => xor(prev, [entity])), [entity, setCart]);
 
   const cartSet = useMemo(() => new Set(cart), [cart]);
 

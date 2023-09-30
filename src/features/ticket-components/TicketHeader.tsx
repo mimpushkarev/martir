@@ -1,16 +1,19 @@
+import CopyIcon from '@heroicons/react/outline/DuplicateIcon';
 import {memo} from 'react';
 
-import {HoverIcons} from './HoverIcons';
-import LinkImg from './ticket-components-svg/ExternalLink.svg';
+import {HoverIcon} from '_shared/hover-icon';
+
 import {TicketHeaderType} from './types';
 
 const TicketHeader = memo<TicketHeaderType>(function TicketHeader({type, id}) {
   return (
     <div className="flex items-center gap-6">
-      <div className="text-page-title">
-        [{type.toLocaleUpperCase()}] #{id}
+      <div className="text-page-title uppercase">
+        [{type}] #{id}
       </div>
-      <HoverIcons icon={LinkImg} iconName={type} />
+      <HoverIcon>
+        <CopyIcon className="h-6 w-6" />
+      </HoverIcon>
     </div>
   );
 });

@@ -3,8 +3,7 @@ import {FC, memo} from 'react';
 import useSWR from 'swr';
 
 import {Comment} from '_entities/comment';
-import {TicketContent, TicketHeader} from '_features/ticket-components';
-import TicketParams from '_features/ticket-components/TicketParams';
+import {TicketContent, TicketHeader, TicketParams} from '_features/ticket-components';
 import {getTicketList} from '_shared/api/ticket-list';
 import {Container} from '_shared/container';
 import {getLastPathURL} from '_utils/getLastPartURL';
@@ -75,39 +74,38 @@ const Ticket = memo<TicketPageType>(function Ticket() {
   const ticket_id = getLastPathURL();
   const current_ticket = data && data.find(ticket => ticket.id === ticket_id);
 
-  console.log(current_ticket);
   return (
-    <div>
-      <Container className="">
-        {current_ticket ? (
-          <Formik initialValues={current_ticket} onSubmit={() => {}}>
-            <div className="flex flex-row justify-between gap-8">
-              <div className="flex flex-1 flex-col gap-10">
-                <div className="flex flex-col gap-4">
-                  <TicketHeader type={current_ticket.type} id={current_ticket.id} />
-                  <TicketContent context={current_ticket.context} task={current_ticket.context} />
+    <Container px={6} py={3}>
+      {current_ticket ? (
+        <Formik initialValues={current_ticket} onSubmit={() => {}}>
+          <div className="flex flex-row justify-between gap-8">
+            <div className="flex flex-1 flex-col gap-10">
+              <div className="flex flex-col gap-4">
+                <TicketHeader type={current_ticket.type} id={current_ticket.id} />
+                <TicketContent />
+              </div>
+              <div className="flex flex-col gap-6">
+                <div className={PAGE_HEADINGS.style}>
+                  {PAGE_HEADINGS.comments} {COMMENTS.length}
                 </div>
                 <div className="flex flex-col gap-4">
-                  <div className={PAGE_HEADINGS.style}>
-                    {PAGE_HEADINGS.comments} {COMMENTS.length}
-                  </div>
                   {COMMENTS.map((comment, index) => (
                     <Comment key={index} commentator={comment.commentator} message={comment.message} />
                   ))}
                 </div>
               </div>
-              <div className="w-5/12 self-start">
-                <div className="border-l pl-8">
-                  <TicketParams ticket={current_ticket} />
-                </div>
+            </div>
+            <div className="w-5/12 self-start">
+              <div className="border-l pl-8">
+                <TicketParams ticket={current_ticket} />
               </div>
             </div>
-          </Formik>
-        ) : (
-          <div>Задача не найдена</div>
-        )}
-      </Container>
-    </div>
+          </div>
+        </Formik>
+      ) : (
+        <div>Задача не найдена</div>
+      )}
+    </Container>
   );
 });
 export default Ticket;

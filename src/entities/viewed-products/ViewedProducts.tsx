@@ -7,9 +7,9 @@ import {VievedProductType} from './types';
 const ViewedProducts = memo<VievedProductType>(function ViewedProducts({products, className}) {
   return (
     <div className="flex gap-5">
-      <div className="flex aspect-square h-60 flex-col items-center justify-center">
+      <div className="flex aspect-square h-60 flex-col items-center justify-center italic">
         <p>Просмотренные товары</p>
-        <p>это что бы вы не потеряли</p>
+        <p className="text-small">это что бы вы не потеряли</p>
       </div>
       <div
         className={cn('flex h-60 gap-5', {

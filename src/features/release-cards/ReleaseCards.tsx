@@ -12,11 +12,12 @@ const TEXT_FOR_CARDS = {
 
 const ReleaseCards = memo(function ReleaseCards() {
   const {data} = useSWR('GET_CURRENT_RELEASES', getCurrent);
+
   return (
-    <div className="-mx-10 flex flex-row justify-between gap-4 bg-common-darkest-gray px-10 pb-8 pt-4">
+    <div className="flex gap-4 overflow-auto bg-common-darkest-gray px-10 pb-4 pt-4">
       {data && (
         <>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-1 flex-col gap-4">
             <div className="text-bold-2">{TEXT_FOR_CARDS.last}</div>
             <ReleaseCard
               heading={data.last_builded.name}
@@ -32,7 +33,7 @@ const ReleaseCards = memo(function ReleaseCards() {
               }}
             />
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-1 flex-col gap-4">
             <div className="text-bold-2">{TEXT_FOR_CARDS.test}</div>
             <ReleaseCard
               heading={data.prestable.name}
@@ -48,7 +49,7 @@ const ReleaseCards = memo(function ReleaseCards() {
               }}
             />
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-1  flex-col gap-4">
             <div className="text-bold-2">{TEXT_FOR_CARDS.stable}</div>
             <ReleaseCard
               heading={data.stable.name}

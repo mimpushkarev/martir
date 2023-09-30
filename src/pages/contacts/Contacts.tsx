@@ -7,7 +7,7 @@ import {Copy} from '_shared/copy';
 import {Link} from '_shared/link';
 
 function FAQ() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [_isOpen, setIsOpen] = useState(false);
   return (
     <Container px={6} className="py-24" width="large">
       <h1 className="text-page-title uppercase">Контакты</h1>
@@ -25,7 +25,7 @@ function FAQ() {
             </p>
           </div>
         </Accordeon>
-        <Accordeon title="Информация по покупкам" opened>
+        <Accordeon title="Информация по покупкам">
           <div className="[&>*]:mb-2">
             <p>
               Если у вас возникли вопросы по оформлению заказа, оплате, доставке или гарантии, или вы просто хотите
@@ -48,7 +48,7 @@ function FAQ() {
             </p>
           </div>
         </Accordeon>
-        <Accordeon title="Обратная связь" opened>
+        <Accordeon title="Обратная связь">
           <div className="[&>*]:mb-2">
             <p>
               Если у вас есть какие-либо вопросы или комментарии относительно наших продуктов или услуг, пожалуйста,
@@ -74,7 +74,7 @@ function FAQ() {
         </Accordeon>
       </div>
       <h2 className="mb-4 mt-10 text-page-title uppercase">Остались вопросы?</h2>
-      <div className="flex items-start justify-between">
+      <div className="flex items-center justify-between">
         <p>Заполните форму обратной связи и мы свяжемся с Вами.</p>
         <Button
           type="primary"

@@ -1,10 +1,9 @@
+import CopyIcon from '@heroicons/react/outline/DuplicateIcon';
+import EditIcon from '@heroicons/react/outline/PencilIcon';
 import {PropsWithChildren, memo} from 'react';
 
+import {HoverIcon} from '_shared/hover-icon';
 import {cn} from '_utils/cn';
-
-import {HoverIcons} from './HoverIcons';
-import CopyIcon from './ticket-components-svg/Copy.svg';
-import EditIcon from './ticket-components-svg/Edit.svg';
 
 type WithCommonActionsPropsType = PropsWithChildren & {
   className?: string;
@@ -13,15 +12,18 @@ type WithCommonActionsPropsType = PropsWithChildren & {
 const WithCommonActions = memo<WithCommonActionsPropsType>(function WithCommonActions({className, children}) {
   return (
     <div
-      className={cn('flex items-center gap-3', {
+      className={cn('flex items-start gap-3', {
         [className]: !!className
       })}
     >
       {children}
-
       <div className="flex gap-3">
-        <HoverIcons icon={EditIcon} iconName="Edit" />
-        <HoverIcons icon={CopyIcon} iconName="Copy" />
+        <HoverIcon>
+          <EditIcon className="h-6 w-6" />
+        </HoverIcon>
+        <HoverIcon>
+          <CopyIcon className="h-6 w-6" />
+        </HoverIcon>
       </div>
     </div>
   );

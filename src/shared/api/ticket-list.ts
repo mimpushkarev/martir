@@ -17,7 +17,7 @@ export type Ticket = {
   sp: number;
 };
 
-export const getTicketList = async (request: ListTicketRequestBody): Promise<ListTicketResponse> => {
+export const getTicketList = async (_request: ListTicketRequestBody): Promise<ListTicketResponse> => {
   const result = new Promise<ListTicketResponse>(resolve => {
     resolve([
       {

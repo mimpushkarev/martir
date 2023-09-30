@@ -13,27 +13,25 @@ type HeaderPropsType = {
 
 const Header = memo<HeaderPropsType>(function Header({isAdmin}) {
   return (
-    <Container px={6} py={3} className="min-h-[68px] w-full">
-      <div className="flex items-center gap-4">
-        {!isAdmin && (
-          <div className="mr-6 inline-block">
-            <Link to="/">
-              <Logo />
-            </Link>
-          </div>
-        )}
-        <div className="hidden items-center gap-4 sm:flex">
-          <Link to="/contacts">Контакты</Link>
-          <Link to="/about">О Нас</Link>
-          <Link to="/faq">FAQ</Link>
-        </div>
-        <div className="ml-auto flex items-center gap-8">
-          <LikedItemsAction />
-          <CartItemsAction />
-          <Link to="/admin">
-            <UserAvatar />
+    <Container px={6} py={3} className="flex min-h-[68px] w-full items-center gap-4">
+      {!isAdmin && (
+        <div className="mr-6 inline-block">
+          <Link to="/">
+            <Logo />
           </Link>
         </div>
+      )}
+      <div className="hidden items-center gap-4 sm:flex">
+        <Link to="/about">О Нас</Link>
+        <Link to="/faq">FAQ</Link>
+        <Link to="/contacts">Контакты</Link>
+      </div>
+      <div className="ml-auto flex items-center gap-8">
+        <LikedItemsAction />
+        <CartItemsAction />
+        <Link to="/admin">
+          <UserAvatar />
+        </Link>
       </div>
     </Container>
   );
