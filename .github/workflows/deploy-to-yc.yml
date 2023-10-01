@@ -1,7 +1,8 @@
 name: Deploy to YC
 
 on:
-  workflow_dispatch
+  release:
+    types: released
 
 jobs:
   build:
