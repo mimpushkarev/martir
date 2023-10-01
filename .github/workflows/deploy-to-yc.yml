@@ -41,7 +41,7 @@ jobs:
       uses: yc-actions/yc-obj-storage-upload@v1
       with:
         yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
-        bucket: ${{ env.BUCKET }}
+        bucket: ${{ vars.BUCKET }}
         root: ./
         include: |
           assets
