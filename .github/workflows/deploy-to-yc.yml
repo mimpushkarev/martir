@@ -25,7 +25,29 @@ jobs:
           name: web-app
           path: ./dist
 
-  deploy:
+  deploy-testing:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: testing
+
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: web-app
+
+    - name: Upload to YC storage
+      uses: yc-actions/yc-obj-storage-upload@v1
+      with:
+        yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        bucket: ${{ vars.BUCKET }}
+        root: ./
+        include: |
+          assets
+          index.html
+
+  deploy-production:
     runs-on: ubuntu-latest
     needs: build
     environment:
