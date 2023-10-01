@@ -68,3 +68,11 @@ jobs:
         include: |
           assets
           index.html
+
+    - name: Purge CDN cache
+      id: purge-cache
+      uses: yc-actions/yc-cdn-cache@v1
+      with:
+        yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
+        cdn-resource-id: ${{ vars.CDN_ID }}
+    
