@@ -42,7 +42,7 @@ jobs:
       with:
         yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
         bucket: ${{ env.BUCKET }}
-        root: ./dist
+        root: ./
         include: |
           assets
           index.html
