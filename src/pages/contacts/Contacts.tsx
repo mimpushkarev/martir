@@ -1,5 +1,6 @@
 import {useState} from 'react';
 
+import {FeedbackForm} from '_features/feedback-form';
 import {Accordeon} from '_shared/accordeon';
 import {Button} from '_shared/button';
 import {Container} from '_shared/container';
@@ -79,12 +80,18 @@ function FAQ() {
         <Button
           type="primary"
           onClick={() => {
-            setIsOpen;
+            setIsOpen(true);
           }}
         >
           Заполнить!
         </Button>
       </div>
+      <FeedbackForm
+        isOpen={_isOpen}
+        onClose={() => {
+          setIsOpen(false);
+        }}
+      />
     </Container>
   );
 }
