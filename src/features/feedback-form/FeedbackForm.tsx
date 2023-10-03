@@ -1,84 +1,103 @@
-import {memo, useState} from 'react';
+import {Form, Formik, FormikHelpers} from 'formik';
+import {memo} from 'react';
 
 import {Button} from '_shared/button';
-import Select from '_shared/select';
-import TextField from '_shared/text-field';
+import {Input} from '_shared/input';
+import {Modal, ModalBody, ModalFooter, ModalHeader} from '_shared/modal';
+import {Select} from '_shared/select';
+import {TextArea} from '_shared/text-area';
 
 type FeedbackFormPropsType = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-const FeedbackForm = memo<FeedbackFormPropsType>(function FeedbackForm({isOpen, onClose}) {
-  if (!isOpen) {
-    return null;
+const optionsForCommynication = [
+  {
+    label: 'Телеграм',
+    value: 'Telegram'
+  },
+  {
+    label: 'Номер телефона',
+    value: 'phone'
+  },
+  {
+    label: 'Электронная почта',
+    value: 'Email'
   }
+];
 
-  const handleClose = e => {
-    if (e.target.id === 'wrapper') {
-      onClose();
-    }
-  };
+interface Values {
+  name: string;
+  phoneNumber: string;
+  email: string;
+  telegram: string;
+  question: string;
+}
+
+const FeedbackForm = memo<FeedbackFormPropsType>(function FeedbackForm({isOpen, onClose}) {
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-common-bg bg-opacity-25 backdrop-blur-sm"
-      onClick={handleClose}
-      id="wrapper"
+    <Formik
+      initialValues={{
+        name: '',
+        phoneNumber: '',
+        email: '',
+        telegram: '',
+        question: '',
+        typeOfCommunication: ''
+      }}
+      onSubmit={(values: Values, {setSubmitting}: FormikHelpers<Values>) => {
+        setTimeout(() => {
+          alert(JSON.stringify(values, null, 2));
+          setSubmitting(false);
+        }, 500);
+      }}
     >
-      <div className="w-1/4 bg-common-bg p-4">
-        <div className="border-b border-common-gray">
-          <p className="pb-3 text-paragraph-2">Связаться с нами</p>
-        </div>
-        <form action="" method="post" className="flex flex-col gap-4 pt-3">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="input">Фамилия Имя Отчество</label>
-            <TextField value={''} placeholder="Ф.И.О"></TextField>
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="type of communication">Удобный способ связи</label>
-            <Select
-              options={[
-                {
-                  id: 'email',
-                  optionTitle: 'Email'
-                },
-                {
-                  id: 'Telegram',
-                  optionTitle: 'Telegram'
-                },
-                {
-                  id: 'phone',
-                  optionTitle: 'Номер телефона'
-                }
-              ]}
-              id="type of communication"
-            />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="input">Номер телефона</label>
-            <TextField value={''} placeholder="+X (XXX) XXX-XXXX" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="input">Email</label>
-            <TextField value={''} placeholder="example@example.com" />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="input">Ник в Telegram</label>
-            <TextField value={''} placeholder="@username" />
-          </div>
-          <div className="flex flex-col gap-2 pb-3">
-            <label htmlFor="input">Вопрос или пожелание</label>
-            <TextField value={''} placeholder="Введите Ваш вопрос здесь..." className="h-24 items-start" />
-          </div>
-          <div className="flex items-center justify-end gap-3 border-t border-common-gray pt-3">
-            <Button type="outlined" onClick={onClose}>
-              Отменить
-            </Button>
-            <Button type="primary">Отправить</Button>
-          </div>
-        </form>
-      </div>
-    </div>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalHeader title={'Связаться с нами'} />
+        <ModalBody>
+          <Form>
+            <div className="flex flex-col gap-4 pt-3">
+              <div className="flex flex-col gap-2">
+                <label htmlFor="name">Фамилия Имя Отчество</label>
+                <Input id="name" name="name" placeholder="Ф.И.О" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="type of communication">Удобный способ связи</label>
+                <Select
+                  options={optionsForCommynication}
+                  id="typeOfCommunication"
+                  name="typeOfCommunication"
+                  placeholder="Способ связи"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="phoneNumber">Номер телефона</label>
+                <Input id="phoneNumber" name="phoneNumber" placeholder="+7 (000) 000-0000" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="email">Email</label>
+                <Input id="email" name="email" placeholder="youremail@martir.ru" />
+              </div>
+              <div className="flex flex-col gap-2">
+                <label htmlFor="telegram">Логин в Telegram</label>
+                <Input id="telegram" name="telegram" placeholder="@username" />
+              </div>
+              <div className="flex flex-col gap-2 pb-3">
+                <label htmlFor="question">Вопрос или пожелание</label>
+                <TextArea name="question" id="question" placeholder="Ваш вопрос здесь..." className="h-24"></TextArea>
+              </div>
+            </div>
+            <ModalFooter>
+              <Button type="outlined" onClick={onClose}>
+                Отменить
+              </Button>
+              <Button type="primary">Отправить</Button>
+            </ModalFooter>
+          </Form>
+        </ModalBody>
+      </Modal>
+    </Formik>
   );
 });
 export {FeedbackForm};

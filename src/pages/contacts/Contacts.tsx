@@ -87,7 +87,7 @@ function FAQ() {
         </Button>
       </div>
       <FeedbackForm
-        isOpen={isOpen}
+        isOpen={_isOpen}
         onClose={() => {
           setIsOpen(false);
         }}
