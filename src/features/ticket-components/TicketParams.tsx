@@ -1,6 +1,5 @@
 import {memo} from 'react';
 
-import {TicketButton} from '_entities/ticket-card';
 import {Ticket} from '_shared/api/ticket-list';
 import {Avatar} from '_shared/avatar';
 import {Input} from '_shared/input';
@@ -23,6 +22,25 @@ const PARAMS_TEXT = {
   sp: 'Потрачено SP'
 };
 
+const optionsForState = [
+  {
+    label: 'Открыт',
+    value: 'открыт'
+  },
+  {
+    label: 'В работе',
+    value: 'in-progress'
+  },
+  {
+    label: 'На проверке',
+    value: 'in-review'
+  },
+  {
+    label: 'Закрыт',
+    value: 'done'
+  }
+];
+
 function transformArray(arr: {id: string; image: string; name: string}[]) {
   return arr.map(item => ({
     value: item.id,
@@ -37,7 +55,7 @@ const TicketParams = memo<TicketParamsType>(function TicketParams({ticket}) {
   return (
     <div className="flex flex-col gap-y-5">
       <FormGroup label={PARAMS_TEXT.state}>
-        <TicketButton status={ticket.status} status_change={ticket.status_change} isStatusChangeTimeShown={true} />
+        <Select id="status" name="status" options={optionsForState} />
       </FormGroup>
       <FormGroup label={PARAMS_TEXT.author}>
         <div className="flex gap-2">

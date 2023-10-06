@@ -8,7 +8,6 @@ import {TextAreaFieldPropsType} from './types';
 const TextArea = memo<TextAreaFieldPropsType>(function TextArea({name, className, ...props}) {
   const [field, meta] = useField(name);
 
-  console.log('hello');
   return (
     <textarea
       {...field}
