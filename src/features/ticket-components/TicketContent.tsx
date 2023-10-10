@@ -1,7 +1,7 @@
 import {memo} from 'react';
 
 import {Input} from '_shared/input';
-import {TextArea} from '_shared/text-area';
+import {MDEditor} from '_shared/md-editor';
 
 import {WithCommonActions} from './WithCommonActions';
 
@@ -32,21 +32,17 @@ const TicketContent = memo(function TicketContent() {
       <div className="flex flex-col gap-6">
         <div className="text-bold-2">{PAGE_HEADINGS.context}</div>
         <div>
-          <div className="flex items-start justify-between gap-3">
-            <WithCommonActions>
-              <TextArea name="context" className="h-60 flex-1" />
-            </WithCommonActions>
-          </div>
+          <WithCommonActions className="justify-between">
+            <MDEditor name="context" className="flex-1" placeholder="Введите текст..." />
+          </WithCommonActions>
         </div>
       </div>
       <div className="flex flex-col gap-6">
         <div className="text-bold-2">{PAGE_HEADINGS.task}</div>
         <div>
-          <div className="flex items-start justify-between gap-3">
-            <WithCommonActions>
-              <TextArea name="task" className="flex-1" />
-            </WithCommonActions>
-          </div>
+          <WithCommonActions className="justify-between">
+            <MDEditor name="task" className="flex-1" placeholder="Введите текст..." />
+          </WithCommonActions>
         </div>
       </div>
     </div>

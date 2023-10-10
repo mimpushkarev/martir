@@ -1,3 +1,4 @@
+import '@mdxeditor/editor/style.css';
 import {Provider} from 'react-redux';
 
 import {Routing} from '_pages';

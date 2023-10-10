@@ -13,7 +13,7 @@ type HeaderPropsType = {
 
 const Header = memo<HeaderPropsType>(function Header({isAdmin}) {
   return (
-    <Container px={6} py={3} className="flex min-h-[68px] w-full items-center gap-4">
+    <Container px={3} py={3} className="flex min-h-[68px] w-full items-center gap-4">
       {!isAdmin && (
         <div className="mr-6 inline-block">
           <Link to="/">
