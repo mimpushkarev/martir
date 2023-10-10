@@ -32,17 +32,21 @@ const TicketContent = memo(function TicketContent() {
       <div className="flex flex-col gap-6">
         <div className="text-bold-2">{PAGE_HEADINGS.context}</div>
         <div>
-          <WithCommonActions className="justify-between">
-            <TextArea name="context" className="flex-1" />
-          </WithCommonActions>
+          <div className="flex items-start justify-between gap-3">
+            <WithCommonActions>
+              <TextArea name="context" className="h-60 flex-1" />
+            </WithCommonActions>
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-6">
         <div className="text-bold-2">{PAGE_HEADINGS.task}</div>
         <div>
-          <WithCommonActions className="justify-between">
-            <TextArea name="task" className="flex-1" />
-          </WithCommonActions>
+          <div className="flex items-start justify-between gap-3">
+            <WithCommonActions>
+              <TextArea name="task" className="flex-1" />
+            </WithCommonActions>
+          </div>
         </div>
       </div>
     </div>
