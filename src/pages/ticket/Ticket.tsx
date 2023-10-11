@@ -78,7 +78,7 @@ const Ticket = memo<TicketPageType>(function Ticket() {
   return (
     <Container px={6} py={3}>
       {current_ticket ? (
-        <Formik initialValues={current_ticket} onSubmit={() => {}}>
+        <Formik initialValues={current_ticket} onSubmit={() => undefined}>
           <div className="flex flex-row justify-between gap-8">
             <div className="flex flex-1 flex-col gap-10">
               <div className="flex flex-col gap-4">
