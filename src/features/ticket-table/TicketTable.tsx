@@ -12,7 +12,7 @@ const TicketTable = withFormik({
   mapPropsToValues: () => ({
     search: ''
   }),
-  handleSubmit: () => {}
+  handleSubmit: () => undefined
 })(
   memo(function TicketTable() {
     const {data} = useSWR('GET_RELEASES_lIST', getTicketList);

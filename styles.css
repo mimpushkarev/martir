@@ -19,12 +19,12 @@ body {
 }
 
 body .mdxeditor {
-  border: 1px solid #C6C6C6;
+  border: 1px solid #c6c6c6;
   border-radius: 0.25rem;
 
   --baseText: #fff;
   --baseBorderHover: #838383;
-  --accentBgActive: #68ADFD;
+  --accentBgActive: #68adfd;
   --baseBgHover: #424242;
   --baseBgSubtle: transparent;
   --baseTextContrast: #fff;
