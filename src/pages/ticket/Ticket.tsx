@@ -1,4 +1,3 @@
-import {Formik} from 'formik';
 import moment from 'moment';
 import {FC, memo} from 'react';
 import useSWR from 'swr';
@@ -8,6 +7,7 @@ import {TicketContent, TicketHeader, TicketParams} from '_features/ticket-compon
 import {getTicketList} from '_shared/api/ticket-list';
 import {Container} from '_shared/container';
 import {getLastPathURL} from '_utils/getLastPartURL';
+import {useForm} from '_utils/hooks/useForm';
 
 type TicketPageType = FC<Record<string, never>>;
 
@@ -74,11 +74,12 @@ const Ticket = memo<TicketPageType>(function Ticket() {
   const {data} = useSWR('GET_RELEASES_lIST', getTicketList);
   const ticket_id = getLastPathURL();
   const current_ticket = data && data.find(ticket => ticket.id === ticket_id);
+  const {Form} = useForm(current_ticket);
 
   return (
     <Container px={6} py={3}>
       {current_ticket ? (
-        <Formik initialValues={current_ticket} onSubmit={() => undefined}>
+        <Form onSubmit={() => {}}>
           <div className="flex flex-row justify-between gap-8">
             <div className="flex flex-1 flex-col gap-10">
               <div className="flex flex-col gap-4">
@@ -106,7 +107,7 @@ const Ticket = memo<TicketPageType>(function Ticket() {
               </div>
             </div>
           </div>
-        </Formik>
+        </Form>
       ) : (
         <div>Задача не найдена</div>
       )}

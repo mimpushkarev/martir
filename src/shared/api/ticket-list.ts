@@ -10,6 +10,7 @@ export type Ticket = {
   type: string;
   name: string;
   context: string;
+  task: string;
   author: string;
   performer: string;
   watcher: string[]; // поменять на массив строк
@@ -27,6 +28,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-08-05T07:16',
         type: 'buisness',
         name: 'ЭЭЭ, нужно короче построить огромный лоток',
+        task: '',
         context: 'не хочу выдумывать',
         author: 'hornyte@mail.ru',
         performer: 'annaershova02@gmail.com',
@@ -41,6 +43,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-01T10:00:00Z',
         type: 'frontend',
         name: 'Разработка главной страницы',
+        task: '',
         context: 'Необходимо разработать главную страницу сайта с учетом всех требований заказчика',
         author: 'hornyte@mail.ru',
         performer: 'mimpushkarev@yandex.ru',
@@ -55,6 +58,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-02T15:00:00Z',
         type: 'design',
         name: 'Разработка логотипа',
+        task: '',
         context: 'Необходимо разработать логотип для нового бренда',
         author: 'hornyte@mail.ru',
         performer: 'vsemkiskampiece@gmail.com',
@@ -69,6 +73,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-10T15:00:00Z',
         type: 'buisness',
         name: 'Анализ рынка конкурентов',
+        task: '',
         context: 'Необходимо провести анализ рынка конкурентов и подготовить отчет',
         author: 'hornyte@mail.ru',
         performer: 'hornyte@mail.ru',
@@ -83,6 +88,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-05T10:00:00Z',
         type: 'frontend',
         name: 'Исправление багов на сайте',
+        task: '',
         context: 'Необходимо исправить выявленные баги на сайте',
         author: 'hornyte@mail.ru',
         performer: 'mimpushkarev@yandex.ru',
@@ -97,6 +103,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-05T11:00:00Z',
         type: 'design',
         name: 'Разработка дизайна приложения',
+        task: '',
         context: 'Необходимо разработать дизайн для нового мобильного приложения',
         author: 'hornyte@mail.ru',
         performer: 'vsemkiskampiece@gmail.com',
@@ -111,6 +118,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-07T09:00:00Z',
         type: 'buisness',
         name: 'Подготовка бизнес-плана',
+        task: '',
         context: 'Необходимо подготовить бизнес-план для нового проекта',
         author: 'hornyte@mail.ru',
         performer: 'hornyte@mail.ru',
@@ -125,6 +133,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-10T15:00:00Z',
         type: 'frontend',
         name: 'Разработка интерфейса администратора',
+        task: '',
         context: 'Необходимо разработать интерфейс администратора для сайта',
         author: 'hornyte@mail.ru',
         performer: 'annaershova02@gmail.com',
@@ -139,6 +148,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-09T11:00:00Z',
         type: 'design',
         name: 'Разработка макетов для рекламных баннеров',
+        task: '',
         context: 'Необходимо разработать макеты для рекламных баннеров для новой рекламной кампании',
         author: 'hornyte@mail.ru',
         performer: 'vsemkiskampiece@gmail.com',
@@ -153,6 +163,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-09T14:00:00Z',
         type: 'buisness',
         name: 'Проведение исследований рынка',
+        task: '',
         context: 'Необходимо провести исследования рынка и подготовить отчет',
         author: 'hornyte@mail.ru',
         performer: 'hornyte@mail.ru',
@@ -167,6 +178,7 @@ export const getTicketList = async (_request: ListTicketRequestBody): Promise<Li
         status_change: '2023-01-10T15:10:00Z',
         type: 'frontend',
         name: 'Разработка интерфейса для мобильного приложения',
+        task: '',
         context: 'Необходимо разработать интерфейс для мобильного приложения с учетом всех требований заказчика',
         author: 'annaershova02@gmail.com',
         performer: 'annaershova02@gmail.com',

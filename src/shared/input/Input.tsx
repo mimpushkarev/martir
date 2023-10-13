@@ -2,11 +2,12 @@ import {useField} from 'formik';
 import {memo} from 'react';
 
 import {cn} from '_utils/cn';
+import {convertPathToName} from '_utils/hooks/useForm';
 
 import {TextFieldPropsType} from './types';
 
 const Input = memo<TextFieldPropsType>(function Input({className, name, ...props}) {
-  const [field, meta] = useField(name);
+  const [field, meta] = useField(convertPathToName(name));
 
   return (
     <input

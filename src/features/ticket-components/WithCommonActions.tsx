@@ -29,7 +29,7 @@ const WithCommonActions = memo<WithCommonActionsPropsType>(function WithCommonAc
             <CrossIcon className="h-6 w-6" />
           </HoverIcon>
         ) : (
-          <div>
+          <>
             <HoverIcon
               onClick={() => {
                 setIsEdit(true);
@@ -40,7 +40,7 @@ const WithCommonActions = memo<WithCommonActionsPropsType>(function WithCommonAc
             <HoverIcon>
               <CopyIcon className="h-6 w-6" />
             </HoverIcon>
-          </div>
+          </>
         )}
       </div>
     </div>
