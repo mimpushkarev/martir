@@ -5,7 +5,15 @@ export type OptionType = {
   value: string;
 };
 
-export type SelectPropsType = Omit<Props, 'options'> & {
-  name: string;
-  options: OptionType[];
-};
+export type SelectPropsType = Omit<Props, 'options' | 'name'> &
+  (
+    | {
+        name: string;
+      }
+    | {
+        name: string[];
+        isMulti: true;
+      }
+  ) & {
+    options: OptionType[];
+  };

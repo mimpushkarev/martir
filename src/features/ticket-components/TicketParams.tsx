@@ -4,13 +4,12 @@ import {Ticket} from '_shared/api/ticket-list';
 import {Avatar} from '_shared/avatar';
 import {Input} from '_shared/input';
 import {Select} from '_shared/select';
+import {getNamePath} from '_utils/hooks/useForm';
 import {PERFORMERS_AND_DATA, PERFORMERS_ARRAY} from '_utils/mock';
 
 import {FormGroup} from './FormGroup';
 
-type TicketParamsType = {
-  ticket: Ticket;
-};
+const formPath = getNamePath<Ticket>();
 
 const PARAMS_TEXT = {
   style: 'text-bold',
@@ -51,11 +50,15 @@ function transformArray(arr: {id: string; image: string; name: string}[]) {
 
 const transformPerformersToOptions = transformArray(PERFORMERS_ARRAY);
 
+type TicketParamsType = {
+  ticket: Ticket;
+};
+
 const TicketParams = memo<TicketParamsType>(function TicketParams({ticket}) {
   return (
     <div className="flex flex-col gap-y-5">
       <FormGroup label={PARAMS_TEXT.state}>
-        <Select id="status" name="status" options={optionsForState} />
+        <Select id="status" name={formPath('status')} options={optionsForState} />
       </FormGroup>
       <FormGroup label={PARAMS_TEXT.author}>
         <div className="flex gap-2">
@@ -69,16 +72,16 @@ const TicketParams = memo<TicketParamsType>(function TicketParams({ticket}) {
         </div>
       </FormGroup>
       <FormGroup label={PARAMS_TEXT.performer}>
-        <Select name="performer" options={transformPerformersToOptions} />
+        <Select name={formPath('performer')} options={transformPerformersToOptions} />
       </FormGroup>
       <FormGroup label={PARAMS_TEXT.watcher}>
-        <Select name="watcher" options={transformPerformersToOptions} isMulti />
+        <Select name={formPath('watcher')} options={transformPerformersToOptions} isMulti />
       </FormGroup>
       <FormGroup label={PARAMS_TEXT.sp_rated}>
-        <Input name="sp_rated" />
+        <Input name={formPath('sp_rated')} />
       </FormGroup>
       <FormGroup label={PARAMS_TEXT.sp}>
-        <Input name="sp" />
+        <Input name={formPath('sp')} />
       </FormGroup>
     </div>
   );

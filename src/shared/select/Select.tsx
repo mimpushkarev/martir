@@ -2,11 +2,13 @@ import {useField} from 'formik';
 import {memo, useMemo} from 'react';
 import Select from 'react-select';
 
+import {convertPathToName} from '_utils/hooks/useForm';
+
 import {SELECT_CLASSES, SELECT_STYLES} from './consts';
 import {OptionType, SelectPropsType} from './types';
 
 const SelectComponent = memo<SelectPropsType>(function SelectComponent({name, options, ...props}) {
-  const [field, _state, {setValue, setTouched}] = useField<string | string[]>(name);
+  const [field, _state, {setValue, setTouched}] = useField<string | string[]>(convertPathToName(name));
 
   const onChange = (selected: OptionType | OptionType[]) => {
     setValue('value' in selected ? selected.value : selected.map(item => item.value));

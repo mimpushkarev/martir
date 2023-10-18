@@ -1,9 +1,13 @@
 import {memo} from 'react';
 
+import {Ticket} from '_shared/api/ticket-list';
 import {Input} from '_shared/input';
 import {MDEditor} from '_shared/md-editor';
+import {getNamePath} from '_utils/hooks/useForm';
 
 import {WithCommonActions} from './WithCommonActions';
+
+const formPath = getNamePath<Ticket>();
 
 const PAGE_HEADINGS = {
   type: 'Тип задачи',
@@ -19,31 +23,27 @@ const TicketContent = memo(function TicketContent() {
         <div className="flex flex-col gap-2">
           <div>{PAGE_HEADINGS.type}</div>
           <WithCommonActions>
-            <Input name="type" className="w-[320px]" />
+            <Input name={formPath('type')} className="w-[320px]" />
           </WithCommonActions>
         </div>
         <div className="flex flex-col gap-2">
           <div>{PAGE_HEADINGS.name}</div>
           <WithCommonActions>
-            <Input name="name" className="w-[320px]" />
+            <Input name={formPath('name')} className="w-[320px]" />
           </WithCommonActions>
         </div>
       </div>
       <div className="flex flex-col gap-6">
         <div className="text-bold-2">{PAGE_HEADINGS.context}</div>
-        <div>
-          <WithCommonActions className="justify-between">
-            <MDEditor name="context" className="flex-1" placeholder="Введите текст..." />
-          </WithCommonActions>
-        </div>
+        <WithCommonActions className="justify-between">
+          <MDEditor name={formPath('context')} placeholder="Введите текст..." />
+        </WithCommonActions>
       </div>
       <div className="flex flex-col gap-6">
         <div className="text-bold-2">{PAGE_HEADINGS.task}</div>
-        <div>
-          <WithCommonActions className="justify-between">
-            <MDEditor name="task" className="flex-1" placeholder="Введите текст..." />
-          </WithCommonActions>
-        </div>
+        <WithCommonActions className="justify-between">
+          <MDEditor name={formPath('task')} placeholder="Введите текст..." />
+        </WithCommonActions>
       </div>
     </div>
   );
