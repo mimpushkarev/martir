@@ -95,6 +95,13 @@ const router = createBrowserRouter([
         }
       },
       {
+        path: 'content-management',
+        async lazy() {
+          const ContentManagement = lazy(() => import('./content-management'));
+          return {Component: ContentManagement};
+        }
+      },
+      {
         path: 'users',
         async lazy() {
           return {Component: () => <h1>Пользователи</h1>};
