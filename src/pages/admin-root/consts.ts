@@ -25,7 +25,7 @@ export const GROUPS: GroupsType = [
         to: '/admin/orders',
         label: LABELS.NAV_ORDERS,
         icon: 'Orders'
-      }, 
+      },
       {
         to: '/admin/content-management',
         label: LABELS.NAN_CONTENT,

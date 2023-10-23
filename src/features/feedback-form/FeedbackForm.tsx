@@ -54,7 +54,7 @@ const FeedbackForm = memo<FeedbackFormPropsType>(function FeedbackForm({isOpen, 
           <div className="flex flex-col gap-4 pt-3">
             <div className="flex flex-col gap-2">
               <label htmlFor="name">Фамилия Имя Отчество</label>
-              <Input id="name" name="name" placeholder="Ф.И.О" />
+              <Input id="name" name={getName('name')} placeholder="Ф.И.О" />
             </div>
             <div className="flex flex-col gap-2">
               <label htmlFor="typeOfCommunication">Удобный способ связи</label>
@@ -83,10 +83,10 @@ const FeedbackForm = memo<FeedbackFormPropsType>(function FeedbackForm({isOpen, 
             </div>
           </div>
           <ModalFooter>
-            <Button type="outlined" onClick={onClose}>
+            <Button theme="outlined" onClick={onClose}>
               Отменить
             </Button>
-            <Button type="primary">Отправить</Button>
+            <Button theme="primary">Отправить</Button>
           </ModalFooter>
         </ModalBody>
       </Modal>
