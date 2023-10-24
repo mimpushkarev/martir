@@ -1,5 +1,6 @@
 import ClipboardIcon from '@heroicons/react/outline/ClipboardIcon';
 import CloudIcon from '@heroicons/react/outline/CloudIcon';
+import NewspaperIcon from '@heroicons/react/outline/NewspaperIcon';
 import ShieldCheckIcon from '@heroicons/react/outline/ShieldCheckIcon';
 import TableIcon from '@heroicons/react/outline/TableIcon';
 import TagIcon from '@heroicons/react/outline/TagIcon';
@@ -11,5 +12,6 @@ export const Icons = {
   TaskBoard: TableIcon,
   Release: CloudIcon,
   Users: UserIcon,
-  Permissions: ShieldCheckIcon
+  Permissions: ShieldCheckIcon,
+  Content: NewspaperIcon
 };

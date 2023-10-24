@@ -4,6 +4,7 @@ export const LABELS = {
   NAV_LABEL: 'Разделы',
   NAV_PRODUCTS: 'Товары',
   NAV_ORDERS: 'Заказы',
+  NAV_CONTENT: 'Управление контентом',
   NAV_USERS: 'Пользователи',
   NAV_PERMISSIONS: 'Доступы',
   NAV_CI: 'Релизы',
@@ -24,6 +25,11 @@ export const GROUPS: GroupsType = [
         to: '/admin/orders',
         label: LABELS.NAV_ORDERS,
         icon: 'Orders'
+      },
+      {
+        to: '/admin/content-management',
+        label: LABELS.NAV_CONTENT,
+        icon: 'Content'
       }
     ]
   },

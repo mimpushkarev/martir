@@ -29,7 +29,7 @@ const PriceTag = memo<PriceTagType>(function PriceTag({product, className}) {
             <Ruler className="h-4 w-4" />
           </div>
         </Link>
-        <Button type="primary">Добавить в корзину</Button>
+        <Button theme="primary">Добавить в корзину</Button>
       </div>
     </div>
   );

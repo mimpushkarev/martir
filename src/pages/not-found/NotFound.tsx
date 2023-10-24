@@ -14,7 +14,7 @@ const NotFound = memo(function NotFound() {
           в каталог и выберите подходящий.
         </p>
         <Link to={'/'}>
-          <Button type="primary">
+          <Button theme="primary">
             <p className="px-9 text-paragraph">В каталог!</p>
           </Button>
         </Link>

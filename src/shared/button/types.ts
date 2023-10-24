@@ -3,7 +3,7 @@ import {MergeElementProps} from '_shared/types';
 export type ButtonPropsType = MergeElementProps<
   'button',
   {
-    type?:
+    theme?:
       | 'primary'
       | 'success'
       | 'danger'

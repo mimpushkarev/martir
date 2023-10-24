@@ -44,7 +44,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
       </div>
       <div className="mt-2">
         {ticket.status === 'открыт' && (
-          <Button type="warning">
+          <Button theme="warning">
             <div className="flex items-center gap-2">
               <div className="text-small">{`Открыт ${moment(
                 ticket.status_change,
@@ -54,7 +54,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
           </Button>
         )}
         {ticket.status === 'в работе' && (
-          <Button type="primary">
+          <Button theme="primary">
             <div className="flex items-center gap-2">
               <div className="text-small">{`В работе ${moment(
                 ticket.status_change,
@@ -64,7 +64,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
           </Button>
         )}
         {ticket.status === 'ожидает подтверждения' && (
-          <Button type="warning">
+          <Button theme="warning">
             <div className="flex items-center gap-2">
               <div className="text-small">{`На проверке ${moment(
                 ticket.status_change,
@@ -74,7 +74,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
           </Button>
         )}
         {ticket.status === 'решен' && (
-          <Button type="success">
+          <Button theme="success">
             <div className="flex items-center gap-2">
               <div className="text-small">{`Закрыт ${moment(
                 ticket.status_change,
