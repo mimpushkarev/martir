@@ -11,11 +11,11 @@ const ContentBlockFooter = memo<ContentBlockFooterType>(function ContentBlockFoo
 
   const handleSubmit = () => {
     const contentId = uuidv4();
-    mergeParams({id: contentId});
+    mergeParams({id: contentId, mode: 'show'});
   };
 
   const handleCancel = () => {
-    removeParams(['mode']);
+    removeParams(['mode', 'id']);
   };
 
   const handleEdit = () => {
@@ -62,7 +62,7 @@ const ContentBlockFooter = memo<ContentBlockFooterType>(function ContentBlockFoo
           </div>
         );
     }
-  }, [values.mode]);
+  }, [values.mode, handleSubmit, handleCancel, handleEdit, handleCopy, handleDelete]);
   return <div className="px-10 py-4">{buttonGroup}</div>;
 });
 
