@@ -3,6 +3,7 @@ import useSWR from 'swr';
 
 import {ReleaseCard} from '_entities/release-card';
 import {getCurrent} from '_shared/api/releases-current';
+import {Container} from '_shared/container';
 
 const TEXT_FOR_CARDS = {
   last: 'Последняя сборка',
@@ -14,7 +15,7 @@ const ReleaseCards = memo(function ReleaseCards() {
   const {data} = useSWR('GET_CURRENT_RELEASES', getCurrent);
 
   return (
-    <div className="flex gap-4 overflow-auto bg-common-darkest-gray px-10 pb-4 pt-4">
+    <Container px={3} py={3} className="w-full overflow-auto bg-common-darkest-gray inline-flex gap-4">
       {data && (
         <>
           <div className="flex flex-1 flex-col gap-4">
@@ -64,7 +65,7 @@ const ReleaseCards = memo(function ReleaseCards() {
           </div>
         </>
       )}
-    </div>
+    </Container>
   );
 });
 export {ReleaseCards};

@@ -1,3 +1,4 @@
+import { Model } from '_utils/hooks/useForm';
 import {Props} from 'react-select';
 
 export type OptionType = {
@@ -8,10 +9,10 @@ export type OptionType = {
 export type SelectPropsType = Omit<Props, 'options' | 'name'> &
   (
     | {
-        name: string;
+        name: Model<string>;
       }
     | {
-        name: string[];
+        name: Model<string[]>;
         isMulti: true;
       }
   ) & {

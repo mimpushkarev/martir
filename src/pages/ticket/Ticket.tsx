@@ -12,7 +12,6 @@ import {useForm} from '_utils/hooks/useForm';
 type TicketPageType = FC<Record<string, never>>;
 
 const PAGE_HEADINGS = {
-  style: 'text-bold-2',
   type: 'Тип задачи',
   name: 'Название задачи',
   context: 'Контекст',
@@ -73,25 +72,27 @@ const COMMENTS = [
 const Ticket = memo<TicketPageType>(function Ticket() {
   const {data} = useSWR('GET_RELEASES_lIST', getTicketList);
   const ticket_id = getLastPathURL();
-  const current_ticket = data && data.find(ticket => ticket.id === ticket_id);
-  const {Form} = useForm(current_ticket);
+  const currentTicket = data && data.find(ticket => ticket.id === ticket_id);
+  const {Form} = useForm(currentTicket);
 
   return (
-    <Container px={6} py={3}>
-      {current_ticket ? (
+    <Container px={3} py={3}>
+      {currentTicket ? (
         <Form onSubmit={() => {}}>
           <div className="flex flex-row justify-between gap-8">
             <div className="flex flex-1 flex-col gap-10">
               <div className="flex flex-col gap-4">
                 <p className=" -mb-4 text-small text-common-light-gray">
-                  Создано {moment(current_ticket.created).format('DD.MM.YYYY')}, обновлено{' '}
-                  {moment(current_ticket.status_change, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}
+                  {currentTicket.created && <>Создано {moment(currentTicket.created).format('DD.MM.YYYY')}</>}
+                  {currentTicket.status_change && (
+                    <>, обновлено {moment(currentTicket.status_change, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>
+                  )}
                 </p>
-                <TicketHeader type={current_ticket.type} id={current_ticket.id} />
-                <TicketContent />
+                <TicketHeader type={currentTicket.type} id={currentTicket.id} />
+                <TicketContent ticket={currentTicket} />
               </div>
               <div className="flex flex-col gap-6">
-                <div className={PAGE_HEADINGS.style}>
+                <div className="text-bold-2">
                   {PAGE_HEADINGS.comments} {COMMENTS.length}
                 </div>
                 <div className="flex flex-col gap-4">
@@ -103,7 +104,7 @@ const Ticket = memo<TicketPageType>(function Ticket() {
             </div>
             <div className="w-5/12 self-start">
               <div className="border-l pl-8">
-                <TicketParams ticket={current_ticket} />
+                <TicketParams />
               </div>
             </div>
           </div>

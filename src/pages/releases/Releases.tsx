@@ -6,9 +6,9 @@ import {Container} from '_shared/container';
 
 const ReleasesPage = memo(function ReleasesPage() {
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col">
       <ReleaseCards />
-      <Container px={6} py={3} className="w-full overflow-auto">
+      <Container px={3} py={3} className="w-full overflow-auto">
         <ReleasesTable />
       </Container>
     </div>

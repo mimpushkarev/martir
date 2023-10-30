@@ -9,7 +9,7 @@ const Footer = memo(function Footer() {
   return (
     <Container
       py={5}
-      px={6}
+      px={3}
       className="flex flex-col justify-center gap-12 bg-common-darkest-gray md:flex-row md:gap-4"
     >
       {GROUPS_OF_LINKS.map((data, i) => (

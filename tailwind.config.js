@@ -4,72 +4,72 @@ export default {
   theme: {
     fontSize: {
       header: [
-        '36px',
+        '2.25rem',
         {
-          lineHeight: '54px',
+          lineHeight: '3.375rem',
           fontWeight: '700'
         }
       ],
       'page-title': [
-        '36px',
+        '2.25rem',
         {
-          lineHeight: '56px',
+          lineHeight: '3.5rem',
           fontWeight: '500'
         }
       ],
       subtitle: [
-        '24px',
+        '1.5rem',
         {
-          lineHeight: '36px',
+          lineHeight: '2.25rem',
           fontWeight: '700'
         }
       ],
       paragraph: [
-        '16px',
+        '1rem',
         {
-          lineHeight: '24px',
+          lineHeight: '1.5rem',
           fontWeight: '400'
         }
       ],
       'paragraph-2': [
-        '20px',
+        '1.25rem',
         {
-          lineHeight: '26px',
+          lineHeight: '1.625rem',
           fontWeight: '400'
         }
       ],
       small: [
-        '12px',
+        '0.75rem',
         {
-          lineHeight: '16px',
+          lineHeight: '1rem',
           fontWeight: '400'
         }
       ],
       bold: [
-        '16px',
+        '1rem',
         {
-          lineHeight: '24px',
+          lineHeight: '1.5rem',
           fontWeight: '700'
         }
       ],
       'bold-2': [
-        '20px',
+        '1.25rem',
         {
-          lineHeight: '26px',
+          lineHeight: '1.625rem',
           fontWeight: '700'
         }
       ],
       hero: [
-        '48px',
+        '3rem',
         {
-          lineHeight: '64px',
+          lineHeight: '4rem',
           fontWeight: '700'
         }
       ],
       link: [
-        '16px',
+        '1rem',
         {
-          lineHeight: '24px',
+          lineHeight: '1.5rem',
           fontWeight: '700'
         }
       ]
