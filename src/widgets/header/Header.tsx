@@ -7,20 +7,16 @@ import {LikedItemsAction} from '_features/liked-items-action';
 import {Container} from '_shared/container';
 import {Logo} from '_shared/logo';
 
-type HeaderPropsType = {
-  isAdmin?: boolean;
-};
+type HeaderPropsType = {};
 
-const Header = memo<HeaderPropsType>(function Header({isAdmin}) {
+const Header = memo<HeaderPropsType>(function Header({}) {
   return (
     <Container px={3} py={3} className="flex min-h-[68px] w-full items-center gap-4">
-      {!isAdmin && (
-        <div className="mr-6 inline-block">
-          <Link to="/">
-            <Logo />
-          </Link>
-        </div>
-      )}
+      <div className="mr-6 inline-block">
+        <Link to="/">
+          <Logo />
+        </Link>
+      </div>
       <div className="hidden items-center gap-4 sm:flex">
         <Link to="/about">О Нас</Link>
         <Link to="/faq">FAQ</Link>

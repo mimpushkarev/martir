@@ -23,9 +23,13 @@ type Flatten<T extends object> = object extends T
     : never
   : never;
 
+export type Model<Type> = string & {
+  _res: Type
+}
+
 export function getNamePath<Obj extends {}>() {
   return function <T extends keyof Obj>(val: T) {
-    return val as Obj[T];
+    return val as Model<Obj[T]>;
   };
 }
 

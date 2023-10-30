@@ -1,4 +1,4 @@
-import {memo} from 'react';
+import {memo, useMemo} from 'react';
 import {NavLink} from 'react-router-dom';
 
 import {Icons} from '_shared/consts';
@@ -6,7 +6,9 @@ import {cn} from '_utils/cn';
 
 import {VerticalNavPropsType} from './types';
 
-const VerticalNav = memo<VerticalNavPropsType>(function VerticalNav({groups, className}) {
+const VerticalNav = memo<VerticalNavPropsType>(function VerticalNav({groups, className, search}) {
+  const searchRegexp = useMemo(() => new RegExp(search, 'i'), [search]);
+
   return (
     <div
       className={cn('flex flex-col gap-8 overflow-auto', {
@@ -19,6 +21,10 @@ const VerticalNav = memo<VerticalNavPropsType>(function VerticalNav({groups, cla
           <div className="flex flex-col gap-4">
             {group.links.map(link => {
               const Icon = Icons[link.icon];
+              if (!searchRegexp.test(link.label)) {
+                return null;
+              }
+
               return (
                 <NavLink
                   to={link.to}

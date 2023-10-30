@@ -16,4 +16,5 @@ export type GroupsType = Array<GroupType>;
 export type VerticalNavPropsType = {
   groups: GroupsType;
   className?: string;
+  search?: string;
 };
