@@ -2,7 +2,7 @@ import {Form as F} from 'formik';
 import {memo, useCallback, useMemo} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
-import {createContentBlock} from '_shared/api/content/content-block/post-block';
+import {upsertContentBlock} from '_shared/api/content-block';
 import {Copy} from '_shared/copy';
 import {Input} from '_shared/input';
 import {MDEditor} from '_shared/md-editor';
@@ -38,7 +38,7 @@ const ContentBlockForm = memo<ContentBlockFormType>(function ContentBlockForm({i
   const handleSubmit = useCallback(
     (contentBlock: typeof INITIAL_VALUE) => {
       const blockId = values.id || uuidv4();
-      createContentBlock({
+      upsertContentBlock({
         block_id: blockId,
         name: contentBlock.block_name,
         section_id: '',

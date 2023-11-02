@@ -44,7 +44,9 @@ const TicketSidebar = memo(function TicketSidebar() {
                 <div className="flex flex-col gap-4">
                   <p className="-mb-4 text-small text-common-light-gray">
                     {ticket.create_at && <>Создано {moment(ticket.create_at).format('DD.MM.YYYY')}</>}
-                    {ticket.update_at !== ticket.create_at && <>, обновлено {moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>}
+                    {ticket.update_at !== ticket.create_at && (
+                      <>, обновлено {moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>
+                    )}
                   </p>
                   {values.ticketId !== 'create' && <TicketHeader type={ticket.type} id={ticket.task_id} />}
                   <TicketContent ticket={ticket} />

@@ -18,7 +18,7 @@ const PAGE_HEADINGS = {
 const COMMENTS = [];
 
 const Ticket = memo(function Ticket() {
-  const {data} = useGetTicket('')
+  const {data} = useGetTicket('');
   const ticket = data.data;
   const {Form} = useForm(ticket);
 
@@ -31,9 +31,7 @@ const Ticket = memo(function Ticket() {
               <div className="flex flex-col gap-4">
                 <p className=" -mb-4 text-small text-common-light-gray">
                   {ticket.create_at && <>Создано {moment(ticket.create_at).format('DD.MM.YYYY')}</>}
-                  {ticket.update_at && (
-                    <>, обновлено {moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>
-                  )}
+                  {ticket.update_at && <>, обновлено {moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>}
                 </p>
                 <TicketHeader type={ticket.type} id={ticket.task_id} />
                 <TicketContent ticket={ticket} />

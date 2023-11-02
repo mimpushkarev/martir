@@ -1,4 +1,4 @@
-import {Formik, Form as F, FormikConfig, FormikValues} from 'formik';
+import {Formik, FormikConfig, FormikValues} from 'formik';
 import {useCallback} from 'react';
 
 type Flatten<T extends object> = object extends T

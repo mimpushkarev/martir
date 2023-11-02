@@ -20,7 +20,8 @@ const PARAMS_TEXT = {
   sp: 'Потрачено SP'
 };
 
-const optionsForState = [
+// TODO сделать отдельный компонент StateSelect
+const STATE_OPTIONS = [
   {
     label: 'Открыт',
     value: 'opened'
@@ -39,6 +40,7 @@ const optionsForState = [
   }
 ];
 
+// TODO сделать отдельный компонент UserSelect
 function transformArray(arr: {id: string; image: string; name: string}[]) {
   return arr.map(item => ({
     value: item.id,
@@ -55,7 +57,7 @@ const TicketParams = memo<TicketParamsType>(function TicketParams({}) {
   return (
     <div className="flex flex-col gap-y-5">
       <FormGroup label={PARAMS_TEXT.state}>
-        <Select id="status" name={formPath('status_task')} options={optionsForState} />
+        <Select id="status" name={formPath('status_task')} options={STATE_OPTIONS} />
       </FormGroup>
       <FormGroup label={PARAMS_TEXT.author}>
         <Select name={formPath('author_id')} options={transformPerformersToOptions} />

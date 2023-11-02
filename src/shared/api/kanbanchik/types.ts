@@ -14,24 +14,24 @@ export type TicketResponse = Ticket;
 
 // Upsert
 export type CreateTicketRequestType = {
-  task_id: string,
-  author_id: string,
-  name: string,
+  task_id: string;
+  author_id: string;
+  name: string;
   type: string;
-  status_task: 'opened' | 'progress' | 'review' | 'done',
-  executor_id?: string,
-  context?: string,
-  task?: string,
-  planned_sp?: number,
-  spent_sp?: number,
-  watchers?: string[]
+  status_task: 'opened' | 'progress' | 'review' | 'done';
+  executor_id?: string;
+  context?: string;
+  task?: string;
+  planned_sp?: number;
+  spent_sp?: number;
+  watchers?: string[];
 };
 export type CreateTicketResponse = 'Ok';
 
 // Components
 export type Ticket = {
   task_id: string;
-  status_task: "opened" | "progress" | "review" | "done";
+  status_task: 'opened' | 'progress' | 'review' | 'done';
   type: string;
   name: string;
   content: string;
@@ -40,7 +40,7 @@ export type Ticket = {
   spent_sp: number;
   author_id: string;
   executor_id: string;
-  watchers?: string[]
+  watchers?: string[];
   close_at?: string; // в формате "YYYY-MM-DDTHH:mm:ssZ",
   create_at?: string; // в формате "YYYY-MM-DDTHH:mm:ssZ",
   update_at?: string; // в формате "YYYY-MM-DDTHH:mm:ssZ"

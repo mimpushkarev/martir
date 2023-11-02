@@ -24,11 +24,11 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
           alt={PERFORMERS_AND_DATA[ticket.executor_id]?.name}
           size="xsm"
         />
-        <div className="flex flex-col gap-2 flex-1 w-0">
+        <div className="flex w-0 flex-1 flex-col gap-2">
           <div className="flex items-center justify-between gap-1">
-            <div className="flex gap-1 flex-1 w-0">
+            <div className="flex w-0 flex-1 gap-1">
               {ticket.type && <div className="text-paragraph uppercase">[{ticket.type}]</div>}
-              <div className="text-bold truncate">#{ticket.task_id}</div>
+              <div className="truncate text-bold">#{ticket.task_id}</div>
             </div>
             <div className="flex gap-1">
               <div className="text-small">{ticket.spent_sp ?? 0}</div>
@@ -46,10 +46,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
         {ticket.status_task === 'opened' && (
           <Button theme="warning">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`Открыт ${moment(
-                ticket.update_at,
-                'YYYY-MM-DDTHH:mm:ssZ'
-              ).fromNow()}`}</div>
+              <div className="text-small">{`Открыт ${moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
             </div>
           </Button>
         )}
@@ -76,10 +73,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
         {ticket.status_task === 'done' && (
           <Button theme="success">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`Закрыт ${moment(
-                ticket.update_at,
-                'YYYY-MM-DDTHH:mm:ssZ'
-              ).fromNow()}`}</div>
+              <div className="text-small">{`Закрыт ${moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
             </div>
           </Button>
         )}
