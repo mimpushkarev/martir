@@ -2,7 +2,7 @@ import moment from 'moment';
 import {memo} from 'react';
 import useSWR from 'swr';
 
-import {getList} from '_shared/api/releases-list';
+import {getList} from '_shared/api/releases/releases-list';
 import {Body, Cell, Head, HeaderCell, Row} from '_shared/table';
 import Table from '_shared/table/Table';
 

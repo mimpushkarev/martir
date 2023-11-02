@@ -3,7 +3,7 @@ import {memo, useCallback} from 'react';
 import useSWR from 'swr';
 
 import {TicketContent, TicketHeader, TicketParams} from '_features/ticket-components';
-import {getTicketList} from '_shared/api/ticket-list';
+import {getTicketList} from '_shared/api/tracker/ticket-list';
 import {Button} from '_shared/button';
 import {CREATE_TICKET_DATA} from '_shared/consts/ticket';
 import {Sidebar, SidebarContainer, SidebarContent, SidebarFooter} from '_shared/sidebar';

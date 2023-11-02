@@ -1,24 +1,37 @@
-import {memo} from 'react';
+import {memo, useMemo} from 'react';
+import useSWR from 'swr';
 
+import {getContentBlock} from '_shared/api/content/content-block/get-block';
 import {Copy} from '_shared/copy';
 
 import {ContentBlockFooter} from './ContentBlockFooter';
 import {ShowContentBlockType} from './types';
 
-const BACKEND_VALUE = {
-  block_name: 'БАБОЧКИ',
-  text: 'ЦВЕТОЧКИ'
-};
-
 const ShowContentBlock = memo<ShowContentBlockType>(function ShowContentBlock({id}) {
+  const {data = []} = useSWR(id, id => getContentBlock({block_id: id}));
+  const contentBlockData = useMemo(
+    () => ({
+      blockId: data[0]?.block_id,
+      name: data[0]?.name,
+      content: data[0]?.content,
+      sectionId: data[0]?.section_id
+    }),
+    [data]
+  );
+  console.log(data);
   return (
     <div className="flex flex-1 flex-col justify-between divide-y divide-common-dark-gray">
       <div className="flex w-full flex-1 flex-col gap-6 overflow-auto px-10 py-4">
-        <p className="text-common-light-gray">
-          <Copy value={id}>ID:{id}</Copy>
+        <p className="text-common-gray">
+          <Copy value={id}>
+            <div className="flex gap-1 text-paragraph text-common-gray">
+              <p>ID:</p>
+              <p>{id}</p>
+            </div>
+          </Copy>
         </p>
-        <div className="flex flex-col gap-2">{BACKEND_VALUE.block_name}</div>
-        <div>{BACKEND_VALUE.text}</div>
+        <div className="flex flex-wrap text-header">{contentBlockData.name}</div>
+        <div className="flex text-paragraph-2">{contentBlockData.content}</div>
       </div>
       <ContentBlockFooter />
     </div>

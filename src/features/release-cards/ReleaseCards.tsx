@@ -2,7 +2,7 @@ import {memo} from 'react';
 import useSWR from 'swr';
 
 import {ReleaseCard} from '_entities/release-card';
-import {getCurrent} from '_shared/api/releases-current';
+import {getCurrent} from '_shared/api/releases/releases-current';
 import {Container} from '_shared/container';
 
 const TEXT_FOR_CARDS = {

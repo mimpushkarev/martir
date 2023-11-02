@@ -1,5 +1,4 @@
-import {memo, useMemo} from 'react';
-import {v4 as uuidv4} from 'uuid';
+import {memo, useCallback, useMemo} from 'react';
 
 import {Button} from '_shared/button';
 import {useQuery} from '_utils/hooks/useQuery';
@@ -9,26 +8,21 @@ import {ContentBlockFooterType} from './types';
 const ContentBlockFooter = memo<ContentBlockFooterType>(function ContentBlockFooter() {
   const {mergeParams, removeParams, values} = useQuery({mode: value => value, id: value => value});
 
-  const handleSubmit = () => {
-    const contentId = uuidv4();
-    mergeParams({id: contentId, mode: 'show'});
-  };
-
-  const handleCancel = () => {
+  const handleCancel = useCallback(() => {
     removeParams(['mode', 'id']);
-  };
+  }, [removeParams]);
 
-  const handleEdit = () => {
+  const handleEdit = useCallback(() => {
     mergeParams({mode: 'edit'});
-  };
+  }, [mergeParams]);
 
-  const handleCopy = () => {
+  const handleCopy = useCallback(() => {
     mergeParams({mode: 'copy'});
-  };
+  }, [mergeParams]);
 
-  const handleDelete = () => {
+  const handleDelete = useCallback(() => {
     removeParams(['mode', 'id']);
-  };
+  }, [removeParams]);
 
   const buttonGroup = useMemo(() => {
     switch (values.mode) {
@@ -37,7 +31,7 @@ const ContentBlockFooter = memo<ContentBlockFooterType>(function ContentBlockFoo
       case 'copy':
         return (
           <div className="flex gap-4">
-            <Button theme="primary" type="submit" onClick={handleSubmit}>
+            <Button theme="primary" type="submit">
               Сохранить
             </Button>
             <Button theme="outlined" onClick={handleCancel}>
@@ -62,7 +56,7 @@ const ContentBlockFooter = memo<ContentBlockFooterType>(function ContentBlockFoo
           </div>
         );
     }
-  }, [values.mode, handleSubmit, handleCancel, handleEdit, handleCopy, handleDelete]);
+  }, [values.mode, handleCancel, handleEdit, handleCopy, handleDelete]);
   return <div className="px-10 py-4">{buttonGroup}</div>;
 });
 
