@@ -1,6 +1,6 @@
 import {memo} from 'react';
 
-import {Ticket} from '_shared/api/ticket-list';
+import {Ticket} from '_shared/api/tracker/ticket-list';
 import {Input} from '_shared/input';
 import {Select} from '_shared/select';
 import {getNamePath} from '_utils/hooks/useForm';

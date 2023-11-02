@@ -1,4 +1,4 @@
-import {Ticket} from '_shared/api/ticket-list';
+import {Ticket} from '_shared/api/tracker/ticket-list';
 
 export type TiketCardPropsType = {ticket: Ticket};
 

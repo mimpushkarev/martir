@@ -4,7 +4,7 @@ import useSWR from 'swr';
 
 import {Comment} from '_entities/comment';
 import {TicketContent, TicketHeader, TicketParams} from '_features/ticket-components';
-import {getTicketList} from '_shared/api/ticket-list';
+import {getTicketList} from '_shared/api/tracker/ticket-list';
 import {Container} from '_shared/container';
 import {getLastPathURL} from '_utils/getLastPartURL';
 import {useForm} from '_utils/hooks/useForm';

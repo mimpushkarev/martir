@@ -2,7 +2,7 @@ import {memo, useCallback, useMemo, useState} from 'react';
 import useSWR from 'swr';
 
 import {TicketColumn} from '_entities/ticket-column';
-import {getTicketList} from '_shared/api/ticket-list';
+import {getTicketList} from '_shared/api/tracker/ticket-list';
 import {Button} from '_shared/button';
 import {Container} from '_shared/container';
 import {StatelessInput} from '_shared/input';

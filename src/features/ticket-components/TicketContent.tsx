@@ -1,6 +1,6 @@
 import {memo, useCallback} from 'react';
 
-import {Ticket} from '_shared/api/ticket-list';
+import {Ticket} from '_shared/api/tracker/ticket-list';
 import {Input} from '_shared/input';
 import {MDEditor} from '_shared/md-editor';
 import {copyToClipboard} from '_utils/copy';
