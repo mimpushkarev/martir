@@ -1,8 +1,8 @@
+import {flatten} from 'lodash';
 import {memo, useCallback, useMemo, useState} from 'react';
-import useSWR from 'swr';
 
 import {TicketColumn} from '_entities/ticket-column';
-import {getTicketList} from '_shared/api/tracker/ticket-list';
+import {useGetTicketList} from '_shared/api/kanbanchik';
 import {Button} from '_shared/button';
 import {Container} from '_shared/container';
 import {StatelessInput} from '_shared/input';
@@ -11,13 +11,13 @@ import {useQuery} from '_utils/hooks/useQuery';
 const TicketTable = memo(function TicketTable() {
   const {mergeParams} = useQuery({});
   const [search, setSearch] = useState('');
-  const {data} = useSWR('GET_RELEASES_lIST', getTicketList);
+  const {data} = useGetTicketList();
 
   const dataByStatuses = useMemo(
     () =>
-      (data || []).reduce((acc, item) => {
-        if (item.name.toLowerCase().includes(search.toLowerCase())) {
-          acc[item.status] = [...(acc[item.status] ?? []), item];
+      flatten((data ?? []).map(response => response.data)).reduce((acc, item) => {
+        if (item.name && item.name.toLowerCase().includes(search.toLowerCase())) {
+          (acc[item.status_task] ||= []).push(item);
         }
         return acc;
       }, {}),
@@ -51,10 +51,10 @@ const TicketTable = memo(function TicketTable() {
         </div>
       </Container>
       <Container px={3} className="flex w-full gap-9 overflow-auto">
-        <TicketColumn columnHeading={'Открыты'} tickets={dataByStatuses['открыт']} />
-        <TicketColumn columnHeading={'В работе'} tickets={dataByStatuses['в работе']} />
-        <TicketColumn columnHeading={'На проверке'} tickets={dataByStatuses['ожидает подтверждения']} />
-        <TicketColumn columnHeading={'Закрыты'} tickets={dataByStatuses['решен']} />
+        <TicketColumn columnHeading="Открыт" tickets={dataByStatuses['opened']} />
+        <TicketColumn columnHeading="В работе" tickets={dataByStatuses['progress']} />
+        <TicketColumn columnHeading="На проверке" tickets={dataByStatuses['review']} />
+        <TicketColumn columnHeading="Закрыты" tickets={dataByStatuses['done']} />
       </Container>
     </div>
   );

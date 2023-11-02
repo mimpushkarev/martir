@@ -8,8 +8,9 @@ import {StatelessTextFieldPropsType, TextFieldPropsType} from './types';
 
 export const Input = memo<TextFieldPropsType>(function Input({name, ...props}) {
   const [field, meta] = useField(convertPathToName(name));
+  const {value, ...fieldProps} = field;
 
-  return <StatelessInput {...field} {...props} error={meta.error} />;
+  return <StatelessInput {...fieldProps} {...props} value={value ?? ''} error={meta.error} />;
 });
 
 export const StatelessInput = memo<StatelessTextFieldPropsType>(function Input({className, error, ...props}) {

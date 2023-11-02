@@ -15,7 +15,7 @@ const ReleaseCards = memo(function ReleaseCards() {
   const {data} = useSWR('GET_CURRENT_RELEASES', getCurrent);
 
   return (
-    <Container px={3} py={3} className="w-full overflow-auto bg-common-darkest-gray inline-flex gap-4">
+    <Container px={3} py={3} className="inline-flex w-full gap-4 overflow-auto bg-common-darkest-gray">
       {data && (
         <>
           <div className="flex flex-1 flex-col gap-4">

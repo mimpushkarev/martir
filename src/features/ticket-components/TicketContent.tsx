@@ -1,6 +1,6 @@
 import {memo, useCallback} from 'react';
 
-import {Ticket} from '_shared/api/tracker/ticket-list';
+import {Ticket} from '_shared/api/kanbanchik';
 import {Input} from '_shared/input';
 import {MDEditor} from '_shared/md-editor';
 import {copyToClipboard} from '_utils/copy';
@@ -24,7 +24,7 @@ type TicketContentPropsType = {
 const TicketContent = memo(function TicketContent({ticket}: TicketContentPropsType) {
   const handleCopyType = useCallback(() => copyToClipboard(ticket.type), [ticket.type]);
   const handleCopyName = useCallback(() => copyToClipboard(ticket.name), [ticket.name]);
-  const handleCopyContext = useCallback(() => copyToClipboard(ticket.context), [ticket.context]);
+  const handleCopyContext = useCallback(() => copyToClipboard(ticket.content), [ticket.content]);
   const handleCopyTask = useCallback(() => copyToClipboard(ticket.task), [ticket.task]);
 
   return (
@@ -47,7 +47,7 @@ const TicketContent = memo(function TicketContent({ticket}: TicketContentPropsTy
         <WithCommonActions className="items-center" onCopy={handleCopyContext}>
           <div className="text-bold-2">{PAGE_HEADINGS.context}</div>
         </WithCommonActions>
-        <MDEditor name={formPath('context')} placeholder="Введите текст..." />
+        <MDEditor name={formPath('content')} placeholder="Введите текст..." />
       </div>
       <div className="flex flex-col gap-6">
         <WithCommonActions className="items-center" onCopy={handleCopyTask}>

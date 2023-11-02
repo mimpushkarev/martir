@@ -27,6 +27,7 @@ const SelectComponent = memo<SelectPropsType>(function SelectComponent({name, op
   return (
     <Select
       {...props}
+      placeholder={props.placeholder || ''}
       value={selectedValues}
       options={options}
       name={field.name}

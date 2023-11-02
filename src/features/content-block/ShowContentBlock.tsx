@@ -1,14 +1,13 @@
 import {memo, useMemo} from 'react';
-import useSWR from 'swr';
 
-import {getContentBlock} from '_shared/api/content/content-block/get-block';
+import {useGetContentBlock} from '_shared/api/content-block';
 import {Copy} from '_shared/copy';
 
 import {ContentBlockFooter} from './ContentBlockFooter';
 import {ShowContentBlockType} from './types';
 
 const ShowContentBlock = memo<ShowContentBlockType>(function ShowContentBlock({id}) {
-  const {data = []} = useSWR(id, id => getContentBlock({block_id: id}));
+  const {data = []} = useGetContentBlock(id);
   const contentBlockData = useMemo(
     () => ({
       blockId: data[0]?.block_id,
@@ -18,7 +17,7 @@ const ShowContentBlock = memo<ShowContentBlockType>(function ShowContentBlock({i
     }),
     [data]
   );
-  console.log(data);
+
   return (
     <div className="flex flex-1 flex-col justify-between divide-y divide-common-dark-gray">
       <div className="flex w-full flex-1 flex-col gap-6 overflow-auto px-10 py-4">

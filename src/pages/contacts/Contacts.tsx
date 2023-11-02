@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useCallback, useState} from 'react';
 
 import {FeedbackForm} from '_features/feedback-form';
 import {Accordeon} from '_shared/accordeon';
@@ -8,9 +8,18 @@ import {Copy} from '_shared/copy';
 import {Link} from '_shared/link';
 
 function FAQ() {
-  const [_isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleOpenModal = useCallback(() => {
+    setIsOpen(true);
+  }, [setIsOpen]);
+
+  const handleCloseModal = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
   return (
-    <Container px={6} className="py-24" width="large">
+    <Container px={3} className="py-24" width="large">
       <h1 className="text-page-title uppercase">Контакты</h1>
       <div className="mt-10 text-paragraph [&>*]:mb-6">
         <Accordeon title="Информация по товарам" opened>
@@ -77,21 +86,11 @@ function FAQ() {
       <h2 className="mb-4 mt-10 text-page-title uppercase">Остались вопросы?</h2>
       <div className="flex items-center justify-between">
         <p>Заполните форму обратной связи и мы свяжемся с Вами.</p>
-        <Button
-          type="primary"
-          onClick={() => {
-            setIsOpen(true);
-          }}
-        >
+        <Button theme="primary" onClick={handleOpenModal}>
           Заполнить!
         </Button>
       </div>
-      <FeedbackForm
-        isOpen={_isOpen}
-        onClose={() => {
-          setIsOpen(false);
-        }}
-      />
+      <FeedbackForm isOpen={isOpen} onClose={handleCloseModal} />
     </Container>
   );
 }

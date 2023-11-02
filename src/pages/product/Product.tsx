@@ -72,7 +72,7 @@ const CONTENT_FOR_PRODUCT_PAGE = {
 
 const Product = memo<FC>(function Product() {
   return (
-    <Container px={6} py={6} className="flex flex-col gap-16">
+    <Container px={3} py={6} className="flex flex-col gap-16">
       <Slider images={CONTENT_FOR_PRODUCT_PAGE.product_photos} duration={3000} className=" h-[500px]" />
       <PriceTag product={CONTENT_FOR_PRODUCT_PAGE.product_info} />
       <div className="flex w-2/3 flex-col gap-10 text-paragraph">

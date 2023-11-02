@@ -47,14 +47,14 @@ const plugins = [
 ];
 
 const MDEditor = memo<MDEditorPropsType>(function MDEditor({name, className, ...props}) {
-  const [field] = useField<string>(name);
+  const [field, _m, helpers] = useField<string>(name);
 
   return (
     <MDXEditor
       {...props}
       className={cn('dark-theme prose prose-stone prose-invert', {[className]: !!className})}
       markdown={field.value ?? ''}
-      onChange={field.onChange}
+      onChange={helpers.setValue}
       plugins={plugins}
     />
   );

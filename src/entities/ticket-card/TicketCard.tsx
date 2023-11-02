@@ -12,26 +12,26 @@ import {TiketCardPropsType} from './types';
 
 const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
   const isOldEnough = useMemo(
-    () => moment(ticket.status_change, 'YYYY-MM-DDTHH:mm:ssZ').isBefore(moment().subtract(3, 'months')),
-    [ticket.status_change]
+    () => moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').isBefore(moment().subtract(3, 'months')),
+    [ticket.update_at]
   );
 
   return (
-    <OutlinedCard className="min-w-[300px]">
+    <OutlinedCard className="w-[300px]">
       <div className="flex w-full gap-2">
         <Avatar
-          src={PERFORMERS_AND_DATA[ticket.performer].image}
-          alt={PERFORMERS_AND_DATA[ticket.performer].name}
+          src={PERFORMERS_AND_DATA[ticket.executor_id]?.image}
+          alt={PERFORMERS_AND_DATA[ticket.executor_id]?.name}
           size="xsm"
         />
-        <div className="flex w-full flex-col gap-2">
-          <div className="flex items-center justify-between">
-            <div className="flex gap-1">
-              <div className="text-paragraph uppercase">[{ticket.type}]</div>
-              <div className="text-bold">#{ticket.id}</div>
+        <div className="flex w-0 flex-1 flex-col gap-2">
+          <div className="flex items-center justify-between gap-1">
+            <div className="flex w-0 flex-1 gap-1">
+              {ticket.type && <div className="text-paragraph uppercase">[{ticket.type}]</div>}
+              <div className="truncate text-bold">#{ticket.task_id}</div>
             </div>
             <div className="flex gap-1">
-              <div className="text-small">{ticket.sp_rated || ticket.sp}</div>
+              <div className="text-small">{ticket.spent_sp ?? 0}</div>
               <Clock
                 className={cn('aspect-square w-4', {
                   'text-danger-normal': isOldEnough
@@ -43,43 +43,37 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
         </div>
       </div>
       <div className="mt-2">
-        {ticket.status === 'открыт' && (
+        {ticket.status_task === 'opened' && (
           <Button theme="warning">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`Открыт ${moment(
-                ticket.status_change,
-                'YYYY-MM-DDTHH:mm:ssZ'
-              ).fromNow()}`}</div>
+              <div className="text-small">{`Открыт ${moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
             </div>
           </Button>
         )}
-        {ticket.status === 'в работе' && (
+        {ticket.status_task === 'progress' && (
           <Button theme="primary">
             <div className="flex items-center gap-2">
               <div className="text-small">{`В работе ${moment(
-                ticket.status_change,
+                ticket.update_at,
                 'YYYY-MM-DDTHH:mm:ssZ'
               ).fromNow()}`}</div>
             </div>
           </Button>
         )}
-        {ticket.status === 'ожидает подтверждения' && (
+        {ticket.status_task === 'review' && (
           <Button theme="warning">
             <div className="flex items-center gap-2">
               <div className="text-small">{`На проверке ${moment(
-                ticket.status_change,
+                ticket.update_at,
                 'YYYY-MM-DDTHH:mm:ssZ'
               ).fromNow()}`}</div>
             </div>
           </Button>
         )}
-        {ticket.status === 'решен' && (
+        {ticket.status_task === 'done' && (
           <Button theme="success">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`Закрыт ${moment(
-                ticket.status_change,
-                'YYYY-MM-DDTHH:mm:ssZ'
-              ).fromNow()}`}</div>
+              <div className="text-small">{`Закрыт ${moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
             </div>
           </Button>
         )}

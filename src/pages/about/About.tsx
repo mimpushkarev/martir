@@ -2,7 +2,7 @@ import {Container} from '_shared/container';
 
 function About() {
   return (
-    <Container px={6} className="py-24" width="small">
+    <Container px={3} className="py-24" width="small">
       <h1 className="text-center text-page-title uppercase">О нас</h1>
       <div className="mt-10 text-paragraph [&>*]:mb-6">
         <p>

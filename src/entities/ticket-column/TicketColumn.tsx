@@ -26,7 +26,7 @@ const TicketColumn = memo<TicketColumnPropsType>(function TicketColumn({columnHe
         </div>
         <div className="flex flex-col gap-2">
           {tickets.map(ticket => (
-            <Link key={ticket.id} onClick={handleOpenSidebar(ticket.id)} to={ticket.id}>
+            <Link key={ticket.task_id} onClick={handleOpenSidebar(ticket.task_id)} to={ticket.task_id}>
               <TicketCard ticket={ticket} />
             </Link>
           ))}
