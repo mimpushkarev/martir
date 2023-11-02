@@ -1,5 +1,6 @@
-import { Model } from '_utils/hooks/useForm';
 import {Props} from 'react-select';
+
+import {Model} from '_utils/hooks/useForm';
 
 export type OptionType = {
   label: string;

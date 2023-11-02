@@ -1,3 +1,3 @@
-import {Ticket} from '_shared/api/tracker/ticket-list';
+import {Ticket} from '_shared/api/kanbanchik';
 
 export type TicketColumnPropsType = {columnHeading: string; tickets: Array<Ticket>};

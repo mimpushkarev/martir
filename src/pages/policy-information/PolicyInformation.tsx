@@ -3,7 +3,7 @@ import {Container} from '_shared/container';
 
 function PolicyInformation() {
   return (
-    <Container px={6} className="py-24" width="large">
+    <Container px={3} className="py-24" width="large">
       <h1 className="text-page-title uppercase">Политика конфиденциальности</h1>
       <div className="mt-10 text-paragraph [&>*]:mb-6">
         <Accordeon title="Сбор и использование персональных данных" opened>

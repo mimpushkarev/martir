@@ -1,4 +1,4 @@
-import {Formik, FormikConfig, FormikValues} from 'formik';
+import {Formik, Form as F, FormikConfig, FormikValues} from 'formik';
 import {useCallback} from 'react';
 
 type Flatten<T extends object> = object extends T
@@ -24,8 +24,8 @@ type Flatten<T extends object> = object extends T
   : never;
 
 export type Model<Type> = string & {
-  _res: Type
-}
+  _res: Type;
+};
 
 export function getNamePath<Obj extends {}>() {
   return function <T extends keyof Obj>(val: T) {

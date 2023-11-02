@@ -3,7 +3,7 @@ import {Container} from '_shared/container';
 
 function LegalInformation() {
   return (
-    <Container px={6} className="py-24" width="large">
+    <Container px={3} className="py-24" width="large">
       <h1 className="text-page-title uppercase">Правовая информация</h1>
       <div className="mt-10 text-paragraph [&>*]:mb-6">
         <Accordeon title="Авторские права" opened>

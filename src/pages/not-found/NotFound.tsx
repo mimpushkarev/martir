@@ -6,7 +6,7 @@ import {Link} from '_shared/link';
 
 const NotFound = memo(function NotFound() {
   return (
-    <Container className="flex items-center justify-center ">
+    <Container px={3} className="flex items-center justify-center ">
       <div className="mt-[100px] flex w-1/3 flex-col items-center">
         <h1 className="mb-10 text-page-title uppercase">Ой, товар не найден...</h1>
         <p className="mb-6 text-paragraph-2">

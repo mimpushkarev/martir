@@ -1,42 +1,53 @@
+import {assign} from 'lodash';
 import moment from 'moment';
 import {memo, useCallback} from 'react';
-import useSWR from 'swr';
+import {v4 as uuidv4} from 'uuid';
 
 import {TicketContent, TicketHeader, TicketParams} from '_features/ticket-components';
-import {getTicketList} from '_shared/api/tracker/ticket-list';
-import {Button} from '_shared/button';
-import {CREATE_TICKET_DATA} from '_shared/consts/ticket';
-import {Sidebar, SidebarContainer, SidebarContent, SidebarFooter} from '_shared/sidebar';
+import {upsertTicket, useGetTicket} from '_shared/api/kanbanchik';
+import {Sidebar, SidebarContainer, SidebarContent} from '_shared/sidebar';
 import {useForm} from '_utils/hooks/useForm';
 import {useQuery} from '_utils/hooks/useQuery';
 
+import {TicketFooter} from './TicketFooter';
+
 const TicketSidebar = memo(function TicketSidebar() {
-  const {data} = useSWR('GET_RELEASES_lIST', getTicketList);
-  const {removeParams, values} = useQuery({ticketId: value => value});
-  const currentTicket =
-    values.ticketId === 'create' ? CREATE_TICKET_DATA : data && data.find(ticket => ticket.id === values.ticketId);
-  const {Form} = useForm(currentTicket);
+  const {values, removeParams} = useQuery({ticketId: value => value});
+  const {data, isLoading} = useGetTicket(values.ticketId);
+  const ticket = data?.data;
+  const {Form} = useForm(ticket);
 
   const handleCloseSidebar = useCallback(() => {
     removeParams(['ticketId']);
   }, [removeParams]);
 
+  const handleUpsertTicket = useCallback(
+    (formTicket: typeof ticket) => {
+      upsertTicket(
+        assign({}, formTicket, {
+          task_id: values.ticketId === 'create' ? uuidv4() : formTicket.task_id,
+          planned_sp: formTicket.planned_sp ? Number(formTicket.planned_sp) : undefined,
+          spent_sp: formTicket.spent_sp ? Number(formTicket.spent_sp) : undefined
+        })
+      );
+    },
+    [values.ticketId]
+  );
+
   return (
-    <Sidebar isOpen={!!values.ticketId} onClose={handleCloseSidebar}>
-      <SidebarContent>
-        <SidebarContainer>
-          {currentTicket ? (
-            <Form onSubmit={() => {}}>
+    <Form onSubmit={handleUpsertTicket}>
+      <Sidebar isOpen={!!values.ticketId} onClose={handleCloseSidebar}>
+        <SidebarContent>
+          <SidebarContainer>
+            {ticket ? (
               <div className="flex flex-1 flex-col gap-10">
                 <div className="flex flex-col gap-4">
                   <p className="-mb-4 text-small text-common-light-gray">
-                    {currentTicket.created && <>Создано {moment(currentTicket.created).format('DD.MM.YYYY')}</>}
-                    {currentTicket.status_change && (
-                      <>, обновлено {moment(currentTicket.status_change, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>
-                    )}
+                    {ticket.create_at && <>Создано {moment(ticket.create_at).format('DD.MM.YYYY')}</>}
+                    {ticket.update_at !== ticket.create_at && <>, обновлено {moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>}
                   </p>
-                  {values.ticketId !== 'create' && <TicketHeader type={currentTicket.type} id={currentTicket.id} />}
-                  <TicketContent ticket={currentTicket} />
+                  {values.ticketId !== 'create' && <TicketHeader type={ticket.type} id={ticket.task_id} />}
+                  <TicketContent ticket={ticket} />
                 </div>
 
                 <TicketParams />
@@ -53,20 +64,14 @@ const TicketSidebar = memo(function TicketSidebar() {
                     </div> */}
                 </div>
               </div>
-            </Form>
-          ) : (
-            <div>Задача не найдена</div>
-          )}
-        </SidebarContainer>
-      </SidebarContent>
-      <SidebarFooter>
-        <SidebarContainer>
-          <Button theme="primary" onClick={undefined}>
-            Сохранить
-          </Button>
-        </SidebarContainer>
-      </SidebarFooter>
-    </Sidebar>
+            ) : (
+              <div>{isLoading ? 'Получаем данные...' : 'Задача не найдена'}</div>
+            )}
+          </SidebarContainer>
+        </SidebarContent>
+        <TicketFooter />
+      </Sidebar>
+    </Form>
   );
 });
 
