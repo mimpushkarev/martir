@@ -11,16 +11,17 @@ const ContentBlock = memo(function ContentBlock() {
   const content = useMemo(() => {
     switch (values.mode) {
       case 'create':
-      case 'edit':
-      case 'copy':
+        return <ContentBlockForm id={undefined} mode={values.mode} />;
+        case 'edit':
+        case 'copy':
         return <ContentBlockForm id={values.id} mode={values.mode} />;
       case 'show':
         return <ShowContentBlock id={values.id} />;
       default:
         return (
-          <div>
+          <div className="px-10 py-4">
             <p className="mb-2 text-header">Создавайте и управляйте контентом</p>
-            <p>Создайте блоки для управления контентом в сторонних системах</p>
+            <p>Создайте блоки для управления контентом во внутренних и сторонних системах</p>
           </div>
         );
     }

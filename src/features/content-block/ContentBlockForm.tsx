@@ -2,7 +2,7 @@ import {Form as F} from 'formik';
 import {memo, useCallback, useMemo} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
-import {upsertContentBlock} from '_shared/api/content-block';
+import {upsertContentBlock, useGetContentBlock} from '_shared/api/content-block';
 import {Copy} from '_shared/copy';
 import {Input} from '_shared/input';
 import {MDEditor} from '_shared/md-editor';
@@ -13,17 +13,15 @@ import {ContentBlockFooter} from './ContentBlockFooter';
 import {ContentBlockFormType} from './types';
 
 const INITIAL_VALUE = {
-  block_name: '',
-  text: ''
-};
-
-const BACKEND_VALUE = {
-  block_name: 'БАБОЧКИ',
-  text: 'ЦВЕТОЧКИ'
+  block_id: '', //id контент-блока
+  content: '', //содержимое контент блока
+  name: '', //имя контент блока
+  section_id: '' //id секции, к которой пренадлежит контент блок
 };
 
 const ContentBlockForm = memo<ContentBlockFormType>(function ContentBlockForm({id, mode}) {
-  const {getName, Form} = useForm(id ? BACKEND_VALUE : INITIAL_VALUE);
+  const {data} = useGetContentBlock(id);
+  const {getName, Form} = useForm(data?.[0] || INITIAL_VALUE);
   const {mergeParams, values} = useQuery({mode: value => value, id: value => value});
 
   const blockTitle = useMemo(() => {
@@ -40,9 +38,9 @@ const ContentBlockForm = memo<ContentBlockFormType>(function ContentBlockForm({i
       const blockId = values.id || uuidv4();
       upsertContentBlock({
         block_id: blockId,
-        name: contentBlock.block_name,
+        name: contentBlock.name,
         section_id: '',
-        content: contentBlock.text
+        content: contentBlock.content
       }).then(() => {
         mergeParams({id: blockId, mode: 'show'});
       });
@@ -57,9 +55,15 @@ const ContentBlockForm = memo<ContentBlockFormType>(function ContentBlockForm({i
             <p className="text-common-light-gray">{blockTitle}</p>
             <div className="flex flex-col gap-2">
               <label htmlFor="block_name">Название контент-блока</label>
-              <Input id="block_name" name={getName('block_name')} placeholder="Введите название контент-блока" />
+              <Input
+                className="w-2/5"
+                id="block_name"
+                name={getName('name')}
+                placeholder="Введите название контент-блока"
+                required={true}
+              />
             </div>
-            <MDEditor name={getName('text')} placeholder="Введите текст..." />
+            <MDEditor name={getName('content')} placeholder="Введите текст..." />
           </div>
           <ContentBlockFooter />
         </div>
