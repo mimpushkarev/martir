@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import {memo} from 'react';
 
 import {Button} from '_shared/button';
@@ -35,7 +35,7 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
             </div>
             <div className="flex flex-row gap-2">
               <div className="whitespace-nowrap">Время сборки версии:</div>
-              <div>{moment(paragraph.date).format('YYYY.MM.DD HH:mm')}</div>
+              <div>{dayjs(paragraph.date).format('YYYY.MM.DD HH:mm')}</div>
             </div>
           </div>
         </div>

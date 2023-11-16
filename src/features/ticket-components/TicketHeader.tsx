@@ -1,5 +1,7 @@
 import CopyIcon from '@heroicons/react/outline/DuplicateIcon';
+import ExternalIcon from '@heroicons/react/outline/ExternalLinkIcon';
 import {memo, useCallback} from 'react';
+import {Link} from 'react-router-dom';
 
 import {HoverIcon} from '_shared/hover-icon';
 import {copyToClipboard} from '_utils/copy';
@@ -12,13 +14,20 @@ const TicketHeader = memo<TicketHeaderType>(function TicketHeader({type, id}) {
   }, [type, id]);
 
   return (
-    <div className="flex items-center gap-6">
+    <div className="flex items-center gap-4">
       <div className="truncate text-page-title uppercase">
         [{type ?? ''}] #{id}
       </div>
-      <HoverIcon onClick={handleCopyToClipboard}>
-        <CopyIcon className="h-6 w-6" />
-      </HoverIcon>
+      <div className="flex items-center gap-2">
+        <HoverIcon onClick={handleCopyToClipboard}>
+          <CopyIcon className="h-6 w-6" />
+        </HoverIcon>
+        <Link to={id} target="_blank">
+          <HoverIcon>
+            <ExternalIcon className="h-6 w-6" />
+          </HoverIcon>
+        </Link>
+      </div>
     </div>
   );
 });

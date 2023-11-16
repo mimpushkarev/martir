@@ -9,7 +9,7 @@ import {Logo} from '_shared/logo';
 
 type HeaderPropsType = {};
 
-const Header = memo<HeaderPropsType>(function Header({}) {
+const Header = memo<HeaderPropsType>(function Header() {
   return (
     <Container px={3} py={3} className="flex min-h-[68px] w-full items-center gap-4">
       <div className="mr-6 inline-block">

@@ -53,7 +53,7 @@ const transformPerformersToOptions = transformArray(PERFORMERS_ARRAY);
 
 type TicketParamsType = {};
 
-const TicketParams = memo<TicketParamsType>(function TicketParams({}) {
+const TicketParams = memo<TicketParamsType>(function TicketParams() {
   return (
     <div className="flex flex-col gap-y-5">
       <FormGroup label={PARAMS_TEXT.state}>
