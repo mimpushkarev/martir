@@ -1,5 +1,6 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import {memo} from 'react';
+import {useParams} from 'react-router-dom';
 
 import {Comment} from '_entities/comment';
 import {TicketContent, TicketHeader, TicketParams} from '_features/ticket-components';
@@ -18,8 +19,9 @@ const PAGE_HEADINGS = {
 const COMMENTS = [];
 
 const Ticket = memo(function Ticket() {
-  const {data} = useGetTicket('');
-  const ticket = data.data;
+  const {ticket_id} = useParams();
+  const {data} = useGetTicket(ticket_id);
+  const ticket = data?.data;
   const {Form} = useForm(ticket);
 
   return (
@@ -27,11 +29,11 @@ const Ticket = memo(function Ticket() {
       {ticket ? (
         <Form onSubmit={() => {}}>
           <div className="flex flex-row justify-between gap-8">
-            <div className="flex flex-1 flex-col gap-10">
+            <div className="flex w-7/12 flex-1 flex-col gap-10">
               <div className="flex flex-col gap-4">
                 <p className=" -mb-4 text-small text-common-light-gray">
-                  {ticket.create_at && <>Создано {moment(ticket.create_at).format('DD.MM.YYYY')}</>}
-                  {ticket.update_at && <>, обновлено {moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>}
+                  {ticket.create_at && <>Создано {dayjs(ticket.create_at).format('DD.MM.YYYY')}</>}
+                  {ticket.update_at && <>, обновлено {dayjs(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>}
                 </p>
                 <TicketHeader type={ticket.type} id={ticket.task_id} />
                 <TicketContent ticket={ticket} />

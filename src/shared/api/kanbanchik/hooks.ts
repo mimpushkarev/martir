@@ -17,8 +17,10 @@ const getKey = (pageIndex: number, previousPageData: Array<unknown>) => {
   if (previousPageData && !previousPageData.length) return null;
   return {name: 'GET_TICKET_LIST', offset: pageIndex};
 };
+
 const swrOptions = {
-  revalidateFirstPage: false
+  revalidateFirstPage: false,
+  revalidateOnFocus: false
 };
 
 export const useGetTicketList = () => {
@@ -27,7 +29,9 @@ export const useGetTicketList = () => {
 
 // Get ticket
 export const useGetTicket = (id: string) => {
-  return useSWR({name: 'GET_TICKET', id}, async ({id: task_id}) =>
-    task_id === 'create' ? {data: DEFAULT_TICKET} : await getTicket({task_id})
+  return useSWR(
+    {name: 'GET_TICKET', id},
+    async ({id: task_id}) => (task_id === 'create' ? {data: DEFAULT_TICKET} : await getTicket({task_id})),
+    swrOptions
   );
 };

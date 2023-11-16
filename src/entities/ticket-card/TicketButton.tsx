@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import {memo} from 'react';
 
 import {Button} from '_shared/button';
@@ -10,7 +10,7 @@ const TicketButton = memo<TicketButtonPropsType>(function TicketButton({
   status_change,
   isStatusChangeTimeShown
 }) {
-  const changeStatusFromNow = !isStatusChangeTimeShown ? moment(status_change).fromNow() : '';
+  const changeStatusFromNow = !isStatusChangeTimeShown ? dayjs(status_change).fromNow() : '';
   return (
     <div>
       {status === 'открыт' && (

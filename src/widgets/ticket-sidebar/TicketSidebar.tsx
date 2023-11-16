@@ -1,5 +1,5 @@
+import dayjs from 'dayjs';
 import {assign} from 'lodash';
-import moment from 'moment';
 import {memo, useCallback} from 'react';
 import {v4 as uuidv4} from 'uuid';
 
@@ -12,24 +12,30 @@ import {useQuery} from '_utils/hooks/useQuery';
 import {TicketFooter} from './TicketFooter';
 
 const TicketSidebar = memo(function TicketSidebar() {
-  const {values, removeParams} = useQuery({ticketId: value => value});
+  const {values, removeParams, mergeParams} = useQuery({ticketId: value => value});
   const {data, isLoading} = useGetTicket(values.ticketId);
   const ticket = data?.data;
   const {Form} = useForm(ticket);
 
   const handleCloseSidebar = useCallback(() => {
-    removeParams(['ticketId']);
+    const result = confirm('Форма имеет несохраненные изменения, закрыть сайдбар?');
+    if (result) {
+      removeParams(['ticketId']);
+    }
   }, [removeParams]);
 
   const handleUpsertTicket = useCallback(
-    (formTicket: typeof ticket) => {
-      upsertTicket(
+    async (formTicket: typeof ticket) => {
+      const id = values.ticketId === 'create' ? uuidv4() : formTicket.task_id;
+      await upsertTicket(
         assign({}, formTicket, {
-          task_id: values.ticketId === 'create' ? uuidv4() : formTicket.task_id,
+          task_id: id,
           planned_sp: formTicket.planned_sp ? Number(formTicket.planned_sp) : undefined,
           spent_sp: formTicket.spent_sp ? Number(formTicket.spent_sp) : undefined
         })
       );
+
+      mergeParams({ticketId: id});
     },
     [values.ticketId]
   );
@@ -43,9 +49,9 @@ const TicketSidebar = memo(function TicketSidebar() {
               <div className="flex flex-1 flex-col gap-10">
                 <div className="flex flex-col gap-4">
                   <p className="-mb-4 text-small text-common-light-gray">
-                    {ticket.create_at && <>Создано {moment(ticket.create_at).format('DD.MM.YYYY')}</>}
+                    {ticket.create_at && <>Создано {dayjs(ticket.create_at).format('DD.MM.YYYY')}</>}
                     {ticket.update_at !== ticket.create_at && (
-                      <>, обновлено {moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>
+                      <>, обновлено {dayjs(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}</>
                     )}
                   </p>
                   {values.ticketId !== 'create' && <TicketHeader type={ticket.type} id={ticket.task_id} />}

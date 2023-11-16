@@ -3,10 +3,30 @@ import {memo, useCallback} from 'react';
 import {Ticket} from '_shared/api/kanbanchik';
 import {Input} from '_shared/input';
 import {MDEditor} from '_shared/md-editor';
+import {Select} from '_shared/select';
 import {copyToClipboard} from '_utils/copy';
 import {getNamePath} from '_utils/hooks/useForm';
 
 import {WithCommonActions} from './WithCommonActions';
+
+const TASK_TYPE_OPTIONS = [
+  {
+    label: 'Фронтенд',
+    value: 'frontend'
+  },
+  {
+    label: 'Дизайн',
+    value: 'design'
+  },
+  {
+    label: 'Бизнесс',
+    value: 'business'
+  },
+  {
+    label: 'Бэкэнд',
+    value: 'backend'
+  }
+];
 
 const formPath = getNamePath<Ticket>();
 
@@ -33,7 +53,7 @@ const TicketContent = memo(function TicketContent({ticket}: TicketContentPropsTy
         <div className="flex flex-col gap-2">
           <div>{PAGE_HEADINGS.type}</div>
           <WithCommonActions onCopy={handleCopyType}>
-            <Input name={formPath('type')} className="w-[320px]" />
+            <Select name={formPath('type')} className="w-[320px]" options={TASK_TYPE_OPTIONS} />
           </WithCommonActions>
         </div>
         <div className="flex flex-col gap-2">

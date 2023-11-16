@@ -1,4 +1,4 @@
-import moment from 'moment';
+import dayjs from 'dayjs';
 import {memo} from 'react';
 import useSWR from 'swr';
 
@@ -29,7 +29,7 @@ const ReleasesTable = memo(function ReleasesTable() {
                 </a>
               </div>
             </Cell>
-            <Cell>{moment(release.published_at).format('YYYY.MM.DD HH:mm')}</Cell>
+            <Cell>{dayjs(release.published_at).format('YYYY.MM.DD HH:mm')}</Cell>
           </Row>
         ))}
       </Body>

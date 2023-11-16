@@ -1,5 +1,5 @@
 import Clock from '@heroicons/react/outline/ClockIcon';
-import moment from 'moment';
+import dayjs from 'dayjs';
 import {memo, useMemo} from 'react';
 
 import {Avatar} from '_shared/avatar';
@@ -12,7 +12,7 @@ import {TiketCardPropsType} from './types';
 
 const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
   const isOldEnough = useMemo(
-    () => moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').isBefore(moment().subtract(3, 'months')),
+    () => dayjs(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').isBefore(dayjs().subtract(3, 'months')),
     [ticket.update_at]
   );
 
@@ -31,7 +31,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
               <div className="truncate text-bold">#{ticket.task_id}</div>
             </div>
             <div className="flex gap-1">
-              <div className="text-small">{ticket.spent_sp ?? 0}</div>
+              <div className="text-small">{ticket.planned_sp ?? 0}</div>
               <Clock
                 className={cn('aspect-square w-4', {
                   'text-danger-normal': isOldEnough
@@ -46,14 +46,14 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
         {ticket.status_task === 'opened' && (
           <Button theme="warning">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`Открыт ${moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
+              <div className="text-small">{`Открыт ${dayjs(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
             </div>
           </Button>
         )}
         {ticket.status_task === 'progress' && (
           <Button theme="primary">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`В работе ${moment(
+              <div className="text-small">{`В работе ${dayjs(
                 ticket.update_at,
                 'YYYY-MM-DDTHH:mm:ssZ'
               ).fromNow()}`}</div>
@@ -63,7 +63,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
         {ticket.status_task === 'review' && (
           <Button theme="warning">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`На проверке ${moment(
+              <div className="text-small">{`На проверке ${dayjs(
                 ticket.update_at,
                 'YYYY-MM-DDTHH:mm:ssZ'
               ).fromNow()}`}</div>
@@ -73,7 +73,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
         {ticket.status_task === 'done' && (
           <Button theme="success">
             <div className="flex items-center gap-2">
-              <div className="text-small">{`Закрыт ${moment(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
+              <div className="text-small">{`Закрыт ${dayjs(ticket.update_at, 'YYYY-MM-DDTHH:mm:ssZ').fromNow()}`}</div>
             </div>
           </Button>
         )}
