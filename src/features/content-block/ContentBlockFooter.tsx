@@ -30,11 +30,9 @@ const ContentBlockFooter = memo<ContentBlockFooterType>(function ContentBlockFoo
       case 'edit':
       case 'copy':
         return (
-          <div className="flex gap-4">
-            <Button theme="primary" type="submit">
-              Сохранить
-            </Button>
-            <Button theme="outlined" onClick={handleCancel}>
+          <div className="flex gap-2">
+            <Button>Сохранить</Button>
+            <Button type="default" onClick={handleCancel}>
               Отменить
             </Button>
           </div>
@@ -42,15 +40,13 @@ const ContentBlockFooter = memo<ContentBlockFooterType>(function ContentBlockFoo
       case 'show':
         return (
           <div className="flex justify-between">
-            <div className="flex gap-4">
-              <Button theme="primary" onClick={handleEdit}>
-                Редактировать
-              </Button>
-              <Button theme="outlined" onClick={handleCopy}>
+            <div className="flex gap-2">
+              <Button onClick={handleEdit}>Редактировать</Button>
+              <Button type="default" onClick={handleCopy}>
                 Копировать
               </Button>
             </div>
-            <Button theme="danger" onClick={handleDelete}>
+            <Button onClick={handleDelete} danger>
               Удалить
             </Button>
           </div>

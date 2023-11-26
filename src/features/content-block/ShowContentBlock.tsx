@@ -23,10 +23,7 @@ const ShowContentBlock = memo<ShowContentBlockType>(function ShowContentBlock({i
       <div className="flex w-full flex-1 flex-col gap-6 overflow-auto px-10 py-4">
         <p className="text-common-gray">
           <Copy value={id}>
-            <div className="flex gap-1 text-paragraph text-common-gray">
-              <p>ID:</p>
-              <p>{id}</p>
-            </div>
+            <div className="flex gap-1 text-paragraph text-common-gray">ID: {id}</div>
           </Copy>
         </p>
         <div className="flex flex-wrap text-header">{contentBlockData.name}</div>

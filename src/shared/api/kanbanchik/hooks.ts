@@ -1,3 +1,4 @@
+import {App} from 'antd';
 import useSWR from 'swr';
 import useSWRInfinite from 'swr/infinite';
 
@@ -29,9 +30,20 @@ export const useGetTicketList = () => {
 
 // Get ticket
 export const useGetTicket = (id: string) => {
+  const {notification} = App.useApp();
+
   return useSWR(
     {name: 'GET_TICKET', id},
-    async ({id: task_id}) => (task_id === 'create' ? {data: DEFAULT_TICKET} : await getTicket({task_id})),
+    async ({id: task_id}) => {
+      if (!id || task_id === 'create') {
+        return {data: DEFAULT_TICKET};
+      }
+
+      return await getTicket({task_id}).catch(e => {
+        notification.error({message: e.name, description: e.message, placement: 'bottomRight'});
+        throw new Error(e);
+      });
+    },
     swrOptions
   );
 };

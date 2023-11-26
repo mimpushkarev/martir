@@ -51,7 +51,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
           </Button>
         )}
         {ticket.status_task === 'progress' && (
-          <Button theme="primary">
+          <Button>
             <div className="flex items-center gap-2">
               <div className="text-small">{`В работе ${dayjs(
                 ticket.update_at,

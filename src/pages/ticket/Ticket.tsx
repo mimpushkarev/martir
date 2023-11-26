@@ -1,12 +1,13 @@
+import {Form} from 'antd';
 import dayjs from 'dayjs';
-import {memo} from 'react';
+import {assign} from 'lodash';
+import {memo, useCallback, useEffect} from 'react';
 import {useParams} from 'react-router-dom';
 
 import {Comment} from '_entities/comment';
 import {TicketContent, TicketHeader, TicketParams} from '_features/ticket-components';
-import {useGetTicket} from '_shared/api/kanbanchik';
+import {Ticket, upsertTicket, useGetTicket} from '_shared/api/kanbanchik';
 import {Container} from '_shared/container';
-import {useForm} from '_utils/hooks/useForm';
 
 const PAGE_HEADINGS = {
   type: 'Тип задачи',
@@ -20,14 +21,35 @@ const COMMENTS = [];
 
 const Ticket = memo(function Ticket() {
   const {ticket_id} = useParams();
-  const {data} = useGetTicket(ticket_id);
+  const {data, mutate} = useGetTicket(ticket_id);
   const ticket = data?.data;
-  const {Form} = useForm(ticket);
+
+  const [form] = Form.useForm();
+
+  useEffect(() => {
+    form.setFieldsValue(data?.data);
+  }, [form, data]);
+
+  const handleUpsertTicket = useCallback(
+    async (formTicket: Ticket) => {
+      const id = formTicket.task_id;
+      await upsertTicket(
+        assign({}, formTicket, {
+          task_id: id,
+          planned_sp: formTicket.planned_sp ? Number(formTicket.planned_sp) : undefined,
+          spent_sp: formTicket.spent_sp ? Number(formTicket.spent_sp) : undefined
+        })
+      );
+
+      mutate();
+    },
+    [mutate]
+  );
 
   return (
     <Container px={3} py={3}>
       {ticket ? (
-        <Form onSubmit={() => {}}>
+        <Form onFinish={handleUpsertTicket} form={form}>
           <div className="flex flex-row justify-between gap-8">
             <div className="flex w-7/12 flex-1 flex-col gap-10">
               <div className="flex flex-col gap-4">

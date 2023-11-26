@@ -9,7 +9,7 @@ const HoverIcon = memo<HoverIconType>(function HoverIcon({className, children, .
     <div
       {...props}
       className={cn(
-        'block cursor-pointer select-none rounded-lg p-2 duration-200 ease-in-out hover:bg-common-dark-gray',
+        'block flex h-8 w-8 cursor-pointer select-none items-center justify-center rounded-lg p-1.5 duration-200 ease-in-out hover:bg-common-dark-gray',
         {
           [className as string]: !!className
         }

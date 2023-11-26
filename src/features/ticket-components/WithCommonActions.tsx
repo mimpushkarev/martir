@@ -1,8 +1,11 @@
 import CopyIcon from '@heroicons/react/outline/DuplicateIcon';
+import {Tooltip} from 'antd';
 import {PropsWithChildren, memo} from 'react';
 
 import {HoverIcon} from '_shared/hover-icon';
 import {cn} from '_utils/cn';
+
+import {LABELS} from './consts';
 
 type WithCommonActionsPropsType = PropsWithChildren & {
   className?: string;
@@ -19,9 +22,11 @@ const WithCommonActions = memo<WithCommonActionsPropsType>(function WithCommonAc
       {children}
       {onCopy && (
         <div className="flex gap-3">
-          <HoverIcon onClick={onCopy}>
-            <CopyIcon className="h-6 w-6" />
-          </HoverIcon>
+          <Tooltip title={LABELS.COPY}>
+            <HoverIcon onClick={onCopy}>
+              <CopyIcon className="h-5 w-5" />
+            </HoverIcon>
+          </Tooltip>
         </div>
       )}
     </div>

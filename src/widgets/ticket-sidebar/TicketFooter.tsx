@@ -1,20 +1,16 @@
-import {useFormikContext} from 'formik';
 import {memo} from 'react';
 
 import {Button} from '_shared/button';
-import {SidebarContainer, SidebarFooter} from '_shared/sidebar';
 
-const TicketFooter = memo(function TicketFooter() {
-  const {submitForm} = useFormikContext();
+type TicketFooterPropsType = {
+  submitForm: () => void;
+};
 
+const TicketFooter = memo<TicketFooterPropsType>(function TicketFooter({submitForm}) {
   return (
-    <SidebarFooter>
-      <SidebarContainer>
-        <Button theme="primary" onClick={submitForm}>
-          Сохранить
-        </Button>
-      </SidebarContainer>
-    </SidebarFooter>
+    <Button type="primary" onClick={submitForm}>
+      Сохранить
+    </Button>
   );
 });
 

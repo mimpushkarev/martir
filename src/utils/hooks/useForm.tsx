@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {Formik, FormikConfig, FormikValues} from 'formik';
 import {useCallback} from 'react';
 
