@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {omit} from 'lodash';
 import {useCallback, useMemo} from 'react';
 import {useSearchParams} from 'react-router-dom';

@@ -1,4 +1,5 @@
 import '@mdxeditor/editor/style.css';
+import {App as AntApp, ConfigProvider, theme as antdTheme} from 'antd';
 import dayjs from 'dayjs';
 import 'dayjs/locale/ru';
 import relativeTime from 'dayjs/plugin/relativeTime';
@@ -12,9 +13,29 @@ dayjs.extend(relativeTime);
 
 function App() {
   return (
-    <Provider store={store}>
-      <Routing />
-    </Provider>
+    <ConfigProvider
+      theme={{
+        components: {
+          Select: {
+            optionActiveBg: '#424242',
+            optionSelectedBg: '#3691FC',
+            colorIcon: '#fff'
+          },
+          Drawer: {
+            footerPaddingInline: 24,
+            footerPaddingBlock: 16
+          }
+        },
+        token: {colorPrimary: '#3691FC'},
+        algorithm: [antdTheme.darkAlgorithm]
+      }}
+    >
+      <AntApp style={{height: '100%'}}>
+        <Provider store={store}>
+          <Routing />
+        </Provider>
+      </AntApp>
+    </ConfigProvider>
   );
 }
 

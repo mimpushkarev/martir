@@ -12,7 +12,7 @@ const Accordeon = memo<AccordeonPropsType>(function Accordeon({title, opened, ch
       <Disclosure defaultOpen={opened}>
         {({open}) => (
           <>
-            <Disclosure.Button className="flex w-full items-center justify-between border-y border-y-white py-4 text-left text-paragraph text-white focus-visible:ring-opacity-75">
+            <Disclosure.Button className="flex w-full items-center justify-between border-y border-y-white bg-transparent py-4 text-left text-paragraph text-white focus-visible:ring-opacity-75">
               <div>{title}</div>
               <ChevronUpIcon
                 className={cn('easy-in-out h-8 w-8 text-white duration-200', {

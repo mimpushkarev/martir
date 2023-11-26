@@ -25,7 +25,7 @@ export type CreateBlockRequestType = {
 export type GetBlocksResponceType = 'Ok';
 
 // Component
-type BlockType = {
+export type BlockType = {
   block_id: string; //id контент-блока
   content: string; //содержимое контент блока
   name: string; //имя контент блока

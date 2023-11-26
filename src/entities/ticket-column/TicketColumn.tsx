@@ -21,8 +21,8 @@ const TicketColumn = memo<TicketColumnPropsType>(function TicketColumn({columnHe
     <div>
       <div className="flex min-w-[300px] flex-col gap-4">
         <div className="flex gap-4 border-b border-common-light-gray pb-2 text-bold-2">
-          <h1>{columnHeading}</h1>
-          <div>{tickets.length}</div>
+          <span>{columnHeading}</span>
+          <span>{tickets.length}</span>
         </div>
         <div className="flex flex-col gap-2">
           {tickets.map(ticket => (

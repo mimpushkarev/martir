@@ -1,3 +1,4 @@
+import {Form} from 'antd';
 import {memo, useCallback} from 'react';
 
 import {Ticket} from '_shared/api/kanbanchik';
@@ -8,34 +9,9 @@ import {copyToClipboard} from '_utils/copy';
 import {getNamePath} from '_utils/hooks/useForm';
 
 import {WithCommonActions} from './WithCommonActions';
-
-const TASK_TYPE_OPTIONS = [
-  {
-    label: 'Фронтенд',
-    value: 'frontend'
-  },
-  {
-    label: 'Дизайн',
-    value: 'design'
-  },
-  {
-    label: 'Бизнесс',
-    value: 'business'
-  },
-  {
-    label: 'Бэкэнд',
-    value: 'backend'
-  }
-];
+import {LABELS, TASK_TYPE_OPTIONS} from './consts';
 
 const formPath = getNamePath<Ticket>();
-
-const PAGE_HEADINGS = {
-  type: 'Тип задачи',
-  name: 'Название задачи',
-  context: 'Контекст',
-  task: 'Задача'
-};
 
 type TicketContentPropsType = {
   ticket: Ticket;
@@ -51,29 +27,35 @@ const TicketContent = memo(function TicketContent({ticket}: TicketContentPropsTy
     <div className="flex flex-col gap-10">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-2">
-          <div>{PAGE_HEADINGS.type}</div>
+          <div>{LABELS.FORM_TYPE}</div>
           <WithCommonActions onCopy={handleCopyType}>
-            <Select name={formPath('type')} className="w-[320px]" options={TASK_TYPE_OPTIONS} />
+            <Form.Item name={formPath('type')} className="w-[320px]">
+              <Select options={TASK_TYPE_OPTIONS} />
+            </Form.Item>
           </WithCommonActions>
         </div>
         <div className="flex flex-col gap-2">
-          <div>{PAGE_HEADINGS.name}</div>
+          <div>{LABELS.FORM_NAME}</div>
           <WithCommonActions onCopy={handleCopyName}>
-            <Input name={formPath('name')} className="w-[320px]" />
+            <Form.Item name={formPath('name')} className="w-[320px]">
+              <Input />
+            </Form.Item>
           </WithCommonActions>
         </div>
       </div>
       <div className="flex flex-col gap-6">
         <WithCommonActions className="items-center" onCopy={handleCopyContext}>
-          <div className="text-bold-2">{PAGE_HEADINGS.context}</div>
+          <div className="text-bold-2">{LABELS.FORM_CONTEXT}</div>
         </WithCommonActions>
-        <MDEditor name={formPath('content')} placeholder="Введите текст..." />
+        <MDEditor placeholder={LABELS.EMPTY_CONTEXT_PLACEHOLDER} />
       </div>
       <div className="flex flex-col gap-6">
         <WithCommonActions className="items-center" onCopy={handleCopyTask}>
-          <div className="text-bold-2">{PAGE_HEADINGS.task}</div>
+          <div className="text-bold-2">{LABELS.FORM_TASK}</div>
         </WithCommonActions>
-        <MDEditor name={formPath('task')} placeholder="Введите текст..." />
+        <Form.Item name={formPath('task')}>
+          <MDEditor placeholder={LABELS.EMPTY_TASK_PLACEHOLDER} />
+        </Form.Item>
       </div>
     </div>
   );

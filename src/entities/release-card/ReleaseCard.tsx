@@ -40,23 +40,15 @@ const ReleaseCard = memo<ReleasesCardPropsType>(function ReleaseCard({
           </div>
         </div>
         <div className=" flex w-full flex-row justify-end gap-4">
-          {onClickBuild && (
-            <Button theme="primary" onClick={onClickBuild}>
-              Собрать
-            </Button>
-          )}
-          {onClickRelease && (
-            <Button theme="primary" onClick={onClickRelease}>
-              Релиз
-            </Button>
-          )}
+          {onClickBuild && <Button onClick={onClickBuild}>Собрать</Button>}
+          {onClickRelease && <Button onClick={onClickRelease}>Релиз</Button>}
           {onClickDeploy && (
-            <Button theme="outlined-primary" onClick={onClickDeploy}>
+            <Button type="default" onClick={onClickDeploy}>
               Раскатить
             </Button>
           )}
           {onClickUnDeploy && (
-            <Button theme="outlined-danger" onClick={onClickUnDeploy}>
+            <Button type="default" onClick={onClickUnDeploy} danger>
               Откатить
             </Button>
           )}

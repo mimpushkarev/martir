@@ -1,9 +1,9 @@
+import {Input as AntInput} from 'antd';
 import {ChangeEvent, useCallback, useState} from 'react';
 import {Outlet, ScrollRestoration} from 'react-router-dom';
 
 import {UserCard} from '_entities/user-card';
 import {Container} from '_shared/container';
-import {StatelessInput} from '_shared/input';
 import {VerticalNav} from '_shared/vertical-nav';
 import {Header} from '_widgets/header';
 
@@ -23,7 +23,7 @@ const AdminRoot = function AdminRoot() {
           className="w-[64px] shrink-0 border-r border-common-dark-gray bg-common-darkest-gray lg:w-[350px]"
         >
           <div className="flex h-full flex-col gap-8">
-            <StatelessInput placeholder="Раздел..." onChange={handleSearch} value={search} />
+            <AntInput placeholder="Раздел..." onChange={handleSearch} value={search} />
             <VerticalNav groups={GROUPS} className="flex-1" search={search} />
             <UserCard />
           </div>

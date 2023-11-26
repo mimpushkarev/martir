@@ -1,42 +1,10 @@
-import {useField} from 'formik';
-import {memo, useMemo} from 'react';
-import Select from 'react-select';
+import {Select as AntSelect} from 'antd';
+import {memo} from 'react';
 
-import {convertPathToName} from '_utils/hooks/useForm';
+import {SelectPropsType} from './types';
 
-import {SELECT_CLASSES, SELECT_STYLES} from './consts';
-import {OptionType, SelectPropsType} from './types';
-
-const SelectComponent = memo<SelectPropsType>(function SelectComponent({name, options, ...props}) {
-  const [field, _state, {setValue, setTouched}] = useField<string | string[]>(convertPathToName(name));
-
-  const onChange = (selected: OptionType | OptionType[]) => {
-    setValue('value' in selected ? selected.value : selected.map(item => item.value));
-  };
-
-  const onBlur = () => {
-    setTouched(true);
-  };
-
-  const mapOptions = useMemo(() => new Map(options.map(option => [option.value, option])), [options]);
-  const selectedValues = useMemo(
-    () => (Array.isArray(field.value) ? field.value.map(val => mapOptions.get(val)) : mapOptions.get(field.value)),
-    [mapOptions, field.value]
-  );
-
-  return (
-    <Select
-      {...props}
-      placeholder={props.placeholder || ''}
-      value={selectedValues}
-      options={options}
-      name={field.name}
-      onChange={onChange}
-      onBlur={onBlur}
-      styles={SELECT_STYLES}
-      classNames={SELECT_CLASSES}
-    />
-  );
+const Select = memo<SelectPropsType>(function Select({...props}) {
+  return <AntSelect {...props} mode={'isMulti' in props && props.isMulti ? 'multiple' : undefined} />;
 });
 
-export {SelectComponent};
+export {Select};

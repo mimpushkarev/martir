@@ -25,11 +25,11 @@ const PriceTag = memo<PriceTagType>(function PriceTag({product, className}) {
       <div className="flex flex-col gap-2">
         <Link to={product.size_guide_link} target="_blank" className="text-common-light-gray underline">
           <div className="flex items-center gap-2 text-small">
-            Руководство по выбору размера
+            <span>Руководство по выбору размера</span>
             <Ruler className="h-4 w-4" />
           </div>
         </Link>
-        <Button theme="primary">Добавить в корзину</Button>
+        <Button>Добавить в корзину</Button>
       </div>
     </div>
   );

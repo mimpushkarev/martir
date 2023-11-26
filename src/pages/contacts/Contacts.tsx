@@ -86,9 +86,7 @@ function FAQ() {
       <h2 className="mb-4 mt-10 text-page-title uppercase">Остались вопросы?</h2>
       <div className="flex items-center justify-between">
         <p>Заполните форму обратной связи и мы свяжемся с Вами.</p>
-        <Button theme="primary" onClick={handleOpenModal}>
-          Заполнить!
-        </Button>
+        <Button onClick={handleOpenModal}>Заполнить!</Button>
       </div>
       <FeedbackForm isOpen={isOpen} onClose={handleCloseModal} />
     </Container>

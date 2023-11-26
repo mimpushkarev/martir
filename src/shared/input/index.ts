@@ -1,1 +1,1 @@
-export {Input, StatelessInput} from './Input';
+export {Input} from './Input';

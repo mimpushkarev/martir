@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', '**/*.{ts,tsx,html}'],
@@ -101,5 +102,6 @@ export default {
       }
     }
   },
-  plugins: [require('@tailwindcss/typography')]
+  plugins: [require('@tailwindcss/typography')],
+  corePlugins: {preflight: false}
 };

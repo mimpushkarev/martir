@@ -15,7 +15,6 @@ import {
   thematicBreakPlugin,
   toolbarPlugin
 } from '@mdxeditor/editor';
-import {useField} from 'formik';
 import {memo} from 'react';
 
 import {cn} from '_utils/cn';
@@ -46,15 +45,12 @@ const plugins = [
   })
 ];
 
-const MDEditor = memo<MDEditorPropsType>(function MDEditor({name, className, ...props}) {
-  const [field, _m, helpers] = useField<string>(name);
-
+const MDEditor = memo<MDEditorPropsType>(function MDEditor({className, ...props}) {
   return (
     <MDXEditor
       {...props}
       className={cn('dark-theme prose prose-stone prose-invert', {[className]: !!className})}
-      markdown={field.value ?? ''}
-      onChange={helpers.setValue}
+      markdown={'value' in props && typeof props.value === 'string' ? props.value : ''}
       plugins={plugins}
     />
   );

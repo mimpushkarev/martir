@@ -17,6 +17,7 @@
     "@reduxjs/toolkit": "1.9.3",
     "@tailwindcss/typography": "0.5.10",
     "@vitejs/plugin-react-swc": "3.4.1",
+    "antd": "^5.11.2",
     "autoprefixer": "10.4.14",
     "axios": "1.6.0",
     "dayjs": "^1.11.10",

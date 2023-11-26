@@ -18,7 +18,7 @@ const ContentManagement = memo(function ContentManagement() {
   return (
     <Container className="flex h-full w-full divide-x divide-common-dark-gray">
       <div className="h-full w-1/4 p-4">
-        <Button theme="primary" state={values.mode === 'create' ? 'disabled' : 'normal'} onClick={handleClick}>
+        <Button state={values.mode === 'create' ? 'disabled' : 'normal'} onClick={handleClick}>
           Создать документ
         </Button>
       </div>

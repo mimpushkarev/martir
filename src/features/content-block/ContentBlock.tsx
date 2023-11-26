@@ -12,8 +12,8 @@ const ContentBlock = memo(function ContentBlock() {
     switch (values.mode) {
       case 'create':
         return <ContentBlockForm id={undefined} mode={values.mode} />;
-        case 'edit':
-        case 'copy':
+      case 'edit':
+      case 'copy':
         return <ContentBlockForm id={values.id} mode={values.mode} />;
       case 'show':
         return <ShowContentBlock id={values.id} />;
