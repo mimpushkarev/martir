@@ -1,7 +1,6 @@
 import {Form} from 'antd';
 import {assign} from 'lodash';
 import {memo, useCallback, useEffect} from 'react';
-import {v4 as uuidv4} from 'uuid';
 
 import {Ticket, upsertTicket, useGetTicket} from '_shared/api/kanbanchik';
 import {Sidebar} from '_shared/sidebar';
@@ -26,7 +25,7 @@ const TicketSidebar = memo(function TicketSidebar() {
 
   const handleUpsertTicket = useCallback(
     async (formTicket: Ticket) => {
-      const id = values.ticketId === 'create' ? uuidv4() : formTicket.task_id;
+      const id = values.ticketId === 'create' ? undefined : formTicket.task_id;
       await upsertTicket(
         assign({}, formTicket, {
           task_id: id,
