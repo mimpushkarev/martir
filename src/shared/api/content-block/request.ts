@@ -13,10 +13,12 @@ import {
 export const getContentBlocks = async (
   request: GetListOfBlocksRequestType
 ): Promise<AxiosResponse<GetListOfBlocksResponceType>['data']> => {
-  const res = await apiInstance.get<GetListOfBlocksRequestType, AxiosResponse<GetListOfBlocksResponceType>>(
+  const res = await apiInstance.post<GetListOfBlocksRequestType, AxiosResponse<GetListOfBlocksResponceType>>(
     '/content-service/content-blocks',
     {
-      params: request
+      parent_id: request.parent_id,
+      offset: request.offset,
+      limit: request.limit
     }
   );
   return res.data;
