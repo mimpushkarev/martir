@@ -26,7 +26,7 @@ function App() {
             footerPaddingBlock: 16
           }
         },
-        token: {colorPrimary: '#3691FC'},
+        token: {colorPrimary: '#3691FC', fontFamily: 'inherit'},
         algorithm: [antdTheme.darkAlgorithm]
       }}
     >
