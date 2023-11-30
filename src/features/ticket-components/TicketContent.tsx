@@ -47,7 +47,9 @@ const TicketContent = memo(function TicketContent({ticket}: TicketContentPropsTy
         <WithCommonActions className="items-center" onCopy={handleCopyContext}>
           <div className="text-bold-2">{LABELS.FORM_CONTEXT}</div>
         </WithCommonActions>
-        <MDEditor placeholder={LABELS.EMPTY_CONTEXT_PLACEHOLDER} />
+        <Form.Item name={formPath('content')}>
+          <MDEditor placeholder={LABELS.EMPTY_CONTEXT_PLACEHOLDER} />
+        </Form.Item>
       </div>
       <div className="flex flex-col gap-6">
         <WithCommonActions className="items-center" onCopy={handleCopyTask}>

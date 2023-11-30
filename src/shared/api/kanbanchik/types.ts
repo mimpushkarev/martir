@@ -26,7 +26,7 @@ export type CreateTicketRequestType = {
   spent_sp?: number;
   watchers?: string[];
 };
-export type CreateTicketResponse = 'Ok';
+export type CreateTicketResponse = Ticket;
 
 // Components
 export type Ticket = {
