@@ -84,4 +84,5 @@ const Ticket = memo(function Ticket() {
     </Container>
   );
 });
+
 export default Ticket;

@@ -12,21 +12,27 @@ type ToLikedButtonPropsType = {
 
 const ToLikedButton = memo<ToLikedButtonPropsType>(function ToLikedButton({entity}) {
   const [liked, setLiked] = useLikedList();
-  const addEntityToLiked = useCallback(() => setLiked(prev => xor(prev, [entity])), [entity, setLiked]);
+  const addEntityToLiked = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.preventDefault();
+      setLiked(prev => xor(prev, [entity]));
+    },
+    [entity, setLiked]
+  );
 
   const cartSet = useMemo(() => new Set(liked), [liked]);
 
   return (
     <div
       onClick={addEntityToLiked}
-      className="cursor-pointer select-none bg-common-darkest-gray p-2 duration-200 ease-in-out hover:bg-common-bg"
+      className="cursor-pointer select-none p-2 hover:fill-danger-normal hover:text-danger-normal"
     >
       <HeartIconSolid
         className={cn('absolute h-6 w-6 duration-200 ease-in-out', {
           'opacity-0': !cartSet.has(entity)
         })}
       />
-      <HeartIconOutline className="h-6 w-6" />
+      <HeartIconOutline className="h-6 w-6 duration-200 ease-in-out" />
     </div>
   );
 });

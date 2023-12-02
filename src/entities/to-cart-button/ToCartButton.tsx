@@ -12,21 +12,24 @@ type ToCartButtonPropsType = {
 
 const ToCartButton = memo<ToCartButtonPropsType>(function ToCartButton({entity}) {
   const [cart, setCart] = useCartList();
-  const addEntityToCart = useCallback(() => setCart(prev => xor(prev, [entity])), [entity, setCart]);
+  const addEntityToCart = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.preventDefault();
+      setCart(prev => xor(prev, [entity]));
+    },
+    [entity, setCart]
+  );
 
   const cartSet = useMemo(() => new Set(cart), [cart]);
 
   return (
-    <div
-      onClick={addEntityToCart}
-      className="cursor-pointer select-none bg-common-darkest-gray p-2 duration-200 ease-in-out hover:bg-common-bg"
-    >
+    <div onClick={addEntityToCart} className="cursor-pointer select-none p-2 hover:text-danger-normal">
       <ShoppingCartIconSolid
         className={cn('absolute h-6 w-6 duration-200 ease-in-out', {
           'opacity-0': !cartSet.has(entity)
         })}
       />
-      <ShoppingCartIconOutline className="h-6 w-6" />
+      <ShoppingCartIconOutline className="h-6 w-6 duration-200 ease-in-out" />
     </div>
   );
 });

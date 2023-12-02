@@ -35,3 +35,5 @@ export const useQuery = <P extends Record<string, (val: string | null) => any>>(
 
   return {values, mergeParams, removeParams};
 };
+
+export const stringParser = (value: undefined | string) => value;
