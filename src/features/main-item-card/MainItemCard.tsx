@@ -17,13 +17,13 @@ const MainItemCard = memo<MainItemCardPropsType>(function MainItemCard({productI
       <div className="group relative aspect-square w-full overflow-hidden bg-common-dark-gray">
         <img src={image} alt={title} className="h-full w-full object-cover" />
       </div>
-      <div className="mt-4">
+      <div className="mt-4 flex flex-col gap-1">
         <div>{title}</div>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-1">
           <div className="text-paragraph-2">{currency.format(price)}</div>
-          <div className="flex">
-            <ToLikedButton entity={productId} />
-            <ToCartButton entity={productId} />
+          <div className="flex gap-2">
+            <ToLikedButton entity={productId} size="middle" />
+            <ToCartButton entity={productId} className="flex-1" size="middle" />
           </div>
         </div>
       </div>

@@ -22,7 +22,7 @@ const ProductsList = memo(function ProductsList() {
           <Row
             gutter={[
               {xs: 12, sm: 12, md: 24},
-              {xs: 12, sm: 12, md: 64}
+              {xs: 40, sm: 40, md: 64}
             ]}
           >
             {flattenProducts.map(product => (
