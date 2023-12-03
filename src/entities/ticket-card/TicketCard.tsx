@@ -50,7 +50,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
             </div>
           </Button>
         )}
-        {ticket.status_task === 'progress' && (
+        {ticket.status_task === 'in-progress' && (
           <Button>
             <div className="flex items-center gap-2">
               <div className="text-small">{`В работе ${dayjs(
@@ -60,7 +60,7 @@ const TicketCard = memo<TiketCardPropsType>(function TicketCard({ticket}) {
             </div>
           </Button>
         )}
-        {ticket.status_task === 'review' && (
+        {ticket.status_task === 'in-review' && (
           <Button theme="warning">
             <div className="flex items-center gap-2">
               <div className="text-small">{`На проверке ${dayjs(

@@ -50,8 +50,8 @@ const TicketTable = memo(function TicketTable() {
       </Container>
       <Container px={3} className="flex w-full gap-9 overflow-auto">
         <TicketColumn columnHeading="Открыт" tickets={dataByStatuses['opened']} />
-        <TicketColumn columnHeading="В работе" tickets={dataByStatuses['progress']} />
-        <TicketColumn columnHeading="На проверке" tickets={dataByStatuses['review']} />
+        <TicketColumn columnHeading="В работе" tickets={dataByStatuses['in-progress']} />
+        <TicketColumn columnHeading="На проверке" tickets={dataByStatuses['in-review']} />
         <TicketColumn columnHeading="Закрыты" tickets={dataByStatuses['done']} />
       </Container>
     </div>
