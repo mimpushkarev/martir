@@ -1,33 +1,35 @@
-import {HeartIcon as HeartIconOutline} from '@heroicons/react/outline';
-import {HeartIcon as HeartIconSolid} from '@heroicons/react/solid';
+import {HeartFilled, HeartOutlined} from '@ant-design/icons';
+import {ButtonProps as AntButtonProps} from 'antd';
 import {xor} from 'lodash';
 import {memo, useCallback, useMemo} from 'react';
 
-import {cn} from '_utils/cn';
+import {Button} from '_shared/button';
 import {useLikedList} from '_utils/hooks/useLikedList';
 
-type ToLikedButtonPropsType = {
+type ToLikedButtonPropsType = AntButtonProps & {
   entity: string;
 };
 
-const ToLikedButton = memo<ToLikedButtonPropsType>(function ToLikedButton({entity}) {
+const ToLikedButton = memo<ToLikedButtonPropsType>(function ToLikedButton({entity, ...props}) {
   const [liked, setLiked] = useLikedList();
-  const addEntityToLiked = useCallback(() => setLiked(prev => xor(prev, [entity])), [entity, setLiked]);
+  const addEntityToLiked = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.preventDefault();
+      setLiked(prev => xor(prev, [entity]));
+    },
+    [entity, setLiked]
+  );
 
   const cartSet = useMemo(() => new Set(liked), [liked]);
 
   return (
-    <div
+    <Button
+      {...props}
       onClick={addEntityToLiked}
-      className="cursor-pointer select-none bg-common-darkest-gray p-2 duration-200 ease-in-out hover:bg-common-bg"
-    >
-      <HeartIconSolid
-        className={cn('absolute h-6 w-6 duration-200 ease-in-out', {
-          'opacity-0': !cartSet.has(entity)
-        })}
-      />
-      <HeartIconOutline className="h-6 w-6" />
-    </div>
+      type="default"
+      icon={cartSet.has(entity) ? <HeartFilled rev={undefined} /> : <HeartOutlined rev={undefined} />}
+      size={props.size || 'large'}
+    />
   );
 });
 

@@ -1,33 +1,40 @@
-import {ShoppingCartIcon as ShoppingCartIconOutline} from '@heroicons/react/outline';
-import {ShoppingCartIcon as ShoppingCartIconSolid} from '@heroicons/react/solid';
+import {ShoppingCartOutlined} from '@ant-design/icons';
+import {ButtonProps as AntButtonProps} from 'antd';
 import {xor} from 'lodash';
-import {memo, useCallback, useMemo} from 'react';
+import {memo, useCallback} from 'react';
 
-import {cn} from '_utils/cn';
+import {Button} from '_shared/button';
 import {useCartList} from '_utils/hooks';
 
-type ToCartButtonPropsType = {
+import {LABELS} from './consts';
+
+type ToCartButtonPropsType = AntButtonProps & {
   entity: string;
 };
 
-const ToCartButton = memo<ToCartButtonPropsType>(function ToCartButton({entity}) {
-  const [cart, setCart] = useCartList();
-  const addEntityToCart = useCallback(() => setCart(prev => xor(prev, [entity])), [entity, setCart]);
+const ToCartButton = memo<ToCartButtonPropsType>(function ToCartButton({entity, ...props}) {
+  const [_cart, setCart] = useCartList();
+  const addEntityToCart = useCallback(
+    (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+      e.preventDefault();
+      setCart(prev => xor(prev, [entity]));
+    },
+    [entity, setCart]
+  );
 
-  const cartSet = useMemo(() => new Set(cart), [cart]);
+  // TODO изменить отображение если товар уже в корзине
+  // const cartSet = useMemo(() => new Set(cart), [cart]);
 
   return (
-    <div
+    <Button
+      {...props}
       onClick={addEntityToCart}
-      className="cursor-pointer select-none bg-common-darkest-gray p-2 duration-200 ease-in-out hover:bg-common-bg"
+      icon={<ShoppingCartOutlined rev={undefined} />}
+      size={props.size || 'large'}
+      type="primary"
     >
-      <ShoppingCartIconSolid
-        className={cn('absolute h-6 w-6 duration-200 ease-in-out', {
-          'opacity-0': !cartSet.has(entity)
-        })}
-      />
-      <ShoppingCartIconOutline className="h-6 w-6" />
-    </div>
+      {LABELS.TO_CART}
+    </Button>
   );
 });
 

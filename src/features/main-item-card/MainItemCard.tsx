@@ -6,17 +6,26 @@ import {currency} from '_utils/intl/numbers';
 
 type MainItemCardPropsType = {
   productId: string;
+  price: number;
+  image: string;
+  title: string;
 };
 
-const MainItemCard = memo<MainItemCardPropsType>(function MainItemCard({productId}) {
+const MainItemCard = memo<MainItemCardPropsType>(function MainItemCard({productId, price, image, title}) {
   return (
-    <div className="group relative aspect-[1/3] w-64 flex-shrink-0 flex-grow-0 basis-64 overflow-hidden bg-common-dark-gray bg-[url(https://sun9-9.userapi.com/impg/3gQBSEhlihfMYBt4JRGVLWS0Dtkg6DHjoyhsyQ/AWyUhm8N42k.jpg?size=2560x1698&quality=96&sign=6cfcc1e781da60a2339c9bdf4bd5e545&type=album)] bg-cover bg-center">
-      <div className="absolute bottom-0 right-0 m-4">
-        <div className="flex justify-end gap-2 opacity-0 duration-100 ease-in-out group-hover:opacity-100">
-          <ToLikedButton entity={productId} />
-          <ToCartButton entity={productId} />
+    <div>
+      <div className="group relative aspect-square w-full overflow-hidden bg-common-dark-gray">
+        <img src={image} alt={title} className="h-full w-full object-cover" />
+      </div>
+      <div className="mt-4 flex flex-col gap-1">
+        <div>{title}</div>
+        <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between md:gap-1">
+          <div className="text-paragraph-2">{currency.format(price)}</div>
+          <div className="flex gap-2">
+            <ToLikedButton entity={productId} size="middle" />
+            <ToCartButton entity={productId} className="flex-1" size="middle" />
+          </div>
         </div>
-        <div className="mt-2 bg-common-darkest-gray p-2 text-paragraph-2">{currency.format(5000)}</div>
       </div>
     </div>
   );
