@@ -31,7 +31,7 @@ export type CreateTicketResponse = Ticket;
 // Components
 export type Ticket = {
   task_id: string;
-  status_task: 'opened' | 'progress' | 'review' | 'done';
+  status_task: 'opened' | 'in-progress' | 'in-review' | 'done';
   type: string;
   name: string;
   content: string;
