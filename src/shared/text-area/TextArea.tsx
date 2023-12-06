@@ -1,26 +1,18 @@
+import {Input} from 'antd';
+import {TextAreaProps} from 'antd/es/input';
 import {useField} from 'formik';
 import {memo} from 'react';
 
-import {cn} from '_utils/cn';
+import {Model} from '_utils/hooks/useForm';
 
-import {TextAreaFieldPropsType} from './types';
+type TextAreaPropsType = TextAreaProps & {
+  name: Model<string>;
+};
 
-const TextArea = memo<TextAreaFieldPropsType>(function TextArea({name, className, ...props}) {
-  const [field, meta] = useField(name);
+const TextArea = memo<TextAreaPropsType>(function TextArea({name, className, ...props}) {
+  const [field] = useField(name);
 
-  return (
-    <textarea
-      {...field}
-      {...props}
-      className={cn(
-        'min-h-[40px] rounded border border-common-gray bg-common-bg px-2 py-1.5 text-paragraph text-white shadow-none outline-none transition-[border,opacity,shadow] duration-200 ease-in-out hover:border-white focus:border-white focus:shadow-md focus:shadow-primary-normal disabled:opacity-50',
-        {
-          ['border-danger-light']: !!meta.error,
-          [className as string]: !!className
-        }
-      )}
-    />
-  );
+  return <Input.TextArea {...field} {...props} autoSize={props.autoSize || {minRows: 4}} />;
 });
 
 export {TextArea};

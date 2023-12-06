@@ -2,7 +2,7 @@ import {Form} from 'antd';
 import {assign} from 'lodash';
 import {memo, useCallback, useEffect} from 'react';
 
-import {Ticket, upsertTicket, useGetTicket} from '_shared/api/kanbanchik';
+import {Ticket, useGetTicket, useMutateTicket} from '_shared/api/kanbanchik';
 import {Sidebar} from '_shared/sidebar';
 import {useQuery} from '_utils/hooks/useQuery';
 
@@ -11,7 +11,8 @@ import {TicketSidebarContent} from './TicketSidebarContent';
 
 const TicketSidebar = memo(function TicketSidebar() {
   const {values, mergeParams, removeParams} = useQuery({ticketId: value => value});
-  const {data, mutate} = useGetTicket(values.ticketId);
+  const {data, isLoading} = useGetTicket(values.ticketId);
+  const {trigger, isMutating} = useMutateTicket(values.ticketId);
 
   const handleCloseSidebar = useCallback(() => {
     removeParams(['ticketId']);
@@ -26,7 +27,7 @@ const TicketSidebar = memo(function TicketSidebar() {
   const handleUpsertTicket = useCallback(
     async (formTicket: Ticket) => {
       const id = values.ticketId === 'create' ? undefined : values.ticketId;
-      const res = await upsertTicket(
+      const res = await trigger(
         assign({}, formTicket, {
           task_id: id,
           planned_sp: formTicket.planned_sp ? Number(formTicket.planned_sp) : undefined,
@@ -35,9 +36,8 @@ const TicketSidebar = memo(function TicketSidebar() {
       );
 
       mergeParams({ticketId: res.data.task_id});
-      mutate();
     },
-    [values.ticketId, mergeParams, mutate]
+    [values.ticketId, mergeParams, trigger]
   );
 
   return (
@@ -45,7 +45,7 @@ const TicketSidebar = memo(function TicketSidebar() {
       <Sidebar
         isOpen={!!values.ticketId}
         onClose={handleCloseSidebar}
-        footer={<TicketFooter submitForm={form.submit} />}
+        footer={<TicketFooter submitForm={form.submit} isLoading={isMutating || isLoading} />}
       >
         <TicketSidebarContent />
       </Sidebar>
