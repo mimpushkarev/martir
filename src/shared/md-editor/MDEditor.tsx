@@ -48,19 +48,19 @@ const plugins = [
   })
 ];
 
-const MDEditor = function MDEditor({className, ...props}: MDEditorPropsType) {
+const MDEditor = function MDEditor({className, value, ...props}: MDEditorPropsType) {
   const ref = useRef<MDXEditorMethods>(null);
 
   useEffect(() => {
-    ref.current?.setMarkdown('value' in props && typeof props.value === 'string' ? props.value : '');
-  }, ['value' in props && typeof props.value !== 'undefined']);
+    ref.current?.setMarkdown(value ?? '');
+  }, [!!value]);
 
   return (
     <MDXEditor
       {...props}
       plugins={plugins}
       className={cn('dark-theme prose prose-stone prose-invert', {[className]: !!className})}
-      markdown={'value' in props && typeof props.value === 'string' ? props.value : ''}
+      markdown={typeof value === 'string' ? value : ''}
       ref={ref}
     />
   );

@@ -18,7 +18,7 @@ export type CreateTicketRequestType = {
   author_id: string;
   name: string;
   type: string;
-  status_task: 'opened' | 'progress' | 'review' | 'done';
+  status_task: 'opened' | 'in-progress' | 'in-review' | 'done';
   executor_id?: string;
   context?: string;
   task?: string;
