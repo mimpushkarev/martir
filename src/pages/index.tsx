@@ -53,7 +53,10 @@ const router = createBrowserRouter([
       },
       {
         path: 'cart',
-        element: null
+        async lazy() {
+          const Cart = lazy(() => import('./cart'));
+          return {Component: Cart};
+        }
       },
       {
         path: 'cart',
