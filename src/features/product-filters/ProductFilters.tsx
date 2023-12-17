@@ -9,7 +9,7 @@ const ProductFilters = memo(function ProductFilters() {
   const {values} = useQuery({filter: stringParser});
 
   return (
-    <div className="flex w-full gap-1 overflow-auto rounded-2xl bg-common-darkest-gray p-1">
+    <div className="flex w-full gap-1 overflow-auto rounded-md bg-common-darkest-gray p-1">
       <FilterItem
         label={ALL_FILTER.label}
         value={ALL_FILTER.value}

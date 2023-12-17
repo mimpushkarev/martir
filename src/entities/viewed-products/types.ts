@@ -4,4 +4,4 @@ type Product = {
   name: string;
 };
 
-export type VievedProductType = {products: Array<Product>; className?: string};
+export type VievedProductType = {products: Array<Product>};
