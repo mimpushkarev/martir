@@ -30,9 +30,8 @@ body {
   @apply text-opacity-100;
 }
 
-::-webkit-scrollbar {
-  width: 0;
-  padding: 0;
+.dropdown-button-block .ant-btn:first-child {
+  flex: 1;
 }
 
 body .mdxeditor {

@@ -6,4 +6,4 @@ type Product = {
   size_guide_link: string;
 };
 
-export type PriceTagType = {product: Product; className?: string};
+export type PriceTagType = {product: Product};

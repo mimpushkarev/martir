@@ -1,8 +1,8 @@
+import {LeftOutlined, RightOutlined} from '@ant-design/icons';
 import {useEffect, useMemo, useRef, useState} from 'react';
 
 import {cn} from '_utils/cn';
 
-import image from './arrow.svg';
 import {SliderType} from './types';
 
 const Slider: SliderType = ({images, duration, className}) => {
@@ -32,9 +32,9 @@ const Slider: SliderType = ({images, duration, className}) => {
   };
 
   return (
-    <div className="flex w-full flex-col gap-4 overflow-hidden">
+    <div className="flex w-full flex-col gap-4 overflow-hidden px-4">
       <div
-        className={cn('flex h-[500px] gap-0 transition-transform duration-500 ease-in-out', {
+        className={cn('flex h-[500px] gap-2 transition-transform duration-500 ease-in-out', {
           [className as string]: !!className
         })}
         ref={sliderRef}
@@ -46,10 +46,22 @@ const Slider: SliderType = ({images, duration, className}) => {
           </div>
         ))}
       </div>
-      <div className="flex gap-6">
-        <img src={image} alt="back" onClick={handlePrevClick} />
-        <div className=" text-paragraph-2">{`${currentIndex + 1} / ${images.length}`}</div>
-        <img src={image} alt="forward" className="rotate-180" onClick={handleNextClick} />
+      <div className="hidden gap-6 lg:flex">
+        <LeftOutlined
+          alt="back"
+          className="select-none duration-100 ease-in-out hover:text-white"
+          onClick={handlePrevClick}
+          rev={undefined}
+        />
+        <div className="flex w-16 justify-center text-paragraph-2">
+          {currentIndex + 1} / {images.length}
+        </div>
+        <RightOutlined
+          alt="forward"
+          className="select-none duration-100 ease-in-out hover:text-white"
+          onClick={handleNextClick}
+          rev={undefined}
+        />
       </div>
     </div>
   );

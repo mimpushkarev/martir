@@ -19,7 +19,7 @@ const FilterItem = memo(function FilterItem({active, value, label}: FilterItemPr
   return (
     <div
       className={cn(
-        'cursor-pointer whitespace-nowrap rounded-xl px-5 py-3 text-small font-bold text-white duration-200 ease-in-out hover:bg-common-dark-gray',
+        'cursor-pointer whitespace-nowrap rounded px-5 py-3 text-small font-bold text-white duration-200 ease-in-out hover:bg-common-dark-gray',
         {
           'bg-danger-normal hover:bg-danger-light': active
         }
