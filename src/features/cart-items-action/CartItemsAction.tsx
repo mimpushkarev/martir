@@ -1,5 +1,6 @@
 import {ShoppingCartIcon} from '@heroicons/react/solid';
 import {memo} from 'react';
+import {Link} from 'react-router-dom';
 
 import {useCartList} from '_utils/hooks';
 
@@ -7,7 +8,7 @@ const CartItemsAction = memo(function CartItemsAction() {
   const [cart] = useCartList();
 
   return (
-    <div>
+    <Link to="/cart">
       <div className="relative flex h-6 w-6 cursor-pointer items-center justify-center fill-common-gray duration-200 ease-in-out hover:fill-common-light-gray">
         <ShoppingCartIcon fill="inherit" />
         {!!cart.length && (
@@ -16,7 +17,7 @@ const CartItemsAction = memo(function CartItemsAction() {
           </div>
         )}
       </div>
-    </div>
+    </Link>
   );
 });
 
