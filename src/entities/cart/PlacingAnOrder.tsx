@@ -9,7 +9,7 @@ const PlacingAnOrder = memo<PlacingAnOrderType>(function PlacingAnOrder({product
   return (
     <div>
       <CartBlock title="оформление заказа"></CartBlock>
-      <div>
+      <div className='flex flex-col gap-6'>
         {productIdArr.map((productId, index) => {
           return <CartProductCard productId={productId} key={index} />;
         })}
