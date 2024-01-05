@@ -26,7 +26,7 @@ const ProductsList = memo(function ProductsList() {
             ]}
           >
             {flattenProducts.map(product => (
-              <Col span={12} md={8}>
+              <Col span={12} md={8} key={product.id}>
                 <NavLink to={`product/${product.id}`} key={product.id}>
                   <MainItemCard
                     productId={product.id}

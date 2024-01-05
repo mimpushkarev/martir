@@ -9,7 +9,7 @@ type TextAreaPropsType = TextAreaProps & {
   name: Model<string>;
 };
 
-const TextArea = memo<TextAreaPropsType>(function TextArea({name, className, ...props}) {
+const TextArea = memo<TextAreaPropsType>(function TextArea({name, ...props}) {
   const [field] = useField(name);
 
   return <Input.TextArea {...field} {...props} autoSize={props.autoSize || {minRows: 4}} />;
