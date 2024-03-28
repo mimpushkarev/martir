@@ -1,5 +1,7 @@
 import {AxiosResponse} from 'axios';
 
+import {wait} from '_utils/wait';
+
 // import {apiInstance} from '../api';
 import {PRODUCTS} from './mock';
 import {GetProductRequestType, GetProductResponceType} from './types';
@@ -16,5 +18,5 @@ export const getProductById = async (
   //   }
   // );
   const res = PRODUCTS[Number(request.product_id) - 1];
-  return res;
+  return wait(res, 1500);
 };
